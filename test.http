@@ -1,0 +1,7 @@
+POST http://localhost:5000/api/user/login
+content-type: application/json
+
+{
+    "email": "justine@groupomania.com",
+    "password": "Justine"
+}
