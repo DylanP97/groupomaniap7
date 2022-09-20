@@ -1,6 +1,6 @@
 import React from "react";
 import styled from 'styled-components'
-import colors from "../../utils/styles/colors";
+import colors from "../../assets/styles/colors";
 
 
 const CardContainer = styled.div`

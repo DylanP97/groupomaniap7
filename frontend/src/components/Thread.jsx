@@ -2,7 +2,7 @@ import React, { useEffect, useState }  from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../actions/post";
 import Card from "./Thread/Card";
-import { isEmpty } from "../utils/Utils";
+import { isEmpty } from "../assets/utils/Utils";
 
 
 const Thread = () => {

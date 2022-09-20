@@ -1,12 +1,12 @@
 import React from "react";
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import colors from "../utils/styles/colors";
-import DarkLogo from '../assets/Logos/icon-left-font-monochrome-black.png'
-import HomeIcon from '../assets/Icons/home.png';
-import UserIcon from '../assets/Icons/user.png';
-import GroupIcon from '../assets/Icons/group.png';
-import NotifIcon from '../assets/Icons/bell.png';
+import colors from "../assets/styles/colors";
+import DarkLogo from '../assets/styles/Logos/icon-left-font-monochrome-black.png'
+import HomeIcon from '../assets/styles/Icons/home.png';
+import UserIcon from '../assets/styles/Icons/user.png';
+import GroupIcon from '../assets/styles/Icons/group.png';
+import NotifIcon from '../assets/styles/Icons/bell.png';
 
 const HomeLogo = styled.img`
     height: 100px;

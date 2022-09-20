@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useDispatch } from "react-redux";
 import { addPost, getPosts } from "../actions/post";
 import styled from 'styled-components'
-import colors from "../utils/styles/colors";
+import colors from "../assets/styles/colors";
 
 
 const NewPostContainer = styled.div`
