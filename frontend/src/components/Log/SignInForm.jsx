@@ -7,13 +7,13 @@ const SignInForm = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    const emailError = document.querySelector(".email.error");
-    const passwordError = document.querySelector(".password.error");
+    // const emailError = document.querySelector(".email.error");
+    // const passwordError = document.querySelector(".password.error");
 
     axios({
       method: "post",
       url: `${process.env.REACT_APP_API_URL}api/user/login`,
-    //   withCredentials: true,
+      withCredentials: true,
       data: {
         email,
         password,
@@ -22,10 +22,12 @@ const SignInForm = () => {
       .then((res) => {
         console.log(res);
         if (res.data.errors) {
-          emailError.innerHTML = res.data.errors.email;
-          passwordError.innerHTML = res.data.errors.password;
+          console.log("error in email")
+          // emailError.innerHTML = res.data.errors.email;
+          // passwordError.innerHTML = res.data.errors.password;
         } else {
-          window.location = "/";
+          console.log("direction homepage 'normalement'")
+          window.location = "/home";
         }
       })
       .catch((err) => {

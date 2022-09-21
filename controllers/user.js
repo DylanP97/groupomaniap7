@@ -6,6 +6,14 @@ const fs = require('fs');
 
 
 
+const maxAge = 3 * 24 * 60 * 60 * 1000;
+
+const createToken = (id) => {
+    return jwt.sign({id}, 'RANDOM_TOKEN_SECRET', {
+      expiresIn: maxAge
+    })
+  };
+
 exports.signup = (req, res, next) => {
     bcrypt.hash(req.body.password, 10)
     .then(hash => {
@@ -33,17 +41,20 @@ exports.login = (req, res, next) => {
                 if (!valid) {
                     res.status(401).json({message: 'Paire email/mot de passe incorrecte'})
                 } else {
+                    const token = createToken(user._id);
+                    res.cookie('jwt', token, { httpOnly: true, maxAge});
                     res.status(200).json({
                         userId: user._id,
                         token: jwt.sign(
                             { userId: user._id},
-                            'RANDOM_TOKEN_SECRET',
-                            { expiresIn: '24h'}
-                        )
+                            // 'RANDOM_TOKEN_SECRET',
+                            // { expiresIn: maxAge }
+                            )
                     });
                 }
             })
             .catch(error => {
+                console.log("error ici")
                 res.status(500).json({error})
             })
         }
@@ -54,6 +65,10 @@ exports.login = (req, res, next) => {
 }
 
 
+exports.logout = (req, res) => {
+    res.cookie('jwt', '', { maxAge: 1 });
+    res.redirect('/');
+  }
 
 
 exports.getAllUsers = (req, res, next) => {

@@ -11,6 +11,7 @@ import Home from './pages/Home'
 import Profile from './pages/Profile';
 import Users from './pages/Users';
 import Notification from './pages/Notification';
+import LoginPage from "./pages/LoginPage";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -26,29 +27,31 @@ const App = () => {
   const [uid, setUid] = useState(null);
   const dispatch = useDispatch();
 
-  // useEffect(() => {
-  //   const fetchToken = async () => {
-  //     await axios({
-  //       method: "get",
-  //       url: `${process.env.REACT_APP_API_URL}jwtid`,
-  //       withCredentials: true,
-  //     })
-  //       .then((res) => {
-  //         setUid(res.data);
-  //       })
-  //       .catch((err) => console.log("No token"));
-  //   };
-  //   fetchToken();
+  useEffect(() => {
+    const fetchToken = async () => {
+      await axios({
+        method: "get",
+        url: `${process.env.REACT_APP_API_URL}jwtid`,
+        withCredentials: true},
+      )
+        .then((res) => {
+          {console.log(res.data)}
+          setUid(res.data);
+        })
+        .catch((err) => console.log("No token in app"));
+    };
+    fetchToken();
 
-  //   if (uid) dispatch(getUser(uid));
-  // }, [uid, dispatch]);
+    if (uid) dispatch(getUser(uid));
+  }, [uid, dispatch]);
 
   return (
     <UidContext.Provider value={uid}>
         <GlobalStyle />
         <Header />
         <Routes>
-          <Route index element={<Home />}/>
+          <Route index element={<LoginPage />}/>
+          <Route path="/home" element={<Home />}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path="/users" element={<Users />}/>
           <Route path="/notification" element={<Notification />}/>

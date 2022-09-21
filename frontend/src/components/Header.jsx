@@ -8,7 +8,7 @@ import UserIcon from '../assets/styles/Icons/user.png';
 import GroupIcon from '../assets/styles/Icons/group.png';
 import NotifIcon from '../assets/styles/Icons/bell.png';
 
-const HomeLogo = styled.img`
+const LogoStyle = styled.img`
     height: 100px;
 `
 
@@ -30,10 +30,10 @@ const Header = () => {
     return (
         <NavContainer>
             <Link to="/">
-                <HomeLogo src={DarkLogo} />
+                <LogoStyle src={DarkLogo} />
             </Link>
             <div>
-                <Link to="/">
+                <Link to="/home">
                     <Icons src={HomeIcon}/>
                 </Link>
                 <Link to="/profile">

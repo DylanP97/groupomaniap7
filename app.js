@@ -1,7 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const cors = require('cors')
+const {checkUser, requireAuth} = require('./middleware/auth');
 
 require('dotenv').config()
 
@@ -40,6 +42,15 @@ app.use(cors(corsOptions));
 app.use(bodyParser.json());
 app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(cookieParser());
+
+
+
+// jwt
+app.get('*', checkUser);
+app.get('/jwtid', requireAuth, (req, res) => {
+  res.status(200).send(res.locals.user._id)
+});
 
 
 app.use('/api/user', userRoutes);

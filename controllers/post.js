@@ -7,7 +7,7 @@ exports.getAllPosts = (req, res, next) => {
     
     PostModel.find()
         .then((posts) => res.status(200).json(posts))
-        .catch((error) => res.status(400).json({ error }))
+        .catch((error) => res.status(400).json({ message: error }))
 }
 
 exports.getOnePost = (req, res, next) => {
