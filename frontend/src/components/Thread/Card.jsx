@@ -1,7 +1,9 @@
 import React from "react";
 import styled from 'styled-components'
 import colors from "../../assets/styles/colors";
+import { useDispatch, useSelector } from "react-redux";
 
+import { dateParser, isEmpty } from "../../assets/utils/Utils";
 
 
 const CardContainer = styled.div`
@@ -10,7 +12,7 @@ const CardContainer = styled.div`
     text-align: center;
     background-color: ${colors.secondary};
     padding: 15px;
-    margin-bottom: 20px;
+    margin: 10px 20px 10px 20px;
     border: 2px solid ${colors.tertiary};
 `
 const CardImg = styled.img`
@@ -20,11 +22,23 @@ const CardImg = styled.img`
 
 const Card = ({ post }) => {
 
+
+const usersData = useSelector((state) => state.usersReducer);
+const userData = useSelector((state) => state.userReducer);
+const dispatch = useDispatch();
+
     return (
         <CardContainer key={post._id}>
-            {/* <p>{post.pseudo}</p> */}
-            <p>{post.message}</p>
             <CardImg  src={post.imageUrl} alt={post.imageUrl} />
+            <p>{post.message}</p>
+            
+            <span>
+                {!isEmpty(usersData[0]) &&
+                usersData.map((user) => {
+                    if (user._id == post.posterId) return "écrit par " + user.pseudo + " ";
+                    else return null;
+                    })} le {dateParser(post.createdAt)}
+            </span>
         </CardContainer>
     )
 

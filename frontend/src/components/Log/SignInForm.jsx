@@ -37,17 +37,13 @@ const SignInForm = () => {
 
   return (
     <>
-       <h1 id="sign-up-form">SignInForm </h1>
-       <form action="" onSubmit={handleLogin} >
+       <h1 id="sign-up-form">Se Connecter</h1>
+       <form className="logSignForm" action="" onSubmit={handleLogin} >
             <label htmlFor="email">Email</label>
-            <br />
-            <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} />
-            <br />
+            <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} />
             <label htmlFor="password">Mot de passe</label>
-            <br />
-            <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} />
-            <br />
-            <input type="submit" value="Se connecter" />
+            <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" value={password} />
+            <input type="submit" value="Je me connecte" className="btn btn--logForm"/>
         </form>
 
     </>

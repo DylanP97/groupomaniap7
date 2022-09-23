@@ -1,12 +1,11 @@
 import React, { useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addPost, getPosts } from "../actions/post";
 import styled from 'styled-components'
 import colors from "../assets/styles/colors";
 
 
 const NewPostContainer = styled.div`
-    font-size: 1.2rem;
     border-radius: 20px;
     text-align: center;
     background-color: ${colors.secondary};
@@ -21,12 +20,13 @@ const NewPostForm = () => {
   
   const [message, setMessage] = useState("");
   const [file, setFile] = useState();
+  const userData = useSelector((state) => state.userReducer);
 
   
   const handlePost = async () => {
     if (message) {
       const data = new FormData();
-      data.append('posterId', "6324b1170ef0d7bbc924c4c2");
+      data.append('posterId', userData._id);
       data.append('message', message);
       data.append("imageUrl", file);
 
@@ -40,23 +40,18 @@ const NewPostForm = () => {
 
 
   return (
-    <div>
-      <>
-        <h2>NewPostForm</h2>
         <NewPostContainer>
           <textarea name="message" id="message" placeholder="Quoi de neuf ?"
           onChange={(e) => setMessage(e.target.value)} value={message} />
           <div>
-            <label htmlFor="file">File</label>
-            <input type="file" id="file" accept='.jpg' onChange={event => {
+            <label htmlFor="file"></label>
+            <input type="file" id="file" className="inputFile" accept=".jpg, .jpeg, .png" onChange={event => {
               const file = event.target.files[0];
               setFile(file);
             }}></input>
+          <button className="btn" onClick={handlePost}>Envoyer</button>
           </div>
-          <button onClick={handlePost}>Envoyer</button>
         </NewPostContainer>
-      </>
-    </div>
   );
 };
 

@@ -12,6 +12,8 @@ import Profile from './pages/Profile';
 import Users from './pages/Users';
 import Notification from './pages/Notification';
 import LoginPage from "./pages/LoginPage";
+import './assets/styles/index.css';
+import Log from "./components/Log";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -48,14 +50,21 @@ const App = () => {
   return (
     <UidContext.Provider value={uid}>
         <GlobalStyle />
+
+        {uid ?
+        <>
         <Header />
         <Routes>
-          <Route index element={<LoginPage />}/>
-          <Route path="/home" element={<Home />}/>
+          <Route index element={<Home />}/>
+          <Route path="/" element={<Home />}/>
           <Route path="/profile" element={<Profile />}/>
           <Route path="/users" element={<Users />}/>
           <Route path="/notification" element={<Notification />}/>
-        </Routes >
+        </Routes > 
+        </>
+         :
+         <Log signin={true} signup={false} />}
+
     </UidContext.Provider>
   )
 }

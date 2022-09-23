@@ -17,14 +17,12 @@ const Log = ( props ) => {
   };
 
   return (
-    <div>
-      <div>
-          <button onClick={handleModals} id="register">
-            S'inscrire
-          </button>
-          <button onClick={handleModals} id="login">
-            Se connecter
-          </button>
+    <div className="logForm">
+      <div className="logForm__container">
+        <div className="logForm__upperBand">
+            <button className="logForm__modalBtn--left" onClick={handleModals} id="register">S'inscrire</button>  
+            <button className="logForm__modalBtn--right" onClick={handleModals} id="login">Se connecter</button>
+        </div>
         {signUpModal && <SignUpForm />}
         {signInModal && <SignInForm />}
       </div>

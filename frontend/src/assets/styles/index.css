@@ -1,3 +1,97 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
-  background-color: blue;
+  height: 100vh;
+}
+
+input {
+  background-color: #FFD7D7;
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid #FD2D01;
+}
+
+span {
+  font-style: italic;
+  color: #4E5166;
+  font-size: 0.9rem;
+}
+
+textarea {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid #FD2D01;
+  height: 0%;
+  width: 100%;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #FD2D01;
+  border: 1px solid white;
+  color: white;
+}
+.btn--logForm {
+  margin-top: 15px;
+}
+
+.inputFile {
+  border: 0px solid #FD2D01;
+}
+
+.logForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+}
+.logForm__container {
+  min-height: 40%;
+  min-width: 20%;
+  background-color: #ffa4a4;
+  border-radius: 20px;
+  border: 1px solid #FD2D01;
+}
+.logForm__upperBand {
+  border-radius: 20px 20px 0px 0px;
+  background-color: #4E5166;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: row;
+  height: 15%;
+  border-bottom: 2px solid black;
+}
+.logForm__modalBtn--left {
+  height: 100%;
+  width: 100%;
+  border-radius: 20px 0px 0px 0px;
+  background-color: #FFD7D7;
+  color: black;
+  border: 0px;
+}
+.logForm__modalBtn--right {
+  height: 100%;
+  width: 100%;
+  border-radius: 0px 20px 0px 0px;
+  background-color: #FFD7D7;
+  color: black;
+  border: 0px;
+}
+
+.logSignForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.thread {
+  padding-bottom: 50px;
 }/*# sourceMappingURL=index.css.map */

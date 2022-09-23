@@ -31,10 +31,9 @@ const Thread = () => {
 
 
     return (
-        <div>
-            <h2>Bienvenue sur le thread de Groupomania</h2>
+        <div className="thread">
+            <h3>Bienvenue sur le fil d'actualité de Groupomania</h3>
             <div>
-                <ul>
                 {!isEmpty(posts[0]) &&
                 posts.map((post) => {
                     return (
@@ -43,7 +42,6 @@ const Thread = () => {
                     </div>
                     )
                 })}
-                </ul>
             </div>
         </div>
 

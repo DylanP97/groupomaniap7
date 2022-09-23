@@ -7,6 +7,8 @@ import HomeIcon from '../assets/styles/Icons/home.png';
 import UserIcon from '../assets/styles/Icons/user.png';
 import GroupIcon from '../assets/styles/Icons/group.png';
 import NotifIcon from '../assets/styles/Icons/bell.png';
+import LogoutIcon from '../assets/styles/Icons/logout.png'
+import Logout from "./Log/Logout";
 
 const LogoStyle = styled.img`
     height: 100px;
@@ -33,7 +35,7 @@ const Header = () => {
                 <LogoStyle src={DarkLogo} />
             </Link>
             <div>
-                <Link to="/home">
+                <Link to="/">
                     <Icons src={HomeIcon}/>
                 </Link>
                 <Link to="/profile">
@@ -45,6 +47,10 @@ const Header = () => {
                 <Link to="/notification">
                     <Icons src={NotifIcon}/>
                 </Link>
+                <Link>
+                    <Icons src={LogoutIcon}/>
+                </Link>
+                <Logout />
             </div>
         </NavContainer>
     )

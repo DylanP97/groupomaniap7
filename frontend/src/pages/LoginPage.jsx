@@ -8,13 +8,10 @@ const LoginPage = () => {
 
     const uid = useContext(UidContext);
 
-    console.log(uid ? "true" : "false")
 
     return (
         <>
-            <div>
-                {uid ? <Log signin={true} signup={false} /> : <Log signin={false} signup={true} />}
-            </div>
+            {uid ? <Home /> : <Log signin={true} signup={false} />}
         </>
 
     )

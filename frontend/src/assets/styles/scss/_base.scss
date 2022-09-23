@@ -1,4 +1,110 @@
 
+
+
+$primary: #FD2D01;
+$secondary: #FFD7D7;
+$tertiary: #4E5166;
+
+* {
+  box-sizing: border-box;
+}
+
 body {
-    background-color: blue
+  height: 100vh
+}
+
+input {
+  background-color: $secondary;
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid $primary;
+}
+
+span {
+  font-style: italic;
+  color: $tertiary;
+  font-size: 0.9rem;
+}
+
+textarea {
+  background-color: white;
+  border-radius: 20px;
+  padding: 10px;
+  border: 1px solid $primary;
+  height: 0%;
+  width: 100%;
+}
+
+.btn {
+  padding: 10px;
+  border-radius: 20px;
+  background-color: $primary;
+  border: 1px solid white;
+  color: white;
+
+  &--logForm {
+    margin-top: 15px;
+  }
+}
+
+.inputFile {
+  border: 0px solid $primary;
+}
+
+.logForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  text-align: center;
+  height: 100vh;
+
+  &__container {
+    min-height: 40%;
+    min-width: 20%;
+    background-color: darken($color: $secondary, $amount: 10);
+    border-radius: 20px;
+    border: 1px solid $primary;    
+  }
+
+  &__upperBand {
+    border-radius: 20px 20px 0px 0px;
+    background-color: $tertiary;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    height: 15%;
+    border-bottom: 2px solid black;
+
+  }
+
+  &__modalBtn--left {
+    height: 100%;
+    width: 100%;
+    border-radius: 20px 0px 0px 0px;
+    background-color: $secondary;
+    color: black;
+    border: 0px;
+  }
+
+  &__modalBtn--right {
+    height: 100%;
+    width: 100%;
+    border-radius: 0px 20px 0px 0px;
+    background-color: $secondary;
+    color: black;
+    border: 0px;
+  }
+}
+
+.logSignForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.thread {
+  padding-bottom: 50px;
 }

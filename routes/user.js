@@ -8,6 +8,7 @@ const multer = require('../middleware/multer-config');
 
 router.post('/signup', userCtrl.signup);
 router.post('/login', userCtrl.login);
+router.get("/logout", userCtrl.logout);
 
 router.get('/', userCtrl.getAllUsers);
 router.get('/:id', userCtrl.getOneUser);

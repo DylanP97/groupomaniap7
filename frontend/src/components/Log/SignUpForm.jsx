@@ -61,43 +61,15 @@ const SignUpForm = () => {
                 </>
             ) : (
               <>
-                <h1 id="sign-up-form">SignUpForm </h1>
-                <form action="" onSubmit={handleRegister} >
+                <h1 id="sign-up-form">S'Inscrire </h1>
+                <form action="" className="logSignForm" onSubmit={handleRegister} >
                   <label htmlFor="pseudo">Pseudo</label>
-                  <br />
-                  <input
-                      type="text"
-                      name="pseudo"
-                      id="pseudo"
-                      onChange={(e) => setPseudo(e.target.value)}
-                      value={pseudo}
-                  />
-                  <div ></div>
-                  <br />
+                  <input type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} value={pseudo} placeholder="Pseudo" />
                   <label htmlFor="email">Email</label>
-                  <br />
-                  <input
-                      type="text"
-                      name="email"
-                      id="email"
-                      onChange={(e) => setEmail(e.target.value)}
-                      value={email}
-                  />
-                  <div></div>
-                  <br />
+                  <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
                   <label htmlFor="password">Mot de passe</label>
-                  <br />
-                  <input
-                      type="password"
-                      name="password"
-                      id="password"
-                      onChange={(e) => setPassword(e.target.value)}
-                      value={password}
-                  />
-                  <div></div>
-                  <br />
-                  {/* <label htmlFor="password-conf">Confirmer mot de passe</label>
-                  <br/> */}
+                  <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Mot de Passe" />
+                  {/* <label htmlFor="password-conf">Confirmer mot de passe</label>*/}
                   {/* <input
                       type="password"
                       name="password"
@@ -106,17 +78,14 @@ const SignUpForm = () => {
                       value={controlPassword}
                   /> */}
                   {/* <div></div> */}
-                  {/* <br />
-                  <input type="checkbox" id="terms" />
-                  <label htmlFor="terms">
-                      J'accepte les{" "}
-                      <a href="/" target="_blank" rel="noopener noreferrer">
-                      conditions générales
-                      </a>
-                  </label>
-                  <div></div>
-                  <br /> */}
-                  <input type="submit" value="Valider inscription" />
+                  <div>
+                    <input type="checkbox" id="terms" />
+                    <label htmlFor="terms">
+                        J'accepte les{" "}
+                        <a href="/" target="_blank" rel="noopener noreferrer">conditions générales </a>
+                    </label>
+                  </div>
+                  <input type="submit" value="Valider l'Inscription" className="btn btn--logForm"/>
                 </form>
               </>
             )}
