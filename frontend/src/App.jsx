@@ -11,7 +11,6 @@ import Home from './pages/Home'
 import Profile from './pages/Profile';
 import Users from './pages/Users';
 import Notification from './pages/Notification';
-import LoginPage from "./pages/LoginPage";
 import './assets/styles/index.css';
 import Log from "./components/Log";
 
@@ -37,7 +36,7 @@ const App = () => {
         withCredentials: true},
       )
         .then((res) => {
-          {console.log(res.data)}
+          console.log(res.data)
           setUid(res.data);
         })
         .catch((err) => console.log("No token in app"));

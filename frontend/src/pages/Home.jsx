@@ -1,18 +1,12 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-
-import { NavLink } from "react-router-dom";
-import { UidContext } from "../components/AppContext";
-import Logout from "../components/Log/Logout";
 
 import NewPostForm from "../components/NewPostForm";
 import Thread from "../components/Thread";
 
 const Home = () => {
 
-    const uid = useContext(UidContext);
     const userData = useSelector((state) => state.userReducer);
-
 
     return (
         <>

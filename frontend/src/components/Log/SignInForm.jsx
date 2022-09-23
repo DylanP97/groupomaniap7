@@ -27,7 +27,7 @@ const SignInForm = () => {
           // passwordError.innerHTML = res.data.errors.password;
         } else {
           console.log("direction homepage 'normalement'")
-          window.location = "/home";
+          window.location = "/";
         }
       })
       .catch((err) => {

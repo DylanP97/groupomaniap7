@@ -7,7 +7,6 @@ import HomeIcon from '../assets/styles/Icons/home.png';
 import UserIcon from '../assets/styles/Icons/user.png';
 import GroupIcon from '../assets/styles/Icons/group.png';
 import NotifIcon from '../assets/styles/Icons/bell.png';
-import LogoutIcon from '../assets/styles/Icons/logout.png'
 import Logout from "./Log/Logout";
 
 const LogoStyle = styled.img`
@@ -46,9 +45,6 @@ const Header = () => {
                 </Link>
                 <Link to="/notification">
                     <Icons src={NotifIcon}/>
-                </Link>
-                <Link>
-                    <Icons src={LogoutIcon}/>
                 </Link>
                 <Logout />
             </div>

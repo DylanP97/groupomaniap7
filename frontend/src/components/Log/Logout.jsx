@@ -1,10 +1,21 @@
 import React from "react";
+import styled from 'styled-components'
+
+import { Link } from 'react-router-dom'
+
 import axios from "axios";
 import cookie from "js-cookie";
 
+import LogoutIcon from '../../assets/styles/Icons/logout.png'
 
 
 const Logout = () => {
+
+  const Icons = styled.img`
+    height: 20px;
+    margin: 0px 20px 0px 20px;
+  `
+
   const removeCookie = (key) => {
     if (window !== "undefined") {
       cookie.remove(key, { expires: 1 });
@@ -24,9 +35,9 @@ const Logout = () => {
   };
 
   return (
-    <li onClick={logout}>
-      <img src="./img/icons/logout.svg" alt="logout" />
-    </li>
+    <Link>
+        <Icons src={LogoutIcon} onClick={logout}/>
+    </Link>
   );
 };
 
