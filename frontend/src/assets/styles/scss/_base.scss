@@ -1,10 +1,5 @@
 
 
-
-$primary: #FD2D01;
-$secondary: #FFD7D7;
-$tertiary: #4E5166;
-
 * {
   box-sizing: border-box;
 }
@@ -111,4 +106,9 @@ textarea {
 
 .image-upload {
   display: none;
+}
+
+.imgIcons {
+  height: 20px;
+  margin: 0px 20px 0px 20px;
 }

@@ -53,37 +53,37 @@ exports.modifyPost = (req, res, next) => {
 
 exports.deletePost = (req, res, next) => {
 
-    PostModel.findOne({ _id: req.params.id })
-    .then(post => {
-        const filename = post.imageUrl.split('./uploads/posts/')[1]
-        fs.unlink(`./uploads/posts/${filename}`, () => {
-        
-            PostModel.findOneAndDelete({ _id: req.params.id })
+        // PostModel.findOne({ _id: req.params.id })
+        //     .then(req => fs.unlink(`${req.imageUrl}`, (err) => {
+        //         if (err) throw err;
+        //         console.log('image was deleted');
+        //     }));
+
+        PostModel.findOneAndDelete({ _id: req.params.id })
             .then(() => { res.status(200).json({message: "Post supprimé !"})})
             .catch(error => res.status(401).json({ error }))
-        }) 
-    })
+         
     .catch(error => res.status(500).json({ error }));
 };
 
 
 
-exports.likePost = (req, res, next) =>  {
-if (!ObjectID.isValid(req.params.id))
-return res.status(400).send("ID unknown : " + req.params.id);
+module.exports.likePost = async (req, res) => {
+    if (!ObjectID.isValid(req.params.id))
+      return res.status(400).send("ID unknown : " + req.params.id);
   
     try {
-      PostModel.findByIdAndUpdate(
+      await PostModel.findByIdAndUpdate(
         req.params.id,
         {
-          $addToSet: { usersLiked: req.body.usersLiked },
+          $addToSet: { usersLiked: req.body.id },
         },
         { new: true })
-            .then((data) => res.send(data))
-            .catch((err) => res.status(500).send({ message: err }));
+        .then((data) => res.send(data))
+        .catch((err) => res.status(500).send({ message: err }));
     } catch (err) {
-        return res.status(400).send(err);
-    }
+          return res.status(400).send(err);
+      }
   };
 
 
@@ -95,7 +95,7 @@ if (!ObjectID.isValid(req.params.id))
         PostModel.findByIdAndUpdate(
         req.params.id,
         {
-            $pull: { usersLiked: req.body.usersLiked },
+            $pull: { usersLiked: req.body.id },
         },
         { new: true })
             .then((data) => res.send(data))

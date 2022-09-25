@@ -8,10 +8,10 @@ import ImageIcon from "../assets/styles/Icons/image-gallery.png"
 const NewPostContainer = styled.div`
     border-radius: 20px;
     text-align: center;
-    background-color: ${colors.secondary};
     padding: 15px;
     margin: 0px 40px 20px 40px;
-    border: 2px solid ${colors.tertiary};
+    background-color: white;
+    box-shadow: 0px 0px 7px ${colors.tertiary};
 `
 
 
@@ -38,6 +38,7 @@ const NewPostForm = () => {
 
       await dispatch(addPost(data));
       dispatch(getPosts());
+      cancelPost();
     } else {
       alert("Veuillez entrer un message")
     }
@@ -85,13 +86,13 @@ const NewPostForm = () => {
         <NewPostContainer>
           <textarea name="message" id="message" placeholder="Quoi de neuf ?"
           onChange={(e) => setMessage(e.target.value)} value={message} />
-          <label for="file">
+          <label htmlFor="file">
             <Icons src={ImageIcon} alt="img-icon"/>
           </label>
           <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
             const file = event.target.files[0]; setFile(file); setPostPicture(URL.createObjectURL(file));
           }}></input>
-          <button className="cancel" onClick={cancelPost}>Annuler message </button>
+          <button className="btn" onClick={cancelPost}>Annuler message </button>
           <button className="btn" onClick={handlePost}>Envoyer</button>
         </NewPostContainer>
   );

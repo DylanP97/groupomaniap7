@@ -21,7 +21,6 @@ const Card = ({ user }) => {
 
     return (
         <CardContainer key={user._id}>
-            <p>UserCard</p>
             <p>{user.pseudo}</p>
             <CardImg  src={user.imageUrl} alt={user.imageUrl} />
         </CardContainer>

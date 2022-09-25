@@ -10,7 +10,7 @@ const Home = () => {
 
     return (
         <>
-            <h3>Bienvenue {userData.pseudo}</h3>
+            <h3>Bonjour {userData.pseudo} ! 👋</h3>
             <NewPostForm />
             <Thread />
         </>
@@ -20,22 +20,3 @@ const Home = () => {
 }
 
 export default Home;
-
-
-// {uid ? (
-//     <ul>
-//       <li>
-//           <h5>Bienvenue {userData.pseudo}</h5>
-//       </li>
-//       <Logout />
-//     </ul>
-//   ) : (
-//     <ul>
-//       <li></li>
-//       <li>
-//         <NavLink exact to="/profil">
-//           <img src="./img/icons/login.svg" alt="login"/>
-//         </NavLink>
-//       </li>
-//     </ul>
-//   )}
