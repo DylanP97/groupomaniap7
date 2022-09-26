@@ -18,14 +18,14 @@ import { Loader } from "../../assets/styles/Loader";
 
 
 const CardImg = styled.img`
-    height: 200px;
+    width: 100%;
 `
 const Icons = styled.img`
     height: 20px;
     margin: 0px 20px 0px 20px;
 `
 
-const ProfilePic = styled.img`
+const ProfileImg = styled.img`
     height: 30px;
     clip-path: circle();
     margin-right: 10px;
@@ -62,7 +62,7 @@ const updateItem = () => {
         <div className="CardContainer" key={post._id}>
             <div className="CardHeader">
                 <div className="CardHeader__Left">
-                    <ProfilePic
+                    <ProfileImg
                         src={
                         !isEmpty(usersData[0]) &&
                         usersData
@@ -109,14 +109,14 @@ const updateItem = () => {
 
                 </div>
                 <div className="CardMainRight">
-                    {userData._id === post.posterId && (
+                    {userData._id === post.posterId || userData.isAdmin === true ? (
                         <>
                             <div onClick={() => setIsUpdated(!isUpdated)}>
                                 <Icons src={EditIcon} alt="EditIcon" onClick={updateItem}/>
                             </div>
                             <CardDelete id={post._id} />
                         </>
-                    )}
+                    ) : null}
                 </div>
             </div>
             <div className="CardFooter">

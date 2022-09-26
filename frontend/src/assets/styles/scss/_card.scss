@@ -32,18 +32,25 @@
 
 .CardMain {
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    text-align: center;
     flex-direction: row;
     width: 100%;
+    position: relative;
+
 }
 
-// .CardMainLeft {
-
-// }
+.CardMainLeft {
+    flex: 1;
+}
 
 .CardMainRight {
     height: inherit;
+    top: 0px;
+    right: 0px;
+    position: relative;
+    // absolute
 }
 
 .CardFooter {
@@ -56,6 +63,10 @@
     width: 100%;
 }
 
-.CardComments {
 
+.LikeSection {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: row;
 }

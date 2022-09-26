@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { UidContext } from "../AppContext";
-import Popup from "reactjs-popup";
+// import Popup from "reactjs-popup";
 import "reactjs-popup/dist/index.css";
 import { useDispatch } from "react-redux";
 import { likePost, unlikePost } from "../../actions/post";
@@ -28,7 +28,7 @@ const LikeButton = ({ post }) => {
   }, [uid, post.usersLiked, liked]);
 
   return (
-    <div className="like-container">
+    <div className="LikeSection">
       {uid === null && (
         console.log("s")
         // <Popup

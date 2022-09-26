@@ -2,15 +2,15 @@ import React, { useContext, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { deleteComment, editComment } from "../../actions/post";
 import { UidContext } from "../AppContext";
-import styled from 'styled-components'
-import EditIcon from "../../assets/styles/Icons/edit.png"
-import DeleteIcon from '../../assets/styles/Icons/delete.png'
+// import styled from 'styled-components'
+// import EditIcon from "../../assets/styles/Icons/edit.png"
+// import DeleteIcon from '../../assets/styles/Icons/delete.png'
 
 
-const Icons = styled.img`
-    height: 20px;
-    margin: 0px 20px 0px 20px;
-`
+// const Icons = styled.img`
+//     height: 20px;
+//     margin: 0px 20px 0px 20px;
+// `
 
 
 const EditDeleteComment = ({ comment, postId }) => {

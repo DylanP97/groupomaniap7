@@ -10,7 +10,7 @@ body {
 }
 
 .bodyContent {
-  margin: 2% 10% 5% 10%;
+  margin: 2% 20% 5% 20%;
 }
 
 input {
@@ -42,6 +42,12 @@ textarea {
   justify-content: space-around;
   align-items: center;
   background: $gradientColor;
+
+  &__menu {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 .btn {

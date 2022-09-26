@@ -8,7 +8,7 @@ body {
 }
 
 .bodyContent {
-  margin: 2% 10% 5% 10%;
+  margin: 2% 20% 5% 20%;
 }
 
 input {
@@ -39,6 +39,11 @@ textarea {
   justify-content: space-around;
   align-items: center;
   background: linear-gradient(10deg, rgb(253, 45, 1) 0%, rgb(253, 79, 44) 20%, rgb(255, 215, 215) 100%);
+}
+.NavContainer__menu {
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .btn {
@@ -95,14 +100,23 @@ textarea {
 
 .CardMain {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
+  text-align: center;
   flex-direction: row;
   width: 100%;
+  position: relative;
+}
+
+.CardMainLeft {
+  flex: 1;
 }
 
 .CardMainRight {
   height: inherit;
+  top: 0px;
+  right: 0px;
+  position: relative;
 }
 
 .CardFooter {
@@ -113,6 +127,13 @@ textarea {
   margin-top: 20px;
   margin-bottom: 20px;
   width: 100%;
+}
+
+.LikeSection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
 }
 
 .logPage {

@@ -12,7 +12,7 @@ import LogoutIcon from '../../assets/styles/Icons/logout.png'
 const Logout = () => {
 
   const Icons = styled.img`
-    height: 20px;
+    height: 30px;
     margin: 0px 20px 0px 20px;
   `
 

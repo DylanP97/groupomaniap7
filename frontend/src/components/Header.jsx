@@ -1,10 +1,12 @@
-import React from "react";
+import React, { useContext } from "react";
+import { useSelector } from "react-redux";
+import { isEmpty } from "../assets/utils/Utils";
+import { UidContext } from "./AppContext";
+
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
-import colors from "../assets/styles/colors";
 import DarkLogo from '../assets/styles/Logos/icon-left-font-monochrome-black.png'
 import HomeIcon from '../assets/styles/Icons/home.png';
-import UserIcon from '../assets/styles/Icons/user.png';
 import GroupIcon from '../assets/styles/Icons/group.png';
 import NotifIcon from '../assets/styles/Icons/bell.png';
 import Logout from "./Log/Logout";
@@ -14,24 +16,46 @@ const LogoStyle = styled.img`
 `
 
 const Icons = styled.img`
-    height: 20px;
+    height: 30px;
     margin: 0px 20px 0px 20px;
 `
 
+const ProfileImg = styled.img`
+    height: 50px;
+    margin: 0px 20px 0px 20px;
+    clip-path: circle();
+`
+
 const Header = () => {
+
+const usersData = useSelector((state) => state.usersReducer);
+const uid = useContext(UidContext);
+console.log(uid)
 
     return (
         <nav className="NavContainer">
             <Link to="/">
                 <LogoStyle src={DarkLogo} />
             </Link>
-            <div>
+            <div className="NavContainer__menu">
+                <Link to="/profile">
+                    <ProfileImg
+                        src={
+                        !isEmpty(usersData[0]) &&
+                        usersData
+                            .map((user) => {
+                            if (user._id === uid) return user.imageUrl;
+                            else return null;
+                            })
+                            .join("")
+                        }
+                        alt="user-pic"
+                    />
+                </Link>
                 <Link to="/">
                     <Icons src={HomeIcon}/>
                 </Link>
-                <Link to="/profile">
-                    <Icons src={UserIcon}/>
-                </Link>
+
                 <Link to="/users">
                     <Icons src={GroupIcon}/>
                 </Link>

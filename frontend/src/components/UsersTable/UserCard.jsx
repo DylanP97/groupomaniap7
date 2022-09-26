@@ -1,10 +1,8 @@
 import React from "react";
 import styled from 'styled-components'
-import colors from "../../assets/styles/colors";
 
 
-
-const CardImg = styled.img`
+const ProfileImg = styled.img`
     height: 50px;
     clip-path: circle();
     margin-right: 10px;
@@ -16,7 +14,7 @@ const Card = ({ user }) => {
     return (
         <div className="UserCardContainer" key={user._id}>
             <div  className="UserCardContainer__UpperDiv">
-                <CardImg  src={user.imageUrl} alt={user.imageUrl} />
+                <ProfileImg  src={user.imageUrl} alt={user.imageUrl} />
                 <h3>{user.pseudo}</h3>
             </div>
             {user.job && (

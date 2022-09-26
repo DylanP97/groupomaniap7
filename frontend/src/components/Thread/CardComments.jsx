@@ -6,8 +6,9 @@ import { isEmpty, timestampParser } from "../../assets/utils/Utils";
 import EditDeleteComment from "./EditDeleteComment";
 
 
-const Icons = styled.img`
-    height: 20px;
+const ProfileImg = styled.img`
+    height: 30px;
+    clip-path: circle();
     margin: 0px 20px 0px 20px;
 `
 
@@ -44,7 +45,7 @@ const CardComments = ({ post }) => {
             <div>
               <div>
                 <div className="comment__UpperDiv">
-                    <Icons
+                    <ProfileImg
                         src={
                         !isEmpty(usersData[0]) &&
                         usersData
