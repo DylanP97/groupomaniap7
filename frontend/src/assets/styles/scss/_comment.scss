@@ -1,10 +1,34 @@
 
 
-.comment {
+.CommentSection {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
 
-    box-shadow: 0px 0px 7px $tertiary;
+    &__Trigger {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+    }
+}
+
+.CardComments {
+    width: 100%;
+}
+
+.allComments {
+    // padding: 10px;
+    // margin: 10px;
+}
+
+
+.comment {
+    
     padding: 10px;
     margin: 10px;
+    box-shadow: 0px 0px 7px $tertiary;
     border-radius: 10px;
 
     &__UpperDiv {
@@ -16,6 +40,13 @@
 }
 
 
-.leaveCommentField {
-    width: 100%;
+.leaveComment {
+
+    margin: 10px;
+
+    &__Field {
+        width: 100%;
+    }
 }
+
+

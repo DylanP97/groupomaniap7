@@ -4,7 +4,7 @@
     align-items: center;
     text-align: center;
     height: 100vh;
-    background: linear-gradient(30deg, rgba(253,45,1,1) 0%, rgba(253,79,44,1) 19%, rgba(255,215,215,1) 100%);
+    background: $gradientColor;
   
 
     &__container {

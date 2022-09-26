@@ -18,18 +18,10 @@ const Icons = styled.img`
     margin: 0px 20px 0px 20px;
 `
 
-const NavContainer = styled.nav`
-  padding: 20px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  background-color: ${colors.secondary}
-`
-
 const Header = () => {
 
     return (
-        <NavContainer>
+        <nav className="NavContainer">
             <Link to="/">
                 <LogoStyle src={DarkLogo} />
             </Link>
@@ -48,7 +40,7 @@ const Header = () => {
                 </Link>
                 <Logout />
             </div>
-        </NavContainer>
+        </nav>
     )
 }
 

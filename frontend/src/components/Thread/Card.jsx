@@ -13,6 +13,7 @@ import CardComments from "./CardComments";
 import EditIcon from "../../assets/styles/Icons/edit.png"
 import CommentIcon from "../../assets/styles/Icons/comment.png"
 import ShareIcon from "../../assets/styles/Icons/share.png"
+import { Loader } from "../../assets/styles/Loader";
 
 
 
@@ -33,7 +34,7 @@ const ProfilePic = styled.img`
 
 const Card = ({ post }) => {
 
-// const [isLoading, setIsLoading] = useState(true);
+const [isLoading, setIsLoading] = useState(true);
 const [isUpdated, setIsUpdated] = useState(false);
 const [textUpdate, setTextUpdate] = useState(null);
 const [showComments, setShowComments] = useState(false);
@@ -48,12 +49,16 @@ const updateItem = () => {
     setIsUpdated(false);
   };
 
-//   useEffect(() => {
-//     !isEmpty(usersData[0]) && setIsLoading(false);
-//   }, [usersData]);
+  useEffect(() => {
+    !isEmpty(usersData[0]) && setIsLoading(false);
+  }, [usersData]);
 
 
     return (
+        <div key={post._id}>
+        {isLoading ? (
+          <Loader/>
+        ) : (
         <div className="CardContainer" key={post._id}>
             <div className="CardHeader">
                 <div className="CardHeader__Left">
@@ -116,19 +121,21 @@ const updateItem = () => {
             </div>
             <div className="CardFooter">
                 <LikeButton post={post} />
-                <div>
-                    <div>
-                    <Icons onClick={() => setShowComments(!showComments)} src={CommentIcon} alt="CommentIcon"/>
+                <div className="CommentSection">
+                    <div className="CommentSection__Trigger">
+                        <Icons onClick={() => setShowComments(!showComments)} src={CommentIcon} alt="CommentIcon"/>
                         <span>{post.comments.length}</span>
                     </div>
-                    {showComments && <CardComments post={post} />}
                 </div>
                 <Icons src={ShareIcon} alt="ShareIcon"/>
             </div>
+            <div className="CardComments">
+                {showComments && <CardComments post={post} />}
+            </div>
+        </div>
+        )}
         </div>
     )
-
 }
 
 export default Card;
-

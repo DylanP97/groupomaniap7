@@ -73,10 +73,10 @@ const CardComments = ({ post }) => {
         );
       })}
       {userData._id && (
-        <form action="" onSubmit={handleComment}>
-          <input className="leaveCommentField" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Laisser un commentaire"/>
+        <form className="leaveComment" action="" onSubmit={handleComment}>
+          <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Laisser un commentaire"/>
           <br />
-          <input type="submit" value="Envoyer" />
+          <input className="btn" type="submit" value="Envoyer" />
         </form>
       )}
     </div>

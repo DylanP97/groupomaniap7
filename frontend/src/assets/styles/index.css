@@ -33,6 +33,14 @@ textarea {
   resize: none;
 }
 
+.NavContainer {
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: linear-gradient(10deg, rgb(253, 45, 1) 0%, rgb(253, 79, 44) 20%, rgb(255, 215, 215) 100%);
+}
+
 .btn {
   padding: 10px;
   border-radius: 20px;
@@ -103,6 +111,7 @@ textarea {
   align-items: center;
   flex-direction: row;
   margin-top: 20px;
+  margin-bottom: 20px;
   width: 100%;
 }
 
@@ -112,7 +121,7 @@ textarea {
   align-items: center;
   text-align: center;
   height: 100vh;
-  background: linear-gradient(30deg, rgb(253, 45, 1) 0%, rgb(253, 79, 44) 19%, rgb(255, 215, 215) 100%);
+  background: linear-gradient(10deg, rgb(253, 45, 1) 0%, rgb(253, 79, 44) 20%, rgb(255, 215, 215) 100%);
 }
 .logPage__container {
   height: 600px;
@@ -165,10 +174,27 @@ textarea {
   flex-direction: column;
 }
 
+.CommentSection {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+}
+.CommentSection__Trigger {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+
+.CardComments {
+  width: 100%;
+}
+
 .comment {
-  box-shadow: 0px 0px 7px #4E5166;
   padding: 10px;
   margin: 10px;
+  box-shadow: 0px 0px 7px #4E5166;
   border-radius: 10px;
 }
 .comment__UpperDiv {
@@ -178,7 +204,10 @@ textarea {
   flex-direction: row;
 }
 
-.leaveCommentField {
+.leaveComment {
+  margin: 10px;
+}
+.leaveComment__Field {
   width: 100%;
 }
 

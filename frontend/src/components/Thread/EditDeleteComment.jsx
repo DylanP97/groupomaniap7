@@ -56,19 +56,18 @@ const EditDeleteComment = ({ comment, postId }) => {
             {/* <Icons src={EditIcon} alt="EditIcon"/> */}
           </label>
           <br />
-          <input className="leaveCommentField" type="text" name="text" onChange={(e) => setText(e.target.value)} defaultValue={comment.text} />
+          <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} defaultValue={comment.text} />
           <br />
           <div>
-            <span
-              onClick={() => {
+            <span onClick={() => {
                 if (window.confirm("Voulez-vous supprimer ce commentaire ?")) {
                   handleDelete();
                 }
               }}
-            >Supprimer
+            >Supprimer mon commentaire
                 {/* <Icons src={DeleteIcon} alt="DeleteIcon"/> */}
             </span>
-            <input type="submit" value="Valider modification" />
+            <input className="btn" type="submit" value="Valider la modification" />
           </div>
         </form>
       )}

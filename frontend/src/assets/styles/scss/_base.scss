@@ -36,6 +36,14 @@ textarea {
 }
 
 
+.NavContainer {
+  padding: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: $gradientColor;
+}
+
 .btn {
   padding: 10px;
   border-radius: 20px;
