@@ -52,14 +52,16 @@ const App = () => {
 
         {uid ?
         <>
-        <Header />
-        <Routes>
-          <Route index element={<Home />}/>
-          <Route path="/" element={<Home />}/>
-          <Route path="/profile" element={<Profile />}/>
-          <Route path="/users" element={<Users />}/>
-          <Route path="/notification" element={<Notification />}/>
-        </Routes > 
+          <Header />
+          <div className="bodyContent">
+            <Routes>
+              <Route index element={<Home />}/>
+              <Route path="/" element={<Home />}/>
+              <Route path="/profile" element={<Profile />}/>
+              <Route path="/users" element={<Users />}/>
+              <Route path="/notification" element={<Notification />}/>
+            </Routes > 
+          </div>
         </>
          :
          <Log signin={true} signup={false} />}

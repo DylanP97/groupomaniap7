@@ -4,7 +4,7 @@ const UserModel = require("../models/user");
 module.exports.checkUser = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
-    console.log('We have fetch the token in the cookies');
+    // console.log('We have fetch the token in the cookies');
     jwt.verify(token, 'RANDOM_TOKEN_SECRET', async (err, decodedToken) => {
       if (err) {
         res.locals.user = null;
@@ -12,14 +12,14 @@ module.exports.checkUser = (req, res, next) => {
         // res.cookie("jwt", "", { maxAge: 1 });
         next();
       } else {
-        console.log('Token was verified');
+        // console.log('Token was verified');
         let user = await UserModel.findById(decodedToken.id);
         res.locals.user = user;
         next();
       }
     });
   } else {
-    console.log('No token here when CheckUser');
+    // console.log('No token here when CheckUser');
     res.locals.user = null;
     next();
   }
@@ -28,19 +28,18 @@ module.exports.checkUser = (req, res, next) => {
 module.exports.requireAuth = (req, res, next) => {
   const token = req.cookies.jwt;
   if (token) {
-    console.log('We have fetch the token in the cookies');
+    // console.log('We have fetch the token in the cookies');
     jwt.verify(token, 'RANDOM_TOKEN_SECRET', async (err, decodedToken) => {
       if (err) {
-        console.log(err);
+        // console.log(err);
         res.send(200).json('token error when verified')
       } else {
-        console.log('Token was verified');
-        console.log(decodedToken.id);
+        // console.log('Token was verified');
         next();
       }
     });
   } else {
-    console.log('No token here when RequireAuth');
+    // console.log('No token here when RequireAuth');
   }
 };
 

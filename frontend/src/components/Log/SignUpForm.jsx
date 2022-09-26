@@ -52,7 +52,6 @@ const SignUpForm = () => {
     return (
 
         <>
-
             {formSubmit ? (
                 <>
                   <SignInForm />
@@ -61,7 +60,7 @@ const SignUpForm = () => {
                 </>
             ) : (
               <>
-                <h1 id="sign-up-form">S'Inscrire </h1>
+                <h2 id="sign-up-form">S'Inscrire </h2>
                 <form action="" className="logSignForm" onSubmit={handleRegister} >
                   <label htmlFor="pseudo">Pseudo</label>
                   <input type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} value={pseudo} placeholder="Pseudo" />

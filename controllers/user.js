@@ -54,7 +54,6 @@ exports.login = (req, res, next) => {
                 }
             })
             .catch(error => {
-                console.log("error ici")
                 res.status(500).json({error})
             })
         }

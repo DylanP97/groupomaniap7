@@ -1,0 +1,21 @@
+
+
+.comment {
+
+    box-shadow: 0px 0px 7px $tertiary;
+    padding: 10px;
+    margin: 10px;
+    border-radius: 10px;
+
+    &__UpperDiv {
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        flex-direction: row;
+    }
+}
+
+
+.leaveCommentField {
+    width: 100%;
+}

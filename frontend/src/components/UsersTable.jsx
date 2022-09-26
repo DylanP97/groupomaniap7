@@ -9,18 +9,13 @@ const UsersTable = () => {
 
 
     return (
-        <div>
-            <h2>UsersTable</h2>
-            <div>
-                {!isEmpty(users[0]) &&
-                users.map((user) => {
-                    return (
-                        <div>
-                            <UserCard user={user} key={user._id} />
-                        </div>
-                    )
-                })}
-            </div>
+        <div className="UsersTable">
+            {!isEmpty(users[0]) &&
+            users.map((user) => {
+                return (
+                    <UserCard user={user} key={user._id} />
+                )
+            })}
         </div>
     );
 }

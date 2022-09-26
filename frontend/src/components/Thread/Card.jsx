@@ -5,11 +5,14 @@ import { dateParser, isEmpty } from "../../assets/utils/Utils";
 import { modifyPost } from "../../actions/post";
 
 import styled from 'styled-components'
-import colors from "../../assets/styles/colors";
+
 import CardDelete from "./CardDelete";
-import EditIcon from "../../assets/styles/Icons/edit.png"
-import MenuIcon from "../../assets/styles/Icons/menu.png"
 import LikeButton from "./LikeButton";
+import CardComments from "./CardComments";
+
+import EditIcon from "../../assets/styles/Icons/edit.png"
+import CommentIcon from "../../assets/styles/Icons/comment.png"
+import ShareIcon from "../../assets/styles/Icons/share.png"
 
 
 
@@ -19,6 +22,12 @@ const CardImg = styled.img`
 const Icons = styled.img`
     height: 20px;
     margin: 0px 20px 0px 20px;
+`
+
+const ProfilePic = styled.img`
+    height: 30px;
+    clip-path: circle();
+    margin-right: 10px;
 `
 
 
@@ -46,6 +55,32 @@ const updateItem = () => {
 
     return (
         <div className="CardContainer" key={post._id}>
+            <div className="CardHeader">
+                <div className="CardHeader__Left">
+                    <ProfilePic
+                        src={
+                        !isEmpty(usersData[0]) &&
+                        usersData
+                            .map((user) => {
+                            if (user._id === post.posterId) return user.imageUrl;
+                            else return null;
+                            })
+                            .join("")
+                        }
+                        alt="poster-pic"
+                    />
+                    <p>
+                        {!isEmpty(usersData[0]) &&
+                            usersData.map((user) => {
+                                if (user._id === post.posterId) return user.pseudo + " ";
+                                else return null;
+                            })}
+                    </p>
+                </div>
+                <span>
+                    le {dateParser(post.createdAt)}
+                </span>
+            </div>
             <div className="CardMain">
                 <div className="CardMainLeft">
 
@@ -65,20 +100,14 @@ const updateItem = () => {
                         </div>
                     )}
 
-                    <span>
-                        {!isEmpty(usersData[0]) &&
-                        usersData.map((user) => {
-                            if (user._id === post.posterId) return "écrit par " + user.pseudo + " ";
-                            else return null;
-                            })} le {dateParser(post.createdAt)}
-                    </span>
+
 
                 </div>
                 <div className="CardMainRight">
                     {userData._id === post.posterId && (
                         <>
                             <div onClick={() => setIsUpdated(!isUpdated)}>
-                            <Icons src={EditIcon} alt="EditIcon" onClick={updateItem}/>
+                                <Icons src={EditIcon} alt="EditIcon" onClick={updateItem}/>
                             </div>
                             <CardDelete id={post._id} />
                         </>
@@ -87,6 +116,14 @@ const updateItem = () => {
             </div>
             <div className="CardFooter">
                 <LikeButton post={post} />
+                <div>
+                    <div>
+                    <Icons onClick={() => setShowComments(!showComments)} src={CommentIcon} alt="CommentIcon"/>
+                        <span>{post.comments.length}</span>
+                    </div>
+                    {showComments && <CardComments post={post} />}
+                </div>
+                <Icons src={ShareIcon} alt="ShareIcon"/>
             </div>
         </div>
     )

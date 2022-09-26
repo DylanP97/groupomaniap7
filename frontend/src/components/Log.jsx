@@ -17,14 +17,19 @@ const Log = ( props ) => {
   };
 
   return (
-    <div className="logForm">
-      <div className="logForm__container">
-        <div className="logForm__upperBand">
-            <button className="logForm__modalBtn--left" onClick={handleModals} id="register">S'inscrire</button>  
-            <button className="logForm__modalBtn--right" onClick={handleModals} id="login">Se connecter</button>
+    <div className="logPage">
+      <div className="logPage__container">
+        <div className="logPage__leftContainer">
+          {/* <img src="../assets/styles/Logos/icon-left-font.png" alt="LogoGroupomania" /> */}
         </div>
-        {signUpModal && <SignUpForm />}
-        {signInModal && <SignInForm />}
+        <div className="logPage__rightContainer">
+          <div className="logPage__upperBand">
+              <button className="logPage__modalBtn--left" onClick={handleModals} id="register">S'inscrire</button>  
+              <button className="logPage__modalBtn--right" onClick={handleModals} id="login">Se connecter</button>
+          </div>
+          {signUpModal && <SignUpForm />}
+          {signInModal && <SignInForm />}
+        </div>
       </div>
     </div>
   );

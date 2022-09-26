@@ -1,0 +1,65 @@
+.logPage {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background: linear-gradient(30deg, rgba(253,45,1,1) 0%, rgba(253,79,44,1) 19%, rgba(255,215,215,1) 100%);
+  
+
+    &__container {
+        height: 600px;
+        width: 1200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row;
+        box-shadow: 0px 0px 7px $tertiary;
+    }
+
+    &__leftContainer {
+        height: 100%;
+        width: 50%;
+        background: url(./Media/groupomaniasocial.jpg);
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    &__rightContainer {
+        height: 100%;
+        width: 50%;
+    }
+  
+    &__upperBand {
+      border-radius: 20px 20px 0px 0px;
+      display: flex;
+      justify-content: space-around;
+      align-items: center;
+      flex-direction: row;
+      height: 15%;  
+    }
+  
+    &__modalBtn--left {
+      height: 100%;
+      width: 100%;
+      color: black;
+      border: 0px;
+      background-color: rgba(255, 255, 255, 0.644);
+    }
+  
+    &__modalBtn--right {
+      height: 100%;
+      width: 100%;
+      color: black;
+      border: 0px;
+      background-color: rgba(255, 255, 255, 0.644);
+    }
+  }
+  
+  .logSignForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }

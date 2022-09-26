@@ -10,7 +10,7 @@ const Home = () => {
 
     return (
         <>
-            <h3>Bonjour {userData.pseudo} ! 👋</h3>
+            <h3>Salut {userData.pseudo} ! 👋</h3>
             <NewPostForm />
             <Thread />
         </>

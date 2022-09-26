@@ -3,27 +3,30 @@ import styled from 'styled-components'
 import colors from "../../assets/styles/colors";
 
 
-const CardContainer = styled.div`
-    font-size: 1.2rem;
-    border-radius: 20px;
-    text-align: center;
-    background-color: ${colors.secondary};
-    padding: 15px;
-    margin-bottom: 20px;
-    border: 2px solid ${colors.tertiary};
-`
+
 const CardImg = styled.img`
-    height: 200px;
+    height: 50px;
+    clip-path: circle();
+    margin-right: 10px;
 `
 
 
 const Card = ({ user }) => {
 
     return (
-        <CardContainer key={user._id}>
-            <p>{user.pseudo}</p>
-            <CardImg  src={user.imageUrl} alt={user.imageUrl} />
-        </CardContainer>
+        <div className="UserCardContainer" key={user._id}>
+            <div  className="UserCardContainer__UpperDiv">
+                <CardImg  src={user.imageUrl} alt={user.imageUrl} />
+                <h3>{user.pseudo}</h3>
+            </div>
+            {user.job && (
+                <span>Métier : {user.job}</span>
+            )}
+            {user.bio && (
+                <span>Bio : {user.bio}</span>
+            )}
+
+        </div>
     )
 
 }

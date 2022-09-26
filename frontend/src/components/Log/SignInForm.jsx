@@ -37,7 +37,7 @@ const SignInForm = () => {
 
   return (
     <>
-       <h1 id="sign-up-form">Se Connecter</h1>
+       <h2 id="sign-up-form">Se Connecter</h2>
        <form className="logSignForm" action="" onSubmit={handleLogin} >
             <label htmlFor="email">Email</label>
             <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} />

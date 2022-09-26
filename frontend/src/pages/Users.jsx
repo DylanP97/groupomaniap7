@@ -6,7 +6,7 @@ const Users = () => {
 
     return (
         <div>
-            <h1>Voici les membres du groupe</h1>
+            <h1>Voici tout les membres du réseau social de Groupomania</h1>
             <UsersTable/>
         </div>
     )
