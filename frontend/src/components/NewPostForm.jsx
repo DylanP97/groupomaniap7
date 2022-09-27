@@ -33,7 +33,8 @@ const NewPostForm = () => {
     if (message || postPicture) {
       const data = new FormData();
       data.append('posterId', userData._id);
-      data.append('message', message);
+      console.log(message);
+      message ? data.append('message', message) : data.append('message', ' ');
       if (file) data.append("imageUrl", file);
 
       await dispatch(addPost(data));
@@ -49,13 +50,6 @@ const NewPostForm = () => {
     setPostPicture("");
     setFile("");
   };
-
-
-
-  // {message || postPicture || video.length > 20 ? (
-  //   <li className="card-container">
-  //   </li>
-  // ) : null}
 
 
   return (
