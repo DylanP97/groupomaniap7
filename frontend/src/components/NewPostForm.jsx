@@ -54,30 +54,6 @@ const NewPostForm = () => {
 
   // {message || postPicture || video.length > 20 ? (
   //   <li className="card-container">
-  //     <div className="card-left">
-  //       <img src={userData.picture} alt="user-pic" />
-  //     </div>
-  //     <div className="card-right">
-  //       <div className="card-header">
-  //         <div className="pseudo">
-  //           <h3>{userData.pseudo}</h3>
-  //         </div>
-  //         <span>{timestampParser(Date.now())}</span>
-  //       </div>
-  //       <div className="content">
-  //         <p>{message}</p>
-  //         <img src={postPicture} alt="" />
-  //         {video && (
-  //           <iframe
-  //             src={video}
-  //             frameBorder="0"
-  //             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-  //             allowFullScreen
-  //             title={video}
-  //           ></iframe>
-  //         )}
-  //       </div>
-  //     </div>
   //   </li>
   // ) : null}
 
