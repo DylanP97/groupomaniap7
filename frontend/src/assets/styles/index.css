@@ -127,7 +127,6 @@ textarea {
   justify-content: center;
   align-items: center;
   height: 20px;
-  margin: 0px 20px 0px 20px;
 }
 .fa-solid:hover {
   color: #FD2D01;
@@ -140,6 +139,10 @@ textarea {
 .fa-heart:hover {
   color: #FD2D01;
   cursor: pointer;
+}
+
+.fa-images {
+  margin: 0px 20px 0px 20px;
 }
 
 .CardContainer {
@@ -218,6 +221,52 @@ textarea {
 }
 .fa-heart--hover {
   color: #FD2D01;
+}
+
+.dropdown {
+  position: relative;
+}
+
+.dropdown-content {
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: right;
+  position: absolute;
+  right: 0px;
+  background-color: white;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
+  border-radius: 20px;
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+  transform: translateY(-20px);
+  transition: opacity 260ms ease-in-out transform 260ms ease-in-out;
+}
+.dropdown-content:hover {
+  display: block;
+  transform: translateY(0px);
+  z-index: 300;
+}
+
+.fa-ellipsis-vertical {
+  padding: 0px 15px 0px 15px;
+}
+
+.fa-ellipsis-vertical:hover + .dropdown-content {
+  display: block;
+  transform: translateY(0px);
+  z-index: 300;
+}
+
+.dropdown-list {
+  padding: 5px 20px 5px 20px;
+  border-radius: 20px;
+}
+
+.dropdown-list:hover {
+  color: white;
+  background-color: #FD2D01;
 }
 
 .logPage {
@@ -304,7 +353,13 @@ textarea {
 }
 .comment__UpperDiv {
   display: flex;
-  justify-content: flex-start;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.comment__UpperLeftDiv {
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }

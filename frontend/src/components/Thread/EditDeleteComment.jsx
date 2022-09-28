@@ -48,14 +48,14 @@ const EditDeleteComment = ({ comment, postId }) => {
     <div>
       {isAuthor && edit === false && (
         <span onClick={() => setEdit(!edit)} className="interact">
-            Editer commentaire
+            Modifier le commentaire
             {/* <Icons src={EditIcon} alt="EditIcon"/> */}
         </span>
       )}
       {isAuthor && edit && (
         <form action="" onSubmit={handleEdit}>
           <label htmlFor="text" onClick={() => setEdit(!edit)}>
-            <span className="interact">Annuler l'édition</span>
+            <span className="interact">Annuler</span>
             {/* <Icons src={EditIcon} alt="EditIcon"/> */}
           </label>
           <br />
@@ -66,7 +66,7 @@ const EditDeleteComment = ({ comment, postId }) => {
                 if (window.confirm("Voulez-vous supprimer ce commentaire ?")) {
                   handleDelete();
                 }
-              }} className="interact">Supprimer commentaire
+              }} className="interact">Supprimer le commentaire
                 {/* <Icons src={DeleteIcon} alt="DeleteIcon"/> */}
             </span>
             <input className="spanBtnSubmit" type="submit" value="Valider modification" ></input>

@@ -90,14 +90,18 @@ const updateItem = () => {
                     <span>
                         le {dateParser(post.createdAt)}
                     </span>
-                    {userData._id === post.posterId || userData.isAdmin === true ? (
-                        <div className="CardHeader__RightInner">
-                            <div onClick={() => setIsUpdated(!isUpdated)}>
-                                <Icons2 src={EditIcon} alt="EditIcon" onClick={updateItem}/>
+                    <div className="dropdown">
+                        <i className="fa-solid fa-lg fa-ellipsis-vertical"></i>
+                            {userData._id === post.posterId || userData.isAdmin === true ? (
+                            <div className="dropdown-content">
+                                <div className="dropdown-list" onClick={() => setIsUpdated(!isUpdated)}>
+                                    <p onClick={updateItem}>Editer le post</p>
+                                </div>
+                                <CardDelete id={post._id} />
                             </div>
-                            <CardDelete id={post._id} />
-                        </div>
-                    ) : null}
+                        ) : null}
+                    </div>
+
                 </div>
             </div>
             <div className="CardMain">

@@ -39,12 +39,9 @@ const CardComments = ({ post }) => {
             //     ? "comment-container client"
             //     : "comment-container"
             // }
-            key={comment._id}
-          >
-
-            <div>
-              <div>
+            key={comment._id}>
                 <div className="comment__UpperDiv">
+                  <div className="comment__UpperLeftDiv">
                     <ProfileImg
                         src={
                         !isEmpty(usersData[0]) &&
@@ -64,13 +61,12 @@ const CardComments = ({ post }) => {
                         type={"card"}
                         />
                     )} */}
+                  </div>
+                  <span>{timestampParser(comment.timestamp)}</span>
                 </div>
-                <span>{timestampParser(comment.timestamp)}</span>
-              </div>
               <p>{comment.text}</p>
               <EditDeleteComment comment={comment} postId={post._id} />
             </div>
-          </div>
         );
       })}
       {userData._id && (

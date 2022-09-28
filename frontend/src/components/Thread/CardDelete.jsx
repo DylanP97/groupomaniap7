@@ -16,10 +16,10 @@ const CardDelete = (props) => {
   const deleteQuote = () => dispatch(deletePost(props.id));
 
   return (
-    <div onClick={() => {
+    <div className="dropdown-list" onClick={() => {
         if (window.confirm("Voulez-vous supprimer ce post ?")) {
           deleteQuote(); }}}>
-      <Icons2 src={DeleteIcon} alt="DeleteIcon" />
+      <p>Supprimer le post</p>
     </div>
   );
 };
