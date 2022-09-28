@@ -25,6 +25,10 @@ const Icons = styled.img`
     margin: 0px 20px 0px 20px;
 `
 
+const Icons2 = styled.img`
+    height: 20px;
+`
+
 const ProfileImg = styled.img`
     height: 30px;
     clip-path: circle();
@@ -62,7 +66,7 @@ const updateItem = () => {
         <div className="CardContainer" key={post._id}>
             <div className="CardHeader">
                 <div className="CardHeader__Left">
-                    <ProfileImg
+                    <img className="ProfileImg"
                         src={
                         !isEmpty(usersData[0]) &&
                         usersData
@@ -82,42 +86,35 @@ const updateItem = () => {
                             })}
                     </p>
                 </div>
-                <span>
-                    le {dateParser(post.createdAt)}
-                </span>
-            </div>
-            <div className="CardMain">
-                <div className="CardMainLeft">
-
-                    {post.imageUrl && (
-                    <CardImg src={post.imageUrl} alt={post.imageUrl} />
-                    )}
-
-                    {isUpdated === false && <p>{post.message}</p>}
-                    {isUpdated && (
-                        <div>
-                            <textarea defaultValue={post.message} onChange={(e) => setTextUpdate(e.target.value)} />
-                            <div>
-                                <button className="btn" onClick={updateItem} >
-                                    Valider modification
-                                </button>
-                            </div>
-                        </div>
-                    )}
-
-
-
-                </div>
-                <div className="CardMainRight">
+                <div className="CardHeader__Right">
+                    <span>
+                        le {dateParser(post.createdAt)}
+                    </span>
                     {userData._id === post.posterId || userData.isAdmin === true ? (
-                        <>
+                        <div className="CardHeader__RightInner">
                             <div onClick={() => setIsUpdated(!isUpdated)}>
-                                <Icons src={EditIcon} alt="EditIcon" onClick={updateItem}/>
+                                <Icons2 src={EditIcon} alt="EditIcon" onClick={updateItem}/>
                             </div>
                             <CardDelete id={post._id} />
-                        </>
+                        </div>
                     ) : null}
                 </div>
+            </div>
+            <div className="CardMain">
+                {post.imageUrl && (
+                <CardImg src={post.imageUrl} alt={post.imageUrl} />
+                )}
+                {isUpdated === false && <p>{post.message}</p>}
+                {isUpdated && (
+                    <>
+                        <textarea defaultValue={post.message} onChange={(e) => setTextUpdate(e.target.value)} />
+                        <div>
+                            <button className="btn" onClick={updateItem} >
+                                Valider modification
+                            </button>
+                        </div>
+                    </>
+                )}
             </div>
             <div className="CardFooter">
                 <LikeButton post={post} />

@@ -28,6 +28,20 @@
         align-items: center;
         flex-direction: row;
     }
+
+    &__Right {
+        display: flex;
+        align-items: center;
+        flex-direction: row;        
+    }
+
+    &__RightInner {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-direction: row; 
+        margin-left: 30px;
+    }
 }
 
 .CardMain {
@@ -35,22 +49,9 @@
     justify-content: center;
     align-items: center;
     text-align: center;
-    flex-direction: row;
+    flex-direction: column;
     width: 100%;
     position: relative;
-
-}
-
-.CardMainLeft {
-    flex: 1;
-}
-
-.CardMainRight {
-    height: inherit;
-    top: 0px;
-    right: 0px;
-    position: relative;
-    // absolute
 }
 
 .CardFooter {
@@ -69,4 +70,17 @@
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
+}
+
+.fa-heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    margin: 0px 20px 0px 20px;
+    color: black;
+
+    &--hover {
+        color: $primary;
+    }
 }

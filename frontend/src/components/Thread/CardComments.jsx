@@ -77,7 +77,9 @@ const CardComments = ({ post }) => {
         <form className="leaveComment" action="" onSubmit={handleComment}>
           <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Laisser un commentaire"/>
           <br />
-          <input className="btn" type="submit" value="Envoyer" />
+          <div className="leaveComment__Btn">
+            <input className="spanBtnSubmit" type="submit" value="Envoyer" />
+          </div>
         </form>
       )}
     </div>

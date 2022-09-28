@@ -41,12 +41,40 @@
 
 
 .leaveComment {
-
     margin: 10px;
 
     &__Field {
         width: 100%;
     }
+    &__Btn {
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+        padding: 5px 20px 5px 20px;        
+    }
 }
 
+.CommentEditFooter {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding: 5px 20px 5px 20px;        
+}
 
+.spanBtnSubmit {
+    margin-left: 10px;
+    font-style: italic;
+    font-size: 0.8rem;
+    padding: 10px;
+    border-radius: 20px;
+    background-color: $secondary;
+    color: black;
+    transition: transform .3s;
+
+    &:hover {
+
+        background-color: $primary;
+        color: white;
+        transform: scale(1.1);
+    }
+  }

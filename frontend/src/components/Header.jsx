@@ -20,11 +20,6 @@ const Icons = styled.img`
     margin: 0px 20px 0px 20px;
 `
 
-const ProfileImg = styled.img`
-    height: 50px;
-    margin: 0px 20px 0px 20px;
-    clip-path: circle();
-`
 
 const Header = () => {
 
@@ -39,7 +34,7 @@ console.log(uid)
             </Link>
             <div className="NavContainer__menu">
                 <Link to="/profile">
-                    <ProfileImg
+                    <img className="ProfileImg"
                         src={
                         !isEmpty(usersData[0]) &&
                         usersData

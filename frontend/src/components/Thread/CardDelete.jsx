@@ -5,9 +5,9 @@ import DeleteIcon from '../../assets/styles/Icons/delete.png'
 import styled from 'styled-components'
 
 
-const Icons = styled.img`
+const Icons2 = styled.img`
     height: 20px;
-    margin: 0px 20px 0px 20px;
+    margin: 0px 0px 0px 0px;
 `
 
 const CardDelete = (props) => {
@@ -19,7 +19,7 @@ const CardDelete = (props) => {
     <div onClick={() => {
         if (window.confirm("Voulez-vous supprimer ce post ?")) {
           deleteQuote(); }}}>
-      <Icons src={DeleteIcon} alt="DeleteIcon" />
+      <Icons2 src={DeleteIcon} alt="DeleteIcon" />
     </div>
   );
 };

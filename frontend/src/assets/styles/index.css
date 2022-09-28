@@ -8,7 +8,7 @@ body {
 }
 
 .bodyContent {
-  margin: 2% 20% 5% 20%;
+  margin: 2% 10% 5% 10%;
 }
 
 input {
@@ -28,7 +28,6 @@ textarea {
   border-radius: 20px;
   padding: 10px;
   border: 1px solid #FD2D01;
-  height: 0%;
   width: 100%;
   resize: none;
 }
@@ -49,9 +48,16 @@ textarea {
 .btn {
   padding: 10px;
   border-radius: 20px;
+  background-color: #FFD7D7;
+  border: 1px solid #FD2D01;
+  color: black;
+  transition: transform 0.3s;
+}
+.btn:hover {
   background-color: #FD2D01;
-  border: 1px solid white;
   color: white;
+  transform: scale(1.1);
+  cursor: pointer;
 }
 
 .inputFile {
@@ -69,6 +75,71 @@ textarea {
 .imgIcons {
   height: 20px;
   margin: 0px 20px 0px 20px;
+}
+
+.interact:hover {
+  color: #FD2D01;
+  cursor: pointer;
+}
+
+.ProfileImg {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: content-box;
+  height: 40px;
+  width: 40px;
+  -webkit-clip-path: circle();
+          clip-path: circle();
+  margin-right: 10px;
+  border-radius: 50px;
+  -o-object-fit: cover;
+     object-fit: cover;
+}
+
+.NewPostContainer {
+  border-radius: 20px;
+  text-align: center;
+  padding: 15px;
+  margin: 0px 40px 20px 40px;
+  background-color: white;
+  box-shadow: 0px 0px 7px #4E5166;
+}
+.NewPostContainer__Main {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.NewPostContainer__Footer {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  align-items: center;
+  margin-top: 5px;
+}
+
+.sendPost {
+  margin-left: 10px;
+}
+
+.fa-solid {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin: 0px 20px 0px 20px;
+}
+.fa-solid:hover {
+  color: #FD2D01;
+  cursor: pointer;
+}
+
+.fa-heart {
+  color: #FD2D01;
+}
+.fa-heart:hover {
+  color: #FD2D01;
+  cursor: pointer;
 }
 
 .CardContainer {
@@ -97,25 +168,26 @@ textarea {
   align-items: center;
   flex-direction: row;
 }
+.CardHeader__Right {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+}
+.CardHeader__RightInner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  margin-left: 30px;
+}
 
 .CardMain {
   display: flex;
   justify-content: center;
   align-items: center;
   text-align: center;
-  flex-direction: row;
+  flex-direction: column;
   width: 100%;
-  position: relative;
-}
-
-.CardMainLeft {
-  flex: 1;
-}
-
-.CardMainRight {
-  height: inherit;
-  top: 0px;
-  right: 0px;
   position: relative;
 }
 
@@ -134,6 +206,18 @@ textarea {
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
+}
+
+.fa-heart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin: 0px 20px 0px 20px;
+  color: black;
+}
+.fa-heart--hover {
+  color: #FD2D01;
 }
 
 .logPage {
@@ -231,13 +315,41 @@ textarea {
 .leaveComment__Field {
   width: 100%;
 }
+.leaveComment__Btn {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 20px 5px 20px;
+}
+
+.CommentEditFooter {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 5px 20px 5px 20px;
+}
+
+.spanBtnSubmit {
+  margin-left: 10px;
+  font-style: italic;
+  font-size: 0.8rem;
+  padding: 10px;
+  border-radius: 20px;
+  background-color: #FFD7D7;
+  color: black;
+  transition: transform 0.3s;
+}
+.spanBtnSubmit:hover {
+  background-color: #FD2D01;
+  color: white;
+  transform: scale(1.1);
+}
 
 .UsersTable {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(7, 1fr);
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  flex-direction: row;
   margin: 5%;
 }
 
@@ -248,10 +360,16 @@ textarea {
   flex-direction: column;
   margin: 20px;
   border-radius: 30px;
-  text-align: center;
+  min-width: 200px;
   padding: 15px;
   margin-bottom: 20px;
   box-shadow: 0px 0px 7px #4E5166;
+  color: black;
+  transition: transform 0.3s;
+}
+.UserCardContainer:hover {
+  background-color: #FFD7D7;
+  transform: scale(1.1);
 }
 .UserCardContainer__UpperDiv {
   display: flex;

@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { deleteComment, editComment } from "../../actions/post";
 import { UidContext } from "../AppContext";
 // import styled from 'styled-components'
@@ -19,6 +19,7 @@ const EditDeleteComment = ({ comment, postId }) => {
   const [text, setText] = useState("");
   const uid = useContext(UidContext);
   const dispatch = useDispatch();
+  const userData = useSelector((state) => state.userReducer);
 
   const handleEdit = (e) => {
     e.preventDefault();
@@ -36,6 +37,8 @@ const EditDeleteComment = ({ comment, postId }) => {
     const checkAuthor = () => {
       if (uid === comment.commenterId) {
         setIsAuthor(true);
+      } else if (userData.isAdmin === true) {
+        setIsAuthor(true);
       }
     };
     checkAuthor();
@@ -44,30 +47,29 @@ const EditDeleteComment = ({ comment, postId }) => {
   return (
     <div>
       {isAuthor && edit === false && (
-        <span onClick={() => setEdit(!edit)}>
-            Editer mon commentaire
+        <span onClick={() => setEdit(!edit)} className="interact">
+            Editer commentaire
             {/* <Icons src={EditIcon} alt="EditIcon"/> */}
         </span>
       )}
       {isAuthor && edit && (
         <form action="" onSubmit={handleEdit}>
           <label htmlFor="text" onClick={() => setEdit(!edit)}>
-            <span>Annuler l'édition</span>
+            <span className="interact">Annuler l'édition</span>
             {/* <Icons src={EditIcon} alt="EditIcon"/> */}
           </label>
           <br />
           <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} defaultValue={comment.text} />
           <br />
-          <div>
+          <div className="CommentEditFooter">
             <span onClick={() => {
                 if (window.confirm("Voulez-vous supprimer ce commentaire ?")) {
                   handleDelete();
                 }
-              }}
-            >Supprimer mon commentaire
+              }} className="interact">Supprimer commentaire
                 {/* <Icons src={DeleteIcon} alt="DeleteIcon"/> */}
             </span>
-            <input className="btn" type="submit" value="Valider la modification" />
+            <input className="spanBtnSubmit" type="submit" value="Valider modification" ></input>
           </div>
         </form>
       )}
