@@ -18,14 +18,14 @@ Connect your database with your cluster link in  `/config/db.js`
 
 Create a `.env` file with these data:
 
-PORT= `your port number localhost` such as `5000`
-CLIENT_URL= `your client URL` such as `(http://localhost:3000/)`
-DB_USER_PASS=  `your cluster link including your email and password from MongoDB`
-TOKEN_SECRET= `your secret random key` such as `990bf68e6adf1be5f1671bba3bec692056922454`
+PORT= `your port number localhost` such as `5000` <br/>
+CLIENT_URL= `your client URL` such as `(http://localhost:3000/)` <br/>
+DB_USER_PASS=  `your cluster link including your email and password from MongoDB` <br/>
+TOKEN_SECRET= `your secret random key` such as `990bf68e6adf1be5f1671bba3bec692056922454` <br/>
 
 *Set up the front:*
 
-Create a `.env` file under `./frontend` with these data:
+Create a `.env` file under `./frontend` with these data: <br/>
 REACT_APP_API_URL= `your api URL` such as `(http://localhost:5000/)`
 
 ----------
