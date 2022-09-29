@@ -1,9 +1,26 @@
+.ProfileCardContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+}
+
+.CurrentProfileDiv {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+    background-color: whitesmoke;
+    padding: 10%;
+}
+
 .UpdateUserDiv {
     display: flex;
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    background-color: grey;
+    background-color: $secondary;
+    padding: 10%;
 }
 
 .UpdateUserForm{

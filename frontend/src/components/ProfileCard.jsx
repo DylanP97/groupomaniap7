@@ -1,86 +1,100 @@
-import React, { useState, useContext } from "react";
+import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { isEmpty } from "../assets/utils/Utils";
-import { UidContext } from "./AppContext";
-import { addPost, getPosts } from "../actions/post";
+// import { isEmpty } from "../assets/utils/Utils";
+// import { UidContext } from "./AppContext";
+import { updateUser } from "../actions/user";
+import { getUsers } from "../actions/users"
 
-const ProfileCard = () => {
 
-    const usersData = useSelector((state) => state.usersReducer);
+const ProfileCard = ({ user }) => {
+
     const userData = useSelector((state) => state.userReducer);
-    const uid = useContext(UidContext);
-
-    const [message, setMessage] = useState("");
-    const [postPicture, setPostPicture] = useState(null);
-    const [file, setFile] = useState();
+    
     const dispatch = useDispatch();
+
+    const [picture, setPicture] = useState(null);
+    const [file, setFile] = useState();
     const [pseudo, setPseudo] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    
-    const handleUser = async () => {
-      if (message || postPicture) {
+    const [job, setJob] = useState("");
+    const [bio, setBio] = useState("");
+
+    const editUser = async (e) => {
+        e.preventDefault();
+
+        console.log(userData._id)
+        console.log(file)
+        console.log(picture)
+        console.log(pseudo)
+        console.log(email)
+        console.log(password)
+        console.log(job)
+        console.log(bio)
+
+      if (picture || pseudo || email || password || job || bio) {
         const data = new FormData();
-        data.append('posterId', userData._id);
-        console.log(message);
-        message ? data.append('message', message) : data.append('message', '');
+        // data.append('posterId', userData._id);
+        if (pseudo) data.append('pseudo', pseudo);
+        if (email) data.append('email', email);
+        data.append('password', userData.password);
+        data.append('isAdmin', userData.isAdmin);
         if (file) data.append("imageUrl", file);
-        
-        await dispatch(addPost(data));
-        dispatch(getPosts());
-        cancelPost();
+        if (job) data.append('job', job);
+        if (bio) data.append('bio', bio);
+
+        await dispatch(updateUser(data, userData._id));
+        dispatch(getUsers());
+        cancelUser();
       } else {
         alert("Veuillez entrer un message")
       }
     };
   
-    const cancelPost = () => {
-      setMessage("");
-      setPostPicture("");
-      setFile("");
-    };
+    const cancelUser = (e) => {
+        e.preventDefault();
+
+        setPicture("");
+        setFile("");  
+        setPseudo("")
+        setEmail("");
+        setPassword("");
+        setJob("");
+        setBio("");
+    }; 
 
 
 
     return (
 
-        <div className="ProfileCardContainer">
-            <div>
-                <p>
-                    {!isEmpty(usersData[0]) &&
-                    usersData.map((user) => {
-                        if (user._id === uid) return user.pseudo + " ";
-                        else return null;
-                    })}
-                </p>
-                <img className="ProfileImg"
-                    src={
-                    !isEmpty(usersData[0]) &&
-                    usersData
-                        .map((user) => {
-                        if (user._id === uid) return user.imageUrl;
-                        else return null;
-                        })
-                        .join("")
-                    }
-                    alt="user-pic"
-                />
+        <div className="ProfileCardContainer" key={user._id}>
+            <div className="CurrentProfileDiv">
+                <p>Votre Photo de profil : <img className="ProfileImg" src={user.imageUrl} alt={user.imageUrl}/></p>
+                <p>Votre Pseudo : "{user.pseudo}"</p>
+                <p>Votre Email : "{user.email}"</p>
+                <p>Votre Métier : "{user.job}"</p>
+                <p>Votre Bio : "{user.bio}"</p>
             </div>
             <div className="UpdateUserDiv">
-                <h3>Modifier votre Profil ici : </h3>
-                <form action="" className="UpdateUserForm" onSubmit={handleUser}>
+                <h3>Modifier votre Profil :</h3>
+                <form action="" className="UpdateUserForm" >
+                    <label className="" htmlFor="file">Image</label>
+                    <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
+                          const file = event.target.files[0]; setFile(file); setPicture(URL.createObjectURL(file));
+                    }}></input>
                     <label className="labelSignForm" htmlFor="pseudo">Pseudo</label>
                     <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} value={pseudo} placeholder="Pseudo" />
                     <label className="labelSignForm" htmlFor="email">Email</label>
                     <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
                     <label className="labelSignForm" htmlFor="password">Mot de passe</label>
                     <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Mot de Passe" />
-                    <label htmlFor="file"> <i className="fa-sharp fa-solid fa-lg fa-images"/></label>
-                    <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
-                        //   const file = event.target.files[0]; setFile(file); setPostPicture(URL.createObjectURL(file));
-                    }}></input>
-                    <button className="btn" onClick={cancelPost}>Annuler message </button>
-                    <button className="btn" onClick={handleUser}>Envoyer</button>            
+
+                    <label className="labelSignForm" htmlFor="job">Job</label>
+                    <input className="inputSignForm" type="text" name="job" id="job" onChange={(e) => setJob(e.target.value)} value={job} placeholder="Job" />
+                    <label className="labelSignForm" htmlFor="bio">Bio</label>
+                    <input className="inputSignForm" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} value={bio} placeholder="Bio" />
+                    <button className="btn" onClick={cancelUser}>Annuler message </button>
+                    <button className="btn" onClick={editUser}>Envoyer</button>            
                 </form>
             </div>
         </div>

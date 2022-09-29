@@ -478,12 +478,29 @@ p::selection {
   margin-bottom: 20px;
 }
 
+.ProfileCardContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+
+.CurrentProfileDiv {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  background-color: whitesmoke;
+  padding: 10%;
+}
+
 .UpdateUserDiv {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background-color: grey;
+  background-color: #FFD7D7;
+  padding: 10%;
 }
 
 .UpdateUserForm {

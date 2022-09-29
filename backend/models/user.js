@@ -11,7 +11,11 @@ const userSchema = mongoose.Schema({
       unique: true,
       trim: true
     },
-    email: { type: String, required: true, unique: true, validator(value){
+    email: {
+      type: String,
+      required: true,
+      unique: true,
+      validator(value){
         if(!validator.isEmail(value)){
             throw new Error("invalid email")
         }

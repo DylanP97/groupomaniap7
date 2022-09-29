@@ -1,7 +1,7 @@
 import React  from "react";
 import { useSelector } from "react-redux";
-import UserCard from "./UsersTable/UserCard";
 import { isEmpty } from "../assets/utils/Utils";
+import UserCard from "./UsersTable/UserCard";
 
 
 const UsersTable = () => {
