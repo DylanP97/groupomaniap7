@@ -35,13 +35,13 @@ const ProfileCard = ({ user }) => {
       if (picture || pseudo || email || password || job || bio) {
         const data = new FormData();
         // data.append('posterId', userData._id);
-        if (pseudo) data.append('pseudo', pseudo);
-        if (email) data.append('email', email);
-        data.append('password', userData.password);
+        pseudo ? data.append('pseudo', pseudo) : data.append('pseudo', userData.pseudo)
+        email ? data.append('email', email) : data.append('email', userData.email)
+        password ? data.append('password', password) : data.append('password', userData.password)
         data.append('isAdmin', userData.isAdmin);
         if (file) data.append("imageUrl", file);
-        if (job) data.append('job', job);
-        if (bio) data.append('bio', bio);
+        job ? data.append('job', job) : data.append('job', userData.job)
+        bio ? data.append('bio', bio) : data.append('bio', userData.bio)
 
         await dispatch(updateUser(data, userData._id));
         dispatch(getUsers());
@@ -83,16 +83,15 @@ const ProfileCard = ({ user }) => {
                           const file = event.target.files[0]; setFile(file); setPicture(URL.createObjectURL(file));
                     }}></input>
                     <label className="labelSignForm" htmlFor="pseudo">Pseudo</label>
-                    <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} value={pseudo} placeholder="Pseudo" />
+                    <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} placeholder={user.pseudo} />
                     <label className="labelSignForm" htmlFor="email">Email</label>
-                    <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
+                    <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder={user.email}/>
                     <label className="labelSignForm" htmlFor="password">Mot de passe</label>
-                    <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Mot de Passe" />
-
+                    <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" />
                     <label className="labelSignForm" htmlFor="job">Job</label>
-                    <input className="inputSignForm" type="text" name="job" id="job" onChange={(e) => setJob(e.target.value)} value={job} placeholder="Job" />
+                    <input className="inputSignForm" type="text" name="job" id="job" onChange={(e) => setJob(e.target.value)} placeholder={user.job} />
                     <label className="labelSignForm" htmlFor="bio">Bio</label>
-                    <input className="inputSignForm" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} value={bio} placeholder="Bio" />
+                    <input className="inputSignForm" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
                     <button className="btn" onClick={cancelUser}>Annuler message </button>
                     <button className="btn" onClick={editUser}>Envoyer</button>            
                 </form>

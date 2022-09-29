@@ -12,7 +12,7 @@ const Profile = () => {
 
     return (
         <div>
-            <h1>Voici votre Profil </h1>
+            <h1>Voici votre Profil 👤</h1>
             <div className="UsersTable">
                 {!isEmpty(users[0]) &&
                 users.map((user) => {

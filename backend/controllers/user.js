@@ -93,11 +93,14 @@ exports.updateUser = (req, res, next) => {
 
     const userObject = req.file ? {
         ...req.body,
-        imageUrl: `${req.file.filename}`
+        imageUrl: req.file !== null ? "./uploads/profil/" + `${req.file.filename}` : "",
     } : { ...req.body };
 
-    UserModel.findOneAndUpdate({ _id: req.params.id },
-        { ...userObject, $set: { bio: req.body.bio, } },
+    // const user = new UserModel({
+    //     ...userObject
+    // });
+
+    UserModel.findOneAndUpdate({ _id: req.params.id },{ ...userObject, $set: { bio: req.body.bio, } },
         { new: true, upsert: true, setDefaultsOnInsert: true })
 
         .then((data) => res.send(data))
