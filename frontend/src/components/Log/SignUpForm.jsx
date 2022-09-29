@@ -59,15 +59,14 @@ const SignUpForm = () => {
                   <h4>Enregistrement réussi, veuillez-vous connecter</h4>
                 </>
             ) : (
-              <>
-                <h2 id="sign-up-form">S'Inscrire </h2>
+              <div className="logPart" id="sign-up-form">
                 <form action="" className="logSignForm" onSubmit={handleRegister} >
-                  <label htmlFor="pseudo">Pseudo</label>
-                  <input type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} value={pseudo} placeholder="Pseudo" />
-                  <label htmlFor="email">Email</label>
-                  <input type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
-                  <label htmlFor="password">Mot de passe</label>
-                  <input type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Mot de Passe" />
+                  <label className="labelSignForm" htmlFor="pseudo">Pseudo</label>
+                  <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} value={pseudo} placeholder="Pseudo" />
+                  <label className="labelSignForm" htmlFor="email">Email</label>
+                  <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
+                  <label className="labelSignForm" htmlFor="password">Mot de passe</label>
+                  <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Mot de Passe" />
                   {/* <label htmlFor="password-conf">Confirmer mot de passe</label>*/}
                   {/* <input
                       type="password"
@@ -77,7 +76,7 @@ const SignUpForm = () => {
                       value={controlPassword}
                   /> */}
                   {/* <div></div> */}
-                  <div>
+                  <div className="inputSignForm">
                     <input type="checkbox" id="terms" />
                     <label htmlFor="terms">
                         J'accepte les{" "}
@@ -86,7 +85,7 @@ const SignUpForm = () => {
                   </div>
                   <input type="submit" value="Valider l'Inscription" className="btn btn--logForm"/>
                 </form>
-              </>
+              </div>
             )}
         </>
     )

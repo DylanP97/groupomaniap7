@@ -8,8 +8,8 @@
   
 
     &__container {
-        height: 600px;
-        width: 1200px;
+        height: 70%;
+        width: 70%;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -29,15 +29,15 @@
     &__rightContainer {
         height: 100%;
         width: 50%;
+        background-color: white;
     }
   
     &__upperBand {
-      border-radius: 20px 20px 0px 0px;
       display: flex;
       justify-content: space-around;
       align-items: center;
       flex-direction: row;
-      height: 15%;  
+      height: 15%;
     }
   
     &__modalBtn--left {
@@ -45,7 +45,12 @@
       width: 100%;
       color: black;
       border: 0px;
-      background-color: rgba(255, 255, 255, 0.644);
+      background-color: rgba(255, 255, 255, 0.634);
+
+      &:last-of-type {
+        background-color: $primary;
+        color: white;
+      }
     }
   
     &__modalBtn--right {
@@ -53,13 +58,41 @@
       width: 100%;
       color: black;
       border: 0px;
-      background-color: rgba(255, 255, 255, 0.644);
-    }
+      background-color: rgba(255, 255, 255, 0.634);
+
+      &:last-of-type {
+        background-color: $primary;
+        color: white;
+      }
+    } 
   }
-  
-  .logSignForm {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-  }
+
+
+.logSignForm {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.logPart {
+  background-color: white;
+  width: 100%;
+  height: 85%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.h2log {
+  margin-bottom: 20px;
+}
+
+.labelSignForm {
+  margin-bottom: 5px;
+}
+.inputSignForm {
+  margin-bottom: 15px;
+}

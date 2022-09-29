@@ -1,5 +1,6 @@
 import {
     GET_USER,
+    UPDATE_USER,
     // UPDATE_BIO,
     // UPLOAD_PICTURE,
   } from "../actions/user";
@@ -10,11 +11,13 @@ import {
     switch (action.type) {
       case GET_USER:
         return action.payload;
-    //   case UPLOAD_PICTURE:
-    //     return {
-    //       ...state,
-    //       picture: action.payload,
-    //     };
+      case UPDATE_USER:
+        return action.payload;
+
+        // return state.map((user) => {
+          // if (user._id === action.payload.id) {
+        //   } else return user;
+        // });
     //   case UPDATE_BIO:
     //     return {
     //       ...state,

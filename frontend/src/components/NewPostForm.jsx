@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost, getPosts } from "../actions/post";
-import styled from 'styled-components'
-import colors from "../assets/styles/colors";
-import ImageIcon from "../assets/styles/Icons/gallery.svg"
+// import styled from 'styled-components'
+// import colors from "../assets/styles/colors";
+// import ImageIcon from "../assets/styles/Icons/gallery.svg"
 
 
 const NewPostForm = () => {

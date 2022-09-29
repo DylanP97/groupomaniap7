@@ -4,8 +4,8 @@ import { UidContext } from "../AppContext";
 import "reactjs-popup/dist/index.css";
 import { useDispatch } from "react-redux";
 import { likePost, unlikePost } from "../../actions/post";
-import HeartIcon from '../../assets/styles/Icons/heart.png';
-import HeartFilledIcon from '../../assets/styles/Icons/heart-filled.png';
+// import HeartIcon from '../../assets/styles/Icons/heart.png';
+// import HeartFilledIcon from '../../assets/styles/Icons/heart-filled.png';
 
 const LikeButton = ({ post }) => {
   const [liked, setLiked] = useState(false);
@@ -39,10 +39,10 @@ const LikeButton = ({ post }) => {
         // </Popup>
       )}
       {uid && liked === false && (
-        <i className="fa-regular fa-lg fa-heart"></i>
+        <i onClick={like} className="fa-regular fa-lg fa-heart"></i>
       )}
       {uid && liked && (
-        <i className="fa-solid fa-lg fa-heart "></i>
+        <i onClick={unlike} className="fa-solid fa-lg fa-heart" style={{color:"red"}}></i>
       )}
       <span>{post.usersLiked.length}</span>
     </div>

@@ -3,7 +3,7 @@ import axios from "axios";
 export const GET_USER = "GET_USER";
 // export const UPLOAD_PICTURE = "UPLOAD_PICTURE";
 // export const UPDATE_BIO = "UPDATE_BIO";
-
+export const UPDATE_USER = "UPDATE_USER"
 
 export const GET_USER_ERRORS = "GET_USER_ERRORS";
 
@@ -17,6 +17,24 @@ export const getUser = (uid) => {
       .catch((err) => console.log(err));
   };
 };
+
+
+
+export const updateUser = (data, id) => {
+  return (dispatch) => {
+    return axios({
+      method: "put",
+      url: `${process.env.REACT_APP_API_URL}api/user/${id}`,
+      data: data,
+    })
+      .then((res) => {
+        dispatch({ type: UPDATE_USER, payload: data, id });
+      })
+      .catch((err) => console.log(err));
+  };
+};
+
+
 
 // export const uploadPicture = (data, id) => {
 //   return (dispatch) => {

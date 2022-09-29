@@ -9,6 +9,10 @@ body {
   height: 100vh
 }
 
+h2 {
+  margin: 0px;
+}
+
 .bodyContent {
   margin: 2% 10% 5% 10%;
 }
@@ -151,4 +155,9 @@ textarea {
 
 .fa-images {
   margin: 0px 20px 0px 20px;
+}
+
+p::selection {
+  color: red;
+  background-color: yellow;
 }

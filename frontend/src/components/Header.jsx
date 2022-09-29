@@ -25,7 +25,6 @@ const Header = () => {
 
 const usersData = useSelector((state) => state.usersReducer);
 const uid = useContext(UidContext);
-console.log(uid)
 
     return (
         <nav className="NavContainer">

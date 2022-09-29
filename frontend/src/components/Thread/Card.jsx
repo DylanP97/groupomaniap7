@@ -10,7 +10,7 @@ import CardDelete from "./CardDelete";
 import LikeButton from "./LikeButton";
 import CardComments from "./CardComments";
 
-import EditIcon from "../../assets/styles/Icons/edit.png"
+// import EditIcon from "../../assets/styles/Icons/edit.png"
 import CommentIcon from "../../assets/styles/Icons/comment.png"
 import ShareIcon from "../../assets/styles/Icons/share.png"
 import { Loader } from "../../assets/styles/Loader";
@@ -18,21 +18,12 @@ import { Loader } from "../../assets/styles/Loader";
 
 
 const CardImg = styled.img`
-    width: 100%;
+    max-height: 80vh;
+    max-width: 100%;
 `
 const Icons = styled.img`
     height: 20px;
     margin: 0px 20px 0px 20px;
-`
-
-const Icons2 = styled.img`
-    height: 20px;
-`
-
-const ProfileImg = styled.img`
-    height: 30px;
-    clip-path: circle();
-    margin-right: 10px;
 `
 
 
@@ -89,19 +80,18 @@ const updateItem = () => {
                 <div className="CardHeader__Right">
                     <span>
                         le {dateParser(post.createdAt)}
-                    </span>
-                    <div className="dropdown">
-                        <i className="fa-solid fa-lg fa-ellipsis-vertical"></i>
-                            {userData._id === post.posterId || userData.isAdmin === true ? (
+                    </span>                    
+                        {userData._id === post.posterId || userData.isAdmin === true ? (
+                        <div className="dropdown">
+                            <i className="fa-solid fa-lg fa-ellipsis-vertical"></i>
                             <div className="dropdown-content">
                                 <div className="dropdown-list" onClick={() => setIsUpdated(!isUpdated)}>
                                     <p onClick={updateItem}>Editer le post</p>
                                 </div>
                                 <CardDelete id={post._id} />
                             </div>
+                        </div>
                         ) : null}
-                    </div>
-
                 </div>
             </div>
             <div className="CardMain">
