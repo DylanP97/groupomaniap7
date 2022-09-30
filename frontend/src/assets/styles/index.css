@@ -12,7 +12,7 @@ h2 {
 }
 
 .bodyContent {
-  margin: 2% 10% 5% 10%;
+  padding: 2% 10% 5% 10%;
 }
 
 input {
@@ -167,7 +167,7 @@ p::selection {
   font-size: 1.2rem;
   border-radius: 20px;
   padding: 15px;
-  margin: 30px 20px 30px 20px;
+  margin: 5% 15% 5% 15%;
   background-color: white;
   box-shadow: 0px 0px 7px #4E5166;
 }
@@ -460,6 +460,8 @@ p::selection {
   margin: 20px;
   border-radius: 30px;
   min-width: 200px;
+  max-width: 300px;
+  max-height: 200px;
   padding: 15px;
   margin-bottom: 20px;
   box-shadow: 0px 0px 7px #4E5166;
@@ -478,34 +480,50 @@ p::selection {
   margin-bottom: 20px;
 }
 
+.bioUserCard {
+  margin-top: 10px;
+  overflow: scroll;
+  white-space: wrap;
+  text-overflow: ellipsis;
+}
+
 .ProfileCardContainer {
   display: flex;
   justify-content: center;
-  align-items: center;
-  flex-direction: row;
-}
-
-.CurrentProfileDiv {
-  display: flex;
-  justify-content: center;
   align-items: flex-start;
-  flex-direction: column;
-  background-color: whitesmoke;
-  padding: 10%;
-}
-
-.UpdateUserDiv {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  background-color: #FFD7D7;
-  padding: 10%;
+  flex-direction: row;
+  text-align: left;
+  width: 100%;
+  background-color: white;
+  box-shadow: 0px 0px 7px #4E5166;
+  padding: 5%;
+  position: relative;
 }
 
 .UpdateUserForm {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: column;
+}
+
+.profileInput {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.ProfilePageImg {
+  height: 120px;
+  width: 120px;
+  -webkit-clip-path: circle();
+          clip-path: circle();
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: absolute;
+  top: 5%;
+  right: 5%;
+}
+
+.textbio {
+  height: 120px;
 }/*# sourceMappingURL=index.css.map */

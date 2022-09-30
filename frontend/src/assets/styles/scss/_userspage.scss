@@ -15,6 +15,8 @@
     margin: 20px;
     border-radius: 30px;
     min-width: 200px;
+    max-width: 300px;
+    max-height: 200px;
     padding: 15px;
     margin-bottom: 20px;
     box-shadow: 0px 0px 7px $tertiary;
@@ -35,3 +37,9 @@
     }
 }
 
+.bioUserCard {
+    margin-top: 10px;
+    overflow: scroll;
+    white-space: wrap;
+    text-overflow: ellipsis;
+}

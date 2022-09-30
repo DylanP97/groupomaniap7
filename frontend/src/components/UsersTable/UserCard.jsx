@@ -14,7 +14,7 @@ const Card = ({ user }) => {
                 <span>Métier : {user.job}</span>
             )}
             {user.bio && (
-                <span>Bio : {user.bio}</span>
+                <span className="bioUserCard">Bio : {user.bio}</span>
             )}
 
         </div>

@@ -20,34 +20,45 @@ const ProfileCard = ({ user }) => {
     const [job, setJob] = useState("");
     const [bio, setBio] = useState("");
 
+
+    const handleImage = (image) => {
+        image.preventDefault();
+
+        const file = image.target.files[0]
+        console.log(file)
+        setFile(file);
+        setPicture(URL.createObjectURL(image.target.files[0]));
+        console.log(file)
+    }
+
+    const removeImage = async (e) => {
+        e.preventDefault();
+        const data = new FormData();
+        console.log(data)
+        data.append("imageUrl", "./uploads/profil/random-user.png");
+
+        await dispatch(updateUser(data, userData._id));
+    }
+
     const editUser = async (e) => {
         e.preventDefault();
-
-        console.log(userData._id)
-        console.log(file)
-        console.log(picture)
-        console.log(pseudo)
-        console.log(email)
-        console.log(password)
-        console.log(job)
-        console.log(bio)
 
       if (picture || pseudo || email || password || job || bio) {
         const data = new FormData();
         // data.append('posterId', userData._id);
         pseudo ? data.append('pseudo', pseudo) : data.append('pseudo', userData.pseudo)
         email ? data.append('email', email) : data.append('email', userData.email)
-        password ? data.append('password', password) : data.append('password', userData.password)
+        // password ? data.append('password', password) : data.append('password', userData.password)
         data.append('isAdmin', userData.isAdmin);
         if (file) data.append("imageUrl", file);
-        job ? data.append('job', job) : data.append('job', userData.job)
-        bio ? data.append('bio', bio) : data.append('bio', userData.bio)
+        job ? data.append('job', job) : (userData.job ? data.append('job', userData.job) : data.delete ('job', userData.job))
+        bio ? data.append('bio', bio) : (userData.bio ? data.append('bio', userData.bio) : data.delete ('bio', userData.bio))
 
         await dispatch(updateUser(data, userData._id));
         dispatch(getUsers());
         cancelUser();
       } else {
-        alert("Veuillez entrer un message")
+        alert("Vous n'avez rien modifié")
       }
     };
   
@@ -58,7 +69,7 @@ const ProfileCard = ({ user }) => {
         setFile("");  
         setPseudo("")
         setEmail("");
-        setPassword("");
+        // setPassword("");
         setJob("");
         setBio("");
     }; 
@@ -68,34 +79,48 @@ const ProfileCard = ({ user }) => {
     return (
 
         <div className="ProfileCardContainer" key={user._id}>
-            <div className="CurrentProfileDiv">
-                <p>Votre Photo de profil : <img className="ProfileImg" src={user.imageUrl} alt={user.imageUrl}/></p>
-                <p>Votre Pseudo : "{user.pseudo}"</p>
-                <p>Votre Email : "{user.email}"</p>
-                <p>Votre Métier : "{user.job}"</p>
-                <p>Votre Bio : "{user.bio}"</p>
-            </div>
-            <div className="UpdateUserDiv">
-                <h3>Modifier votre Profil :</h3>
                 <form action="" className="UpdateUserForm" >
-                    <label className="" htmlFor="file">Image</label>
-                    <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
-                          const file = event.target.files[0]; setFile(file); setPicture(URL.createObjectURL(file));
-                    }}></input>
-                    <label className="labelSignForm" htmlFor="pseudo">Pseudo</label>
-                    <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} placeholder={user.pseudo} />
-                    <label className="labelSignForm" htmlFor="email">Email</label>
-                    <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder={user.email}/>
-                    <label className="labelSignForm" htmlFor="password">Mot de passe</label>
-                    <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" />
-                    <label className="labelSignForm" htmlFor="job">Job</label>
-                    <input className="inputSignForm" type="text" name="job" id="job" onChange={(e) => setJob(e.target.value)} placeholder={user.job} />
-                    <label className="labelSignForm" htmlFor="bio">Bio</label>
-                    <input className="inputSignForm" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
-                    <button className="btn" onClick={cancelUser}>Annuler message </button>
-                    <button className="btn" onClick={editUser}>Envoyer</button>            
+                    
+                    <div className="profileInput">
+                        <p>Photo de profil : </p>
+                        <div>
+                        <label className="labelSignForm" htmlFor="file">
+                        <img className="ProfilePageImg" src={user.imageUrl} alt={user.imageUrl}></img>
+                        </label>
+                        <input onChange={img => handleImage(img)} className="inputSignForm" type="file" id="file" accept=".jpg, .jpeg, .png"/>
+                        <button className="btn" onClick={removeImage}>Supprimer la photo</button>
+                        </div>
+                    </div>
+                    <div className="profileInput">
+                        <p>Pseudo : "{user.pseudo}"</p>
+                        <label className="labelSignForm" htmlFor="pseudo"/>
+                        <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} placeholder={user.pseudo} />
+                    </div>
+                    <div className="profileInput">
+                        <p>Email : "{user.email}"</p>
+                        <label className="labelSignForm" htmlFor="email"/>
+                        <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder={user.email}/>
+                    </div>
+                    <div className="profileInput">
+                        <p>Métier : "{user.job}"</p>
+                        <label className="labelSignForm" htmlFor="job"/>
+                        <input className="inputSignForm" type="text" name="job" id="job" onChange={(e) => setJob(e.target.value)} placeholder={user.job} />
+                    </div>
+                    <div className="profileInput">
+                        <p>Bio : "{user.bio}"</p>
+                        <label className="labelSignForm" htmlFor="bio"/>
+                        <textarea className="inputSignForm textbio" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
+                    </div>
+                    
+                    {/* <label className="labelSignForm" htmlFor="password">Mot de passe</label>
+                    <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" /> */}
+
+                    <div>
+                        <button className="btn" onClick={cancelUser}>Annuler les modifications</button>
+                        <button className="btn" onClick={editUser}>Valider les modifications</button>            
+                    </div>
                 </form>
-            </div>
+
         </div>
     )
 

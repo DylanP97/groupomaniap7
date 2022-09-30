@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { addPost, getPosts } from "../actions/post";
 // import styled from 'styled-components'
 // import colors from "../assets/styles/colors";
 // import ImageIcon from "../assets/styles/Icons/gallery.svg"
+import { isEmpty } from "../assets/utils/Utils";
+import { UidContext } from "./AppContext";
 
 
 const NewPostForm = () => {
@@ -13,8 +15,9 @@ const NewPostForm = () => {
   const [file, setFile] = useState();
   const dispatch = useDispatch();
   const userData = useSelector((state) => state.userReducer);
+  const usersData = useSelector((state) => state.usersReducer);
+  const uid = useContext(UidContext);
 
-  
   const handlePost = async () => {
     if (message || postPicture) {
       const data = new FormData();
@@ -41,6 +44,18 @@ const NewPostForm = () => {
   return (
       <div className="NewPostContainer">
         <div className="NewPostContainer__Main">
+          <img className="ProfileImg"
+            src={
+            !isEmpty(usersData[0]) &&
+            usersData
+                .map((user) => {
+                if (user._id === uid) return user.imageUrl;
+                else return null;
+                })
+                .join("")
+            } 
+            alt="poster-pic"
+          />
           <textarea name="message" id="message" placeholder="Quoi de neuf ?"
           onChange={(e) => setMessage(e.target.value)} value={message} />
           <label htmlFor="file">

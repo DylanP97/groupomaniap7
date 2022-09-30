@@ -1,31 +1,39 @@
 .ProfileCardContainer {
     display: flex;
     justify-content: center;
-    align-items: center;
-    flex-direction: row;
-}
-
-.CurrentProfileDiv {
-    display: flex;
-    justify-content: center;
     align-items: flex-start;
-    flex-direction: column;
-    background-color: whitesmoke;
-    padding: 10%;
-}
-
-.UpdateUserDiv {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
-    background-color: $secondary;
-    padding: 10%;
+    flex-direction: row;
+    text-align: left;
+    width: 100%;
+    background-color: white;
+    box-shadow: 0px 0px 7px $tertiary;
+    padding: 5%;
+    position: relative;
 }
 
 .UpdateUserForm{
     display: flex;
-    justify-content: center;
-    align-items: center;
+    align-items: flex-start;
     flex-direction: column;
+}
+
+.profileInput {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.ProfilePageImg {
+    height: 120px;
+    width: 120px;
+    clip-path: circle();
+    object-fit: cover;
+    position: absolute;
+    top: 5%;
+    right: 5%;
+  }
+  
+
+.textbio {
+    height: 120px;
 }
