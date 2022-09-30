@@ -59,8 +59,7 @@ const SignUpForm = () => {
                   <h4>Enregistrement réussi, veuillez-vous connecter</h4>
                 </>
             ) : (
-              <div className="logPart" id="sign-up-form">
-                <form action="" className="logSignForm" onSubmit={handleRegister} >
+                <form action="" className="logSignForm"  id="sign-up-form" onSubmit={handleRegister} >
                   <label className="labelSignForm" htmlFor="pseudo">Pseudo</label>
                   <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} value={pseudo} placeholder="Pseudo" />
                   <label className="labelSignForm" htmlFor="email">Email</label>
@@ -85,7 +84,6 @@ const SignUpForm = () => {
                   </div>
                   <input type="submit" value="Valider l'Inscription" className="btn btn--logForm"/>
                 </form>
-              </div>
             )}
         </>
     )

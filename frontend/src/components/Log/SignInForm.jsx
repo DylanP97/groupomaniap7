@@ -36,16 +36,13 @@ const SignInForm = () => {
   };
 
   return (
-    <div className="logPart" id="sign-up-form">
-       <form className="logSignForm" action="" onSubmit={handleLogin} >
-            <label className="labelSignForm" htmlFor="email">Email</label>
-            <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} />
-            <label className="labelSignForm" htmlFor="password">Mot de passe</label>
-            <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" value={password} />
-            <input className="inputSignForm btn btn--logForm" type="submit" value="Je me connecte"/>
-        </form>
-
-    </div>
+    <form className="logSignForm" id="sign-up-form" action="" onSubmit={handleLogin} >
+      <label className="labelSignForm" htmlFor="email">Email</label>
+      <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder="Email" value={email} />
+      <label className="labelSignForm" htmlFor="password">Mot de passe</label>
+      <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" value={password} />
+      <input className="inputSignForm btn btn--logForm" type="submit" value="Je me connecte"/>
+    </form>
   );
 };
 

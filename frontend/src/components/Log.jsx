@@ -5,27 +5,28 @@ import SignUpForm from "./Log/SignUpForm";
 const Log = ( props ) => {
   const [signUpModal, setSignUpModal] = useState(props.signup);
   const [signInModal, setSignInModal] = useState(props.signin);
+  const [className, setClassName] = useState(false);
 
   const handleModals = (e) => {
     if (e.target.id === "register") {
       setSignInModal(false);
       setSignUpModal(true);
+      setClassName(true);
     } else if (e.target.id === "login") {
       setSignUpModal(false);
       setSignInModal(true);
+      setClassName(false);
     }
   };
 
   return (
     <div className="logPage">
       <div className="logPage__container">
-        <div className="logPage__leftContainer">
-          {/* <img src="../assets/styles/Logos/icon-left-font.png" alt="LogoGroupomania" /> */}
-        </div>
+        <div className="logPage__leftContainer"></div>
         <div className="logPage__rightContainer">
-          <div className="logPage__upperBand">
-              <button className="logPage__modalBtn--left" onClick={handleModals} id="register">S'inscrire</button>  
-              <button className="logPage__modalBtn--right" onClick={handleModals} id="login">Se connecter</button>
+          <div className="logUpperPart">
+            <div onClick={handleModals} id="register" className={className ? 'logModalBtn modal-noactive' : 'logModalBtn'} >S'inscrire</div>  
+            <div onClick={handleModals} id="login" className={className ? 'logModalBtn': 'logModalBtn modal-noactive'} >Se connecter</div>
           </div>
           {signUpModal && <SignUpForm />}
           {signInModal && <SignInForm />}

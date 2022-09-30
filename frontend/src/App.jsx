@@ -63,7 +63,7 @@ const App = () => {
           </div>
         </>
          :
-         <Log signin={true} signup={false} />}
+         <Log signin={false} signup={true} />}
 
     </UidContext.Provider>
   )
