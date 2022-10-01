@@ -2,14 +2,15 @@ import React, { useState } from "react";
 import axios from "axios";
 import SignInForm from "./SignInForm";
 
-const SignUpForm = () => {
+const SignUpForm = ( props ) => {
+
 
     const [formSubmit, setFormSubmit] = useState(false);
     const [pseudo, setPseudo] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
-    // const [controlPassword, setControlPassword] = useState("");
-  
+    const [controlPassword, setControlPassword] = useState("");
+
     const handleRegister = async (e) => {
       e.preventDefault();
       // const terms = document.getElementById("terms");
@@ -21,6 +22,7 @@ const SignUpForm = () => {
       // passwordConfirmError.innerHTML = "";
       // termsError.innerHTML = "";
   
+
       // if (password !== controlPassword || !terms.checked) {
       //   if (password !== controlPassword)
       //     passwordConfirmError.innerHTML =
@@ -46,12 +48,10 @@ const SignUpForm = () => {
           })
           .catch((err) => console.log(err));
       }
-
-
-
+  
     return (
 
-        <>
+          <>
             {formSubmit ? (
                 <>
                   <SignInForm />
@@ -66,29 +66,20 @@ const SignUpForm = () => {
                   <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} value={email} placeholder="Email" />
                   <label className="labelSignForm" htmlFor="password">Mot de passe</label>
                   <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} value={password} placeholder="Mot de Passe" />
-                  {/* <label htmlFor="password-conf">Confirmer mot de passe</label>*/}
-                  {/* <input
-                      type="password"
-                      name="password"
-                      id="password-conf"
-                      onChange={(e) => setControlPassword(e.target.value)}
-                      value={controlPassword}
-                  /> */}
-                  {/* <div></div> */}
+                  <label className="labelSignForm" htmlFor="password-conf">Confirmer mot de passe</label>
+                  <input className="inputSignForm" type="password" name="password" id="password-conf" onChange={(e) => setControlPassword(e.target.value)} value={controlPassword} placeholder="Confirmer le Mot de Passe"/>
                   <div className="inputSignForm">
                     <input type="checkbox" id="terms" />
                     <label htmlFor="terms">
-                        J'accepte les{" "}
-                        <a href="/" target="_blank" rel="noopener noreferrer">conditions générales </a>
+                      J'accepte les{" "}
+                      <a href="/" target="_blank" rel="noopener noreferrer">conditions générales </a>
                     </label>
                   </div>
                   <input type="submit" value="Valider l'Inscription" className="btn btn--logForm"/>
                 </form>
             )}
-        </>
+          </>
     )
 }
 
 export default SignUpForm;
-
-

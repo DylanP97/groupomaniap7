@@ -358,10 +358,12 @@ p::selection {
 
 .labelSignForm {
   margin-bottom: 5px;
+  width: 75%;
 }
 
 .inputSignForm {
   margin-bottom: 15px;
+  width: 75%;
 }
 
 .CommentSection {
