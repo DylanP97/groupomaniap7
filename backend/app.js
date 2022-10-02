@@ -31,7 +31,6 @@ const corsOptions = {
 }
 app.use(cors(corsOptions));
 
-
 // app.use((req, res, next) => {
 //   res.setHeader('Access-Control-Allow-Origin', '*');
 //   res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
@@ -44,8 +43,6 @@ app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(cookieParser());
 
-
-
 // jwt
 app.get('*', checkUser);
 app.get('/jwtid', requireAuth, (req, res) => {
@@ -55,6 +52,6 @@ app.get('/jwtid', requireAuth, (req, res) => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
-// app.use('./frontend/public/uploads', express.static('uploads'));
+app.use('./frontend/public/uploads', express.static('uploads'));
 
 module.exports = app;

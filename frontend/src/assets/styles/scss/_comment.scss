@@ -46,9 +46,15 @@
     }
 }
 
-
 .leaveComment {
     margin: 10px;
+
+    &__UpperDiv {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: row;
+    }
 
     &__Field {
         width: 100%;

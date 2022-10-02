@@ -13,13 +13,10 @@ import { getUsers } from "./actions/users";
 import { getPosts } from "./actions/post";
 
 
-
 const store = configureStore({ reducer: rootReducer })
-
 
 store.dispatch(getUsers());
 store.dispatch(getPosts());
-
 
 const rootElement = document.getElementById('root');
 const root = createRoot(rootElement);

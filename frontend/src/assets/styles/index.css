@@ -1,3 +1,9 @@
+:root {
+  --color-default: grey;
+  --color-invalid: red;
+  --color-valid: green;
+}
+
 * {
   box-sizing: border-box;
   font-size: 14px;
@@ -5,6 +11,11 @@
 
 body {
   height: 100vh;
+  position: relative;
+}
+
+h1 {
+  font-size: 1.5rem;
 }
 
 h2 {
@@ -16,9 +27,34 @@ h2 {
 }
 
 input {
-  border-radius: 20px;
+  border-radius: 10px;
   padding: 10px;
-  border: 1px solid #FD2D01;
+  background-color: rgba(243, 243, 243, 0.653);
+}
+input:focus {
+  outline: #FFD7D7 3px solid;
+}
+
+.inputSignForm {
+  border: none;
+}
+.inputSignForm:not(:focus):not(:-moz-placeholder-shown):valid {
+  outline: 2px solid rgb(0, 232, 0);
+}
+.inputSignForm:not(:focus):not(:-ms-input-placeholder):valid {
+  outline: 2px solid rgb(0, 232, 0);
+}
+.inputSignForm:not(:focus):not(:placeholder-shown):valid {
+  outline: 2px solid rgb(0, 232, 0);
+}
+.inputSignForm:not(:focus):not(:-moz-placeholder-shown):invalid {
+  outline: 2px solid red;
+}
+.inputSignForm:not(:focus):not(:-ms-input-placeholder):invalid {
+  outline: 2px solid red;
+}
+.inputSignForm:not(:focus):not(:placeholder-shown):invalid {
+  outline: 2px solid red;
 }
 
 span {
@@ -51,9 +87,9 @@ textarea {
 
 .btn {
   padding: 10px;
-  border-radius: 20px;
+  border-radius: 10px;
   background-color: #FFD7D7;
-  border: 1px solid #FD2D01;
+  border: 0px solid #FD2D01;
   color: black;
   transition: transform 0.3s;
 }
@@ -105,7 +141,7 @@ textarea {
   border-radius: 20px;
   text-align: center;
   padding: 15px;
-  margin: 0px 40px 20px 40px;
+  margin: 0% 15% 0% 15%;
   background-color: white;
   box-shadow: 0px 0px 7px #4E5166;
 }
@@ -149,6 +185,28 @@ textarea {
   margin: 0px 20px 0px 20px;
 }
 
+.UploadImagePart {
+  position: relative;
+}
+
+.fa-images:hover + .helptext {
+  display: block;
+  opacity: 1;
+}
+
+.helptext {
+  display: none;
+  opacity: 0;
+  position: absolute;
+  bottom: 15px;
+  cursor: pointer;
+  z-index: 300;
+  background-color: white;
+  box-shadow: 0px 0px 7px #4E5166;
+  padding: 20%;
+  border-radius: 10px;
+}
+
 p::-moz-selection {
   color: red;
   background-color: yellow;
@@ -157,6 +215,16 @@ p::-moz-selection {
 p::selection {
   color: red;
   background-color: yellow;
+}
+
+.error {
+  color: red;
+  font-weight: bold;
+}
+
+.success {
+  color: green;
+  font-weight: bold;
 }
 
 .CardContainer {
@@ -205,6 +273,11 @@ p::selection {
   text-align: center;
   flex-direction: column;
   position: relative;
+  width: 100%;
+}
+
+.CardMain > textarea {
+  margin-bottom: 5px;
 }
 
 .CardFooter {
@@ -287,8 +360,12 @@ p::selection {
   justify-content: center;
   align-items: center;
   text-align: center;
+  flex-direction: column;
   height: 100vh;
   background: linear-gradient(10deg, rgb(253, 45, 1) 0%, rgb(253, 79, 44) 20%, rgb(255, 215, 215) 100%);
+}
+.logPage h1 {
+  margin-bottom: 30px;
 }
 .logPage__container {
   height: 70%;
@@ -335,6 +412,9 @@ p::selection {
   height: 100%;
   width: 100%;
 }
+.logModalBtn:hover {
+  background-color: #FFD7D7;
+}
 
 .modal-noactive {
   background-color: #FFD7D7;
@@ -349,7 +429,6 @@ p::selection {
   background: white;
   height: 85%;
   width: 100%;
-  background-color: #FFD7D7;
 }
 
 .h2log {
@@ -404,6 +483,12 @@ p::selection {
 
 .leaveComment {
   margin: 10px;
+}
+.leaveComment__UpperDiv {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
 }
 .leaveComment__Field {
   width: 100%;

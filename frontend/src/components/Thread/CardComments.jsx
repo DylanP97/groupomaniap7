@@ -71,8 +71,13 @@ const CardComments = ({ post }) => {
       })}
       {userData._id && (
         <form className="leaveComment" action="" onSubmit={handleComment}>
-          <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Laisser un commentaire"/>
-          <br />
+          <div className="leaveComment__UpperDiv">
+            <ProfileImg
+              src={userData.imageUrl}
+              alt="commenter-pic"
+            />
+            <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Laisser un commentaire"/>
+          </div>
           <div className="leaveComment__Btn">
             <input className="spanBtnSubmit" type="submit" value="Envoyer" />
           </div>

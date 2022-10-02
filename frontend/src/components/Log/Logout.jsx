@@ -9,12 +9,12 @@ import cookie from "js-cookie";
 import LogoutIcon from '../../assets/styles/Icons/logout.png'
 
 
-const Logout = () => {
+const Icons = styled.img`
+height: 30px;
+margin: 0px 20px 0px 20px;
+`
 
-  const Icons = styled.img`
-    height: 30px;
-    margin: 0px 20px 0px 20px;
-  `
+const Logout = () => {
 
   const removeCookie = (key) => {
     if (window !== "undefined") {
@@ -36,7 +36,7 @@ const Logout = () => {
 
   return (
     <Link>
-        <Icons src={LogoutIcon} onClick={logout}/>
+      <Icons src={LogoutIcon} onClick={logout} alt="Icon-Logout"/>
     </Link>
   );
 };

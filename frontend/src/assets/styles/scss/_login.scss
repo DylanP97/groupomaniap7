@@ -3,8 +3,13 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    flex-direction: column;
     height: 100vh;
     background: $gradientColor;
+
+    & h1 {
+      margin-bottom: 30px;
+    }
   
     &__container {
         height: 70%;
@@ -53,6 +58,10 @@
   border: 0px;
   height: 100%;
   width: 100%;
+
+  &:hover {
+    background-color: $secondary;
+  }
 } 
 
 .modal-noactive {
@@ -68,7 +77,6 @@
   background: white;
   height: 85%;
   width: 100%;
-  background-color: $secondary;
 }
 
 .h2log {

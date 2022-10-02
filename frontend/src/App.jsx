@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { Routes, Route } from 'react-router-dom'
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "./actions/user";
 import { UidContext } from "./components/AppContext";
 import axios from "axios";
 import { createGlobalStyle } from 'styled-components'
+import { isEmpty } from "./assets/utils/Utils";
 
 import Header from './components/Header';
 import Home from './pages/Home'
@@ -13,6 +14,7 @@ import Users from './pages/Users';
 import Notification from './pages/Notification';
 import './assets/styles/index.css';
 import Log from "./components/Log";
+import { Loader } from "./assets/styles/Loader";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -25,8 +27,16 @@ const GlobalStyle = createGlobalStyle`
 `
 
 const App = () => {
+
+  const [isLoading, setIsLoading] = useState(true);
   const [uid, setUid] = useState(null);
   const dispatch = useDispatch();
+  const usersData = useSelector((state) => state.usersReducer);
+
+
+  useEffect(() => {
+    !isEmpty(usersData[0]) && setIsLoading(false);
+  }, [usersData]);
 
   useEffect(() => {
     const fetchToken = async () => {
@@ -47,24 +57,29 @@ const App = () => {
 
   return (
     <UidContext.Provider value={uid}>
-        <GlobalStyle />
-
-        {uid ?
-        <>
-          <Header />
-          <div className="bodyContent">
-            <Routes>
-              <Route index element={<Home />}/>
-              <Route path="/" element={<Home />}/>
-              <Route path="/profile" element={<Profile />}/>
-              <Route path="/users" element={<Users />}/>
-              <Route path="/notification" element={<Notification />}/>
-            </Routes > 
-          </div>
-        </>
-         :
-         <Log signin={false} signup={true} />}
-
+      {isLoading ? (
+          <Loader/>
+        ) : (
+          <>
+            <GlobalStyle />
+            {uid ?
+            <>
+              <Header />
+              <div className="bodyContent">
+                <Routes>
+                  <Route index element={<Home />}/>
+                  <Route path="/" element={<Home />}/>
+                  <Route path="/profile" element={<Profile />}/>
+                  <Route path="/users" element={<Users />}/>
+                  <Route path="/notification" element={<Notification />}/>
+                </Routes > 
+              </div>
+            </>
+            :
+            <Log signin={false} signup={true} />
+            }
+         </>
+        )}
     </UidContext.Provider>
   )
 }

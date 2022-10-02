@@ -29,7 +29,7 @@ const uid = useContext(UidContext);
     return (
         <nav className="NavContainer">
             <Link to="/">
-                <LogoStyle src={DarkLogo} />
+                <LogoStyle src={DarkLogo} alt="LogoGroupomania"/>
             </Link>
             <div className="NavContainer__menu">
                 <Link to="/profile">
@@ -47,14 +47,14 @@ const uid = useContext(UidContext);
                     />
                 </Link>
                 <Link to="/">
-                    <Icons src={HomeIcon}/>
+                    <Icons src={HomeIcon} alt="Icon-Home"/>
                 </Link>
 
                 <Link to="/users">
-                    <Icons src={GroupIcon}/>
+                    <Icons src={GroupIcon} alt="Icon-Group"/>
                 </Link>
                 <Link to="/notification">
-                    <Icons src={NotifIcon}/>
+                    <Icons src={NotifIcon} alt="Icon-Notification"/>
                 </Link>
                 <Logout />
             </div>

@@ -6,6 +6,9 @@ import { addPost, getPosts } from "../actions/post";
 // import ImageIcon from "../assets/styles/Icons/gallery.svg"
 import { isEmpty } from "../assets/utils/Utils";
 import { UidContext } from "./AppContext";
+import Popup from 'reactjs-popup';
+
+
 
 
 const NewPostForm = () => {
@@ -22,7 +25,6 @@ const NewPostForm = () => {
     if (message || postPicture) {
       const data = new FormData();
       data.append('posterId', userData._id);
-      console.log(message);
       message ? data.append('message', message) : data.append('message', ' ');
       if (file) data.append("imageUrl", file);
 
@@ -56,10 +58,11 @@ const NewPostForm = () => {
             } 
             alt="poster-pic"
           />
-          <textarea name="message" id="message" placeholder="Quoi de neuf ?"
+          <textarea aria-label="newpostform" name="message" id="message" placeholder="Quoi de neuf ?"
           onChange={(e) => setMessage(e.target.value)} value={message} />
-          <label htmlFor="file">
-            <i className="fa-sharp fa-solid fa-lg fa-images"></i>
+          <label className="UploadImagePart" htmlFor="file">
+            <i className="fa-sharp fa-solid fa-lg fa-images" aria-label="Icon-UploadImage"></i>
+            <p className="helptext">Ajouter une image !</p>
           </label>
           <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
             const file = event.target.files[0]; setFile(file); setPostPicture(URL.createObjectURL(file));

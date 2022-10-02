@@ -51,6 +51,11 @@
     text-align: center;
     flex-direction: column;
     position: relative;
+    width: 100%;
+}
+
+.CardMain > textarea {
+    margin-bottom: 5px;
 }
 
 .CardFooter {
@@ -129,3 +134,4 @@
     color: white;
     background-color: $primary;
 }
+

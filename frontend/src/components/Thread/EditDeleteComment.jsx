@@ -42,7 +42,7 @@ const EditDeleteComment = ({ comment, postId }) => {
       }
     };
     checkAuthor();
-  }, [uid, comment.commenterId]);
+  }, [uid, comment.commenterId, userData.isAdmin]);
 
   return (
     <div>
@@ -55,7 +55,7 @@ const EditDeleteComment = ({ comment, postId }) => {
       {isAuthor && edit && (
         <form action="" onSubmit={handleEdit}>
           <label htmlFor="text" onClick={() => setEdit(!edit)}>
-            <span className="interact">Annuler</span>
+            <span className="interact">Annuler la modification</span>
             {/* <Icons src={EditIcon} alt="EditIcon"/> */}
           </label>
           <br />

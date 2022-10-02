@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { dateParser, isEmpty } from "../../assets/utils/Utils";
-
 import { modifyPost } from "../../actions/post";
-
 import styled from 'styled-components'
 
 import CardDelete from "./CardDelete";
@@ -33,9 +31,11 @@ const [isLoading, setIsLoading] = useState(true);
 const [isUpdated, setIsUpdated] = useState(false);
 const [textUpdate, setTextUpdate] = useState(null);
 const [showComments, setShowComments] = useState(false);
+
 const usersData = useSelector((state) => state.usersReducer);
 const userData = useSelector((state) => state.userReducer);
 const dispatch = useDispatch();
+
 
 const updateItem = () => {
     if (textUpdate) {
@@ -78,9 +78,9 @@ const updateItem = () => {
                     </p>
                 </div>
                 <div className="CardHeader__Right">
-                    <span>
-                        le {dateParser(post.createdAt)}
-                    </span>                    
+                        <span> le {dateParser(post.createdAt)}</span>
+                    {/* {textUpdate === false && <span> le {dateParser(post.createdAt)}</span>}
+                    {textUpdate && (<span> modifié le {dateParser(post.updatedAt)} </span>)} */}
                         {userData._id === post.posterId || userData.isAdmin === true ? (
                         <div className="dropdown">
                             <i className="fa-solid fa-lg fa-ellipsis-vertical"></i>
