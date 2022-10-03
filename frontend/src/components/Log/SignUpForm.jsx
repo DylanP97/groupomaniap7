@@ -1,15 +1,30 @@
 import React, { useState } from "react";
 import axios from "axios";
 import SignInForm from "./SignInForm";
+import passwordValidator from 'password-validator';
+
 
 const SignUpForm = ( props ) => {
-
 
     const [formSubmit, setFormSubmit] = useState(false);
     const [pseudo, setPseudo] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
     const [controlPassword, setControlPassword] = useState("");
+
+    var schema = new passwordValidator();
+
+    schema
+    .is().min(6)
+    .is().max(100)                                             
+    .has().uppercase()  
+    .has().lowercase()                                          
+    .has().digits(1)                                          
+    .has().symbols(1)                                           
+    .has().not().spaces()                                       
+    .has().not('password')                                      
+    .has().not('123')                                           
+    .has().not('{', '}', '=', "'");
 
     const handleRegister = async (e) => {
       e.preventDefault();
@@ -22,9 +37,12 @@ const SignUpForm = ( props ) => {
      
       passwordConfirmError.innerHTML = "";
       termsError.innerHTML = "";
-  
 
-      if (password !== controlPassword || !terms.checked) {
+      if (schema.validate(password) !== true || password !== controlPassword || !terms.checked) {
+        if (schema.validate(password) !== true){
+          passwordError.innerHTML =
+          "Le mot de passe n'est pas correct";
+        }
         if (password !== controlPassword)
           passwordConfirmError.innerHTML =
             "Les mots de passe ne correspondent pas";
@@ -64,19 +82,23 @@ const SignUpForm = ( props ) => {
                   <label className="labelSignForm" htmlFor="pseudo">Pseudo</label>
                   <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) =>
                     setPseudo(e.target.value)} value={pseudo} placeholder="Pseudo" />
-                  <div className="pseudo error"></div>
+                  <span className="pseudo error"></span>
+                  <br />
                   <label className="labelSignForm" htmlFor="email">Email</label>
-                  <input setCustomValidity="Invalid field." className="inputSignForm" type="text" name="email" id="email" onChange={(e) =>
+                  <input setcustomvalidity="Invalid field." className="inputSignForm" type="text" name="email" id="email" onChange={(e) =>
                     setEmail(e.target.value)} value={email} placeholder="Email" />
-                  <div className="email error"></div>
+                  <span className="email error"></span>
+                  <br />
                   <label className="labelSignForm" htmlFor="password">Mot de passe</label>
                   <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) =>
                     setPassword(e.target.value)} value={password} placeholder="Mot de Passe" />
-                  <div className="password error"></div>
+                  <span className="password error"></span>
+                  <br />
                   <label className="labelSignForm" htmlFor="password-conf">Confirmer mot de passe</label>
                   <input className="inputSignForm" type="password" name="password" id="password-conf" onChange={(e) =>
                     setControlPassword(e.target.value)} value={controlPassword} placeholder="Confirmer le Mot de Passe"/>
-                  <div className="password-confirm error"></div>
+                  <span className="password-confirm error"></span>
+                  <br />
                   <div className="inputSignForm">
                     <input type="checkbox" id="terms" />
                     <label htmlFor="terms">
@@ -84,7 +106,8 @@ const SignUpForm = ( props ) => {
                       <a href="/" target="_blank" rel="noopener noreferrer">conditions générales </a>
                     </label>
                   </div>
-                  <div className="terms error"></div>
+                  <span className="terms error"></span>
+                  <br />
                   <input type="submit" value="Valider l'Inscription" className="btn btn--logForm"/>
                 </form>
             )}

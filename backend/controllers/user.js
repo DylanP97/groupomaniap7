@@ -4,29 +4,9 @@ const UserModel = require('../models/user');
 const ObjectID = require("mongoose").Types.ObjectId;
 const { signUpErrors, signInErrors } = require('../middleware/errors');
 const fs = require('fs');
-var passwordValidator = require('password-validator');
-
-// Create a schema
-var schema = new passwordValidator();
-
-// Add properties to it
-schema
-.is().min(8)                                                // Minimum length 8
-.is().max(100)                                              // Maximum length 100
-.has().uppercase()                                          // Must have uppercase letters
-.has().lowercase()                                          // Must have lowercase letters
-.has().digits(1)                                            // Must have at least 1 digit
-.has().symbols(1)                                           // Must have at least 1 symbol
-.has().not().spaces()                                       // Should not have spaces
-.has().not('password')                                      // Not include the following
-.has().not('123')                                           // Not include the following
-.has().not('{')                                             // Not include the following
-.has().not('}')                                             // Not include the following
-.has().not('=')                                             // Not include the following
-.has().not("'");                                            // Not include the following
 
 
-let emailRegExp = new RegExp('^[a-zA-Z0-9._\-]+[@]{1}(groupomania)+[.]{1}[a-z]{2,10}$');
+
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 
 const createToken = (id) => {
@@ -37,33 +17,20 @@ const createToken = (id) => {
 
 
 
-exports.signup = (req, res, next) => {
+
+exports.signup = async (req, res, next) => {
+
+    const {pseudo, email, password} = req.body
+
 
     try {
-        // if (emailRegExp.test(req.body.email)) {
-        //     if (schema.validate(req.body.password) == true) {
-                bcrypt.hash(req.body.password, 10)
-                .then(hash => {
-                    const user = new UserModel({
-                        pseudo: req.body.pseudo,
-                        email: req.body.email,
-                        password: hash
-                    });
-                    user.save()
-                    .then(() => res.status(201).json({ message: 'Utilisateur créé !'}))
-                    .catch(error => res.status(400).json({error}))
-                })
-                .catch(error => res.status(500).json({error}))
-        //     } else {
-        //         res.status(401).json({message: 'Mot de passe pas conforme'}) 
-        //     }
-        // } else {
-        //     res.status(401).json({message: 'Email non conforme'}) 
-        // }
+        const user = await UserModel.create({pseudo, email, password });
+        user.save()
+        res.status(201).json({ message: 'Utilisateur créé !'})
     }  
     catch(err) {
         const errors = signUpErrors(err);
-        res.status(200).send({ errors })
+        res.status(200).json({ errors })
       }
 }
 

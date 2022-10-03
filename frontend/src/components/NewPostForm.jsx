@@ -6,7 +6,6 @@ import { addPost, getPosts } from "../actions/post";
 // import ImageIcon from "../assets/styles/Icons/gallery.svg"
 import { isEmpty } from "../assets/utils/Utils";
 import { UidContext } from "./AppContext";
-import Popup from 'reactjs-popup';
 
 
 

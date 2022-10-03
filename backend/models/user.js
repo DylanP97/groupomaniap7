@@ -1,6 +1,12 @@
 const mongoose = require('mongoose');
 const uniqueValidator = require('mongoose-unique-validator');
 const validator = require('validator');
+const bcrypt = require('bcrypt');
+const { isEmail } = require('validator');
+
+let emailRegExp = new RegExp('^[a-zA-Z0-9._\-]+[@]{1}(groupomania)+[.]{1}[a-z]{2,10}$');
+
+
 
 const userSchema = mongoose.Schema({
     pseudo: {
@@ -14,16 +20,15 @@ const userSchema = mongoose.Schema({
     email: {
       type: String,
       required: true,
+      trim: true,
       unique: true,
-      validator(value){
-        if(!validator.isEmail(value)){
-            throw new Error("invalid email")
-        }
-      }
+      validate: emailRegExp
     },
     password: {
       type: String,
-      required: true
+      required: true,
+      minLength: 6,
+      maxLength: 100,
     },
     imageUrl: {
       type: String,
@@ -45,6 +50,27 @@ const userSchema = mongoose.Schema({
     },
 });
 
-userSchema.plugin(uniqueValidator)
+// userSchema.plugin(uniqueValidator)
+// play function before save into display: 'block',
+userSchema.pre("save", async function(next) {
+      const salt = await bcrypt.genSalt();
+      this.password = await bcrypt.hash(this.password, salt);
+  next();
+});
 
-module.exports = mongoose.model('User', userSchema);
+userSchema.statics.login = async function(email, password) {
+  const user = await this.findOne({ email });
+  if (user) {
+    const auth = await bcrypt.compare(password, user.password);
+    if (auth) {
+      return user;
+    }
+    throw Error('incorrect password');
+  }
+  throw Error('incorrect email')
+};
+
+const UserModel = mongoose.model("user", userSchema);
+
+module.exports = UserModel;
+
