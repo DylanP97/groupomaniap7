@@ -275,6 +275,9 @@ p::selection {
   position: relative;
   width: 100%;
 }
+.CardMain p {
+  white-space: pre-line;
+}
 
 .CardMain > textarea {
   margin-bottom: 5px;

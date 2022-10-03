@@ -39,11 +39,13 @@ const SignInForm = () => {
       <input className="inputSignForm" type="text" name="email" id="email" onChange={(e) =>
         setEmail(e.target.value)} placeholder="Email" value={email} />
       <div className="email error"></div>
+      <br />
       <label className="labelSignForm" htmlFor="password">Mot de passe</label>
       <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) =>
         setPassword(e.target.value)} placeholder="Mot de Passe" value={password} />
-      <input className="btn btn--logForm" type="submit" value="Je me connecte"/>
       <div className="password error"></div>
+      <br />
+      <input className="btn btn--logForm" type="submit" value="Je me connecte"/>
     </form>
   );
 };

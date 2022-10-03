@@ -27,12 +27,14 @@
         display: flex;
         align-items: center;
         flex-direction: row;
+
     }
 
     &__Right {
         display: flex;
         align-items: center;
         flex-direction: row;        
+
     }
 
     &__RightInner {
@@ -52,6 +54,10 @@
     flex-direction: column;
     position: relative;
     width: 100%;
+    
+    & p {
+        white-space: pre-line;
+    }
 }
 
 .CardMain > textarea {
