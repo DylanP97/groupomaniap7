@@ -6,14 +6,14 @@
 > ## How to Install?
 > *from the root directory, open a terminal for each:*
 > 
-> Backend :  `cd .\backend\` +  `npm install`
-> Frontend :  `cd .\frontend\` +  `npm install`
+> Backend :  `cd .\backend\` +  `npm install`<br/>
+> Frontend :  `cd .\frontend\` +  `npm install`<br/>
 
 > ## How to Launch?
 > *from the root directory, open a terminal for each:*
 > 
-> Backend :  `cd .\backend\` +  `npm start`
-> Frontend :  `cd .\frontend\` +  `npm start`
+> Backend :  `cd .\backend\` +  `npm start`<br/>
+> Frontend :  `cd .\frontend\` +  `npm start`<br/>
 > 
 
 > ## How to Setup?
