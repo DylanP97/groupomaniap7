@@ -3,6 +3,13 @@
 
 *React / Redux / Express / MongoDB / NodeJS* 
 
+
+## How to Install?
+*from the root directory, open a terminal for each:*
+
+Backend :  `cd .\backend\` +  `npm install`
+Frontend :  `cd .\frontend\` +  `npm install`
+
 ## How to Launch?
 *from the root directory, open a terminal for each:*
 
