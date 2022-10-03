@@ -52,7 +52,7 @@ export const likePost = (postId, userId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
-      url: `${process.env.REACT_APP_API_URL}api/post/like-post/` + postId,
+      url: `${process.env.REACT_APP_API_URL}api/post/like/` + postId,
       data: { id: userId },
     })
       .then((res) => {
@@ -66,7 +66,7 @@ export const unlikePost = (postId, userId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
-      url: `${process.env.REACT_APP_API_URL}api/post/unlike-post/` + postId,
+      url: `${process.env.REACT_APP_API_URL}api/post/unlike/` + postId,
       data: { id: userId },
     })
       .then((res) => {
@@ -107,7 +107,7 @@ export const addComment = (postId, commenterId, text, commenterPseudo) => {
   return (dispatch) => {
     return axios({
       method: "patch",
-      url: `${process.env.REACT_APP_API_URL}api/post/comment-post/${postId}`,
+      url: `${process.env.REACT_APP_API_URL}api/post/add-comment/${postId}`,
       data: { commenterId, text, commenterPseudo },
     })
       .then((res) => {
@@ -121,7 +121,7 @@ export const editComment = (postId, commentId, text) => {
   return (dispatch) => {
     return axios({
       method: "patch",
-      url: `${process.env.REACT_APP_API_URL}api/post/edit-comment-post/${postId}`,
+      url: `${process.env.REACT_APP_API_URL}api/post/edit-comment/${postId}`,
       data: { commentId, text },
     })
       .then((res) => {
@@ -135,7 +135,7 @@ export const deleteComment = (postId, commentId) => {
   return (dispatch) => {
     return axios({
       method: "patch",
-      url: `${process.env.REACT_APP_API_URL}api/post/delete-comment-post/${postId}`,
+      url: `${process.env.REACT_APP_API_URL}api/post/delete-comment/${postId}`,
       data: { commentId },
     })
       .then((res) => {

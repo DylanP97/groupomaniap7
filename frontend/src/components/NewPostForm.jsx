@@ -8,8 +8,6 @@ import { isEmpty } from "../assets/utils/Utils";
 import { UidContext } from "./AppContext";
 
 
-
-
 const NewPostForm = () => {
 
   const [message, setMessage] = useState("");

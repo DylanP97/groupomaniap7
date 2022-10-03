@@ -67,8 +67,7 @@ const updateItem = () => {
                             })
                             .join("")
                         }
-                        alt="poster-pic"
-                    />
+                        alt="poster-pic" />
                     <p>
                         {!isEmpty(usersData[0]) &&
                             usersData.map((user) => {
