@@ -7,7 +7,7 @@ import { isEmpty } from "../assets/utils/Utils";
 
 const Thread = () => {
     const [loadPost, setLoadPost] = useState(true);
-    const [count, setCount] = useState(20);
+    const [count, setCount] = useState(5);
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.postReducer);
   

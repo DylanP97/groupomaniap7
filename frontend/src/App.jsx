@@ -15,6 +15,7 @@ import Notification from './pages/Notification';
 import './assets/styles/index.css';
 import Log from "./components/Log";
 import { Loader } from "./assets/styles/Loader";
+import UseTerms from "./pages/UseTerms";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -72,11 +73,16 @@ const App = () => {
                   <Route path="/profile" element={<Profile />}/>
                   <Route path="/users" element={<Users />}/>
                   <Route path="/notification" element={<Notification />}/>
+                  <Route path="/useterms" element={<UseTerms/>}/>
                 </Routes > 
               </div>
             </>
             :
-            <Log signin={false} signup={true} />
+            <Routes>
+              {/* <Log signin={false} signup={true} /> */}
+              <Route path="/" element={<Log signin={false} signup={true}/>}/>
+              <Route path="/useterms" element={<UseTerms/>}/>
+            </Routes>
             }
          </>
         )}

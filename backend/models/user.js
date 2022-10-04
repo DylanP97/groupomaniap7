@@ -8,7 +8,7 @@ let emailRegExp = new RegExp('^[a-zA-Z0-9._\-]+[@]{1}(groupomania)+[.]{1}[a-z]{2
 
 
 
-const userSchema = mongoose.Schema({
+const userSchema = new mongoose.Schema({
     pseudo: {
       type: String,
       required: true,
@@ -55,13 +55,15 @@ const userSchema = mongoose.Schema({
 userSchema.pre("save", async function(next) {
       const salt = await bcrypt.genSalt();
       this.password = await bcrypt.hash(this.password, salt);
+      console.log("salt")
   next();
 });
 
-userSchema.statics.login = async function(email, password) {
-  const user = await this.findOne({ email });
+userSchema.statics.login = function(email, password) {
+  const user = this.findOne({email});
+  console.log(user);
   if (user) {
-    const auth = await bcrypt.compare(password, user.password);
+    const auth = bcrypt.compare(password, `${user.password}`);
     if (auth) {
       return user;
     }
@@ -73,4 +75,6 @@ userSchema.statics.login = async function(email, password) {
 const UserModel = mongoose.model("user", userSchema);
 
 module.exports = UserModel;
+
+
 

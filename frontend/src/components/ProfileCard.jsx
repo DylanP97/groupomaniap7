@@ -79,47 +79,47 @@ const ProfileCard = ({ user }) => {
     return (
 
         <div className="ProfileCardContainer" key={user._id}>
-                <form action="" className="UpdateUserForm" >
-                    
-                    <div className="profileInput">
-                        <p>Photo de profil : </p>
-                        <div>
-                        <label className="labelProfileForm" htmlFor="file">
-                        <img className="ProfilePageImg" src={user.imageUrl} alt={user.imageUrl}></img>
-                        </label>
-                        <input onChange={img => handleImage(img)} className="inputProfileForm inputImgProfile" type="file" id="file" accept=".jpg, .jpeg, .png"/>
-                        <button className="btn" onClick={removeImage}>Supprimer la photo</button>
-                        </div>
+            <form action="" className="UpdateUserForm" >
+                
+                <div className="profileInput">
+                    <p>Photo de profil : </p>
+                    <div>
+                    <label className="labelProfileForm" htmlFor="file">
+                    <img className="ProfilePageImg" src={user.imageUrl} alt={user.imageUrl}></img>
+                    </label>
+                    <input onChange={img => handleImage(img)} className="inputProfileForm inputImgProfile" type="file" id="file" accept=".jpg, .jpeg, .png"/>
+                    <button className="btn" onClick={removeImage}>Supprimer la photo</button>
                     </div>
-                    <div className="profileInput">
-                        <p>Pseudo : "{user.pseudo}"</p>
-                        <label className="labelProfileForm" htmlFor="pseudo"/>
-                        <input className="inputProfileForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} placeholder={user.pseudo} />
-                    </div>
-                    <div className="profileInput">
-                        <p>Email : "{user.email}"</p>
-                        <label className="labelProfileForm" htmlFor="email"/>
-                        <input className="inputProfileForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder={user.email}/>
-                    </div>
-                    <div className="profileInput">
-                        <p>Métier : "{user.job}"</p>
-                        <label className="labelProfileForm" htmlFor="job"/>
-                        <input className="inputProfileForm" type="text" name="job" id="job" onChange={(e) => setJob(e.target.value)} placeholder={user.job} />
-                    </div>
-                    <div className="profileInput">
-                        <p>Bio : "{user.bio}"</p>
-                        <label className="labelProfileForm" htmlFor="bio"/>
-                        <textarea className="inputProfileForm textbio" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
-                    </div>
-                    
-                    {/* <label className="labelProfileForm" htmlFor="password">Mot de passe</label>
-                    <input className="inputProfileForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" /> */}
+                </div>
+                <div className="profileInput">
+                    <p>Pseudo : "{user.pseudo}"</p>
+                    <label className="labelProfileForm" htmlFor="pseudo"/>
+                    <input className="inputProfileForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} placeholder={user.pseudo} />
+                </div>
+                <div className="profileInput">
+                    <p>Email : "{user.email}"</p>
+                    <label className="labelProfileForm" htmlFor="email"/>
+                    <input className="inputProfileForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder={user.email}/>
+                </div>
+                <div className="profileInput">
+                    <p>Métier : "{user.job}"</p>
+                    <label className="labelProfileForm" htmlFor="job"/>
+                    <input className="inputProfileForm" type="text" name="job" id="job" onChange={(e) => setJob(e.target.value)} placeholder={user.job} />
+                </div>
+                <div className="profileInput">
+                    <p>Bio : "{user.bio}"</p>
+                    <label className="labelProfileForm" htmlFor="bio"/>
+                    <textarea className="inputProfileForm textbio" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
+                </div>
+                
+                {/* <label className="labelProfileForm" htmlFor="password">Mot de passe</label>
+                <input className="inputProfileForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" /> */}
 
-                    <div className="ProfileBtnDiv">
-                        <button className="btn" onClick={cancelUser}>Annuler les modifications</button>
-                        <button className="btn" onClick={editUser}>Valider les modifications</button>            
-                    </div>
-                </form>
+                <div className="ProfileBtnDiv">
+                    <button className="btn" onClick={cancelUser}>Annuler les modifications</button>
+                    <button className="btn" onClick={editUser}>Valider les modifications</button>            
+                </div>
+            </form>
 
         </div>
     )
