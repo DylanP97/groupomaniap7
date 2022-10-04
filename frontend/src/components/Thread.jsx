@@ -32,7 +32,7 @@ const Thread = () => {
 
     return (
         <div className="thread">
-            <h3>Le fil d'actualité Groupomania <span role="img" aria-label="down-emoji">🔽</span></h3>
+            <h1 aria-label="hey-emoji">Le fil d'actualité Groupomania 🙋</h1>
             <div>
                 {!isEmpty(posts[0]) &&
                 posts.map((post) => {

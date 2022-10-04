@@ -77,20 +77,20 @@ const updateItem = () => {
                     </p>
                 </div>
                 <div className="CardHeader__Right">
-                        <span> le {dateParser(post.createdAt)}</span>
-                    {/* {textUpdate === false && <span> le {dateParser(post.createdAt)}</span>}
-                    {textUpdate && (<span> modifié le {dateParser(post.updatedAt)} </span>)} */}
-                        {userData._id === post.posterId || userData.isAdmin === true ? (
-                        <div className="dropdown">
-                            <i className="fa-solid fa-lg fa-ellipsis-vertical"></i>
-                            <div className="dropdown-content">
-                                <div className="dropdown-list" onClick={() => setIsUpdated(!isUpdated)}>
-                                    <p onClick={updateItem}>Editer le post</p>
-                                </div>
-                                <CardDelete id={post._id} />
+                    <span> le {dateParser(post.createdAt)}</span>
+                {/* {textUpdate === false && <span> le {dateParser(post.createdAt)}</span>}
+                {textUpdate && (<span> modifié le {dateParser(post.updatedAt)} </span>)} */}
+                    {userData._id === post.posterId || userData.isAdmin === true ? (
+                    <div className="dropdown">
+                        <i className="fa-solid fa-lg fa-ellipsis-vertical"></i>
+                        <div className="dropdown-content">
+                            <div className="dropdown-list" onClick={() => setIsUpdated(!isUpdated)}>
+                                <p onClick={updateItem}>Editer le post</p>
                             </div>
+                            <CardDelete id={post._id} />
                         </div>
-                        ) : null}
+                    </div>
+                    ) : null}
                 </div>
             </div>
             <div className="CardMain">

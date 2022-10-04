@@ -11,9 +11,7 @@ import GroupIcon from '../assets/styles/Icons/group.png';
 import NotifIcon from '../assets/styles/Icons/bell.png';
 import Logout from "./Log/Logout";
 
-const LogoStyle = styled.img`
-    height: 100px;
-`
+
 
 const Icons = styled.img`
     height: 30px;
@@ -28,8 +26,8 @@ const uid = useContext(UidContext);
 
     return (
         <nav className="NavContainer">
-            <Link to="/">
-                <LogoStyle src={DarkLogo} alt="LogoGroupomania"/>
+            <Link className="LogoLink" to="/">
+                <img className="DarkLogo" src={DarkLogo} alt="LogoGroupomania"/>
             </Link>
             <div className="NavContainer__menu">
                 <Link to="/profile">

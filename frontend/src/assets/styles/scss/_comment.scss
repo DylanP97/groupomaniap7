@@ -91,3 +91,13 @@
         transform: scale(1.1);
     }
   }
+
+
+
+@media only screen and (max-width: 768px) {
+
+  .comment {
+    margin: 10px 0px;
+    padding: 10px 5px;
+  }
+}

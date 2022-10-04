@@ -128,8 +128,8 @@ exports.deleteUser = (req, res, next) => {
     UserModel.findOne({ _id: req.params.id })
     .then(user => {
         
-        const filename = user.imageUrl.split('/images/')[1]
-        fs.unlink(`/images/${filename}`, () => {
+        const filename = user.imageUrl.split('/uploads/profil/')[1]
+        fs.unlink(`/uploads/profil/${filename}`, () => {
             UserModel.deleteOne({_id: req.params.id})
             .then(() => { res.status(200).json({message: "Compte supprimé !"})})
             .catch(error => res.status(401).json({ message : "Non-authorisé 2" }));
