@@ -1,5 +1,6 @@
 import React from "react";
 import { useSelector } from "react-redux";
+import Header from "../components/Header";
 
 import NewPostForm from "../components/NewPostForm";
 import Thread from "../components/Thread";
@@ -10,6 +11,7 @@ const Home = () => {
 
     return (
         <>
+            <Header />
             <h3>Salut {userData.pseudo} ! 👋 Quoi de neuf aujourd'hui ?</h3>
             <NewPostForm />
             <Thread />

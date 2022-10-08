@@ -5,8 +5,6 @@ const ObjectID = require("mongoose").Types.ObjectId;
 const { signUpErrors, signInErrors } = require('../middleware/errors');
 const fs = require('fs');
 
-
-
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 
 const createToken = (id) => {
@@ -16,12 +14,9 @@ const createToken = (id) => {
 };
 
 
-
-
 exports.signup = async (req, res, next) => {
 
     const {pseudo, email, password} = req.body
-
 
     try {
         const user = await UserModel.create({pseudo, email, password });
@@ -40,31 +35,24 @@ exports.login = async (req, res, next) => {
     const { email, password } = req.body
 
     try {
-        console.log("ppppp")
       const user = await UserModel.login(email, password);
-      console.log("lls")
       const token = createToken(user._id);
-      console.log("create")
       res.cookie('jwt', token, { httpOnly: true, maxAge});
-      console.log("poll")
       res.status(200).json({ user: user._id})
     } catch (err){
       const errors = signInErrors(err);
-      console.log("lol")
       res.status(200).json({ errors });
     }
 }
-
 
 exports.logout = (req, res) => {
     res.cookie('jwt', ' ', { maxAge: 1 });
     res.redirect('/');
 }
-
-
-
   
 exports.getAllUsers = (req, res, next) => {
+
+    console.log("getallusers : " + res.auth)
 
     UserModel.find().select("-password")
         .then((users) => res.status(200).json(users))

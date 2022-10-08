@@ -24,9 +24,8 @@ const app = express();
 const corsOptions = {
   origin: process.env.FRONTEND_URL,
   credentials: true,
-  'allowedHeaders': ['sessionId', 'Content-Type'],
-  'exposedHeaders': ['sessionId'],
-  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'allowedHeaders': ['Content-Type', 'Accept', 'Origin', 'X-Requested-With', 'Content', 'Authorization'],
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
   'preflightContinue': false
 }
 app.use(cors(corsOptions));
@@ -46,6 +45,12 @@ app.use(cookieParser());
 // jwt
 app.get('*', checkUser);
 app.get('/jwtid', requireAuth, (req, res) => {
+  console.log(res.locals.user._id)
+  const esriejsr = res.locals.user._id;
+  const userIde = esriejsr.toString();
+  console.log(userIde)
+  res.auth = userIde
+  console.log(res.auth)
   res.status(200).send(res.locals.user._id)
 });
 

@@ -4,8 +4,6 @@ import SignUpForm from "./Log/SignUpForm";
 
 const Log = ( props ) => {
 
-  console.log(props)
-
   const [signModal, setSignModal] = useState(props.signup ? true : false)
 
   const handleModals = (e) => {
