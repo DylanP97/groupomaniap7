@@ -2,11 +2,8 @@ const PostModel = require('../models/post');
 const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require('fs');
 
-
 exports.getAllPosts = (req, res, next) => {
     
-    console.log("getAllPosts : " + res.auth)
-
     PostModel.find().sort({ createdAt: -1 })
         .then((posts) => res.status(200).json(posts))
         .catch((error) => res.status(400).json({ message: error }))
@@ -36,6 +33,13 @@ exports.createPost = (req, res, next) => {
 }
 
 exports.modifyPost = (req, res, next) => {
+
+
+    const userId = req.auth.userId
+    const isAdmin = req.auth.isadmin
+    
+    console.log(userId)
+    console.log(isAdmin)
 
     const postObject = req.file ? {
         ...req.body,

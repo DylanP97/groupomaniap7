@@ -13,9 +13,6 @@ const Profile = () => {
     const uid = useContext(UidContext);
 
     return (
-        <>
-        {uid ?
-            (
             <div>
                 <Header/>
                 <h1>Mon Profil 👤</h1>
@@ -27,11 +24,6 @@ const Profile = () => {
                     })}
                 </div>
             </div>
-            ) : (
-            <Log signin={true} signup={false} />
-            )
-        }
-        </>    
     )
 }
 

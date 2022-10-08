@@ -12,19 +12,12 @@ const Users = () => {
 
     return (
 
-        <>
-        {uid ?
-            (
                 <div>
                     <Header/>
                     <h1>Voici tout les membres du réseau social de Groupomania</h1>
                     <UsersTable/>
                 </div>
-            )   :   (
-                <Log signin={true} signup={false} />
-            )
-        }
-        </>
+
     )
 
 }

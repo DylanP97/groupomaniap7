@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { AuthProvider , RequireAuth} from 'react-auth-kit'
+import { Routes, Route, Navigate, Router } from 'react-router-dom'
 import { useDispatch } from "react-redux";
 import { getUser } from "./actions/user";
 import { UidContext } from "./components/AppContext";
@@ -11,7 +12,8 @@ import Users from './pages/Users';
 import Notification from './pages/Notification';
 import './assets/styles/index.css';
 import UseTerms from "./pages/UseTerms";
-import Start from "./pages/Start";
+import Home from "./pages/Home";
+import Log from "./components/Log";
 
 
 const GlobalStyle = createGlobalStyle`
@@ -25,45 +27,36 @@ const GlobalStyle = createGlobalStyle`
 
 const App = () => {
 
-  const [uid, setUid] = useState(null);
-  const dispatch = useDispatch();
-
-
-  useEffect(() => {
-    const fetchToken = async () => {
-      await axios({
-        method: "get",
-        url: `${process.env.REACT_APP_API_URL}jwtid`,
-        withCredentials: true},
-      )
-        .then((res) => {
-          setUid(res.data);
-        })
-        .catch((err) => console.log("No token in app"));
-    };
-    fetchToken();
-
-    if (uid) dispatch(getUser(uid));
-
-    console.log(uid)
-  }, [uid, dispatch]);
-
-
 
   return (
-    <UidContext.Provider value={uid}>
-      <GlobalStyle />
-        {/* <div className="bodyContent"> */}
+    <AuthProvider 
+      authType = {'cookie'}
+      authName={'_auth'}
+      cookieDomain={window.location.hostname}
+      cookieSecure={true}>
           <Routes>
-            <Route path="/" element={<Start />}/>
-            <Route path="/profile" element={<Profile />}/>
-            <Route path="/users" element={<Users />}/>
+          <Route path="/login" element={< Log signin={false} signup={true}/>} />
+
+            <Route path="/" element={
+              <RequireAuth loginPath={'/login'}>
+                <Home />
+              </RequireAuth>
+            }/>
+            <Route path="/profile/:id" element={
+              <RequireAuth loginPath={'/login'}>
+                <Profile/>
+              </RequireAuth>
+            }/>
+            <Route path="/users" element={
+              <RequireAuth loginPath={'/login'}>
+                <Users />
+              </RequireAuth>
+            }/>
             {/* <Route path="/notification" element={<Notification />}/> */}
             {/* <Route path="/useterms" element={<UseTerms/>}/> */}
             <Route path="*" element={<Navigate to="/" replace />}/>
           </Routes > 
-        {/* </div> */}
-    </UidContext.Provider>
+    </AuthProvider>
   )
 }
 
