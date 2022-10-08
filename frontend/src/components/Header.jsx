@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { isEmpty } from "../assets/utils/Utils";
 import { UidContext } from "./AppContext";
 
+
 import styled from 'styled-components'
 import { Link } from 'react-router-dom'
 import DarkLogo from '../assets/styles/Logos/icon-left-font-monochrome-black.png'
@@ -20,6 +21,7 @@ const Icons = styled.img`
 
 
 const Header = () => {
+
 
 const usersData = useSelector((state) => state.usersReducer);
 const uid = useContext(UidContext);

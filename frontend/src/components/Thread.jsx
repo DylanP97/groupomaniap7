@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getPosts } from "../actions/post";
 import Card from "./Thread/Card";
 import { isEmpty } from "../assets/utils/Utils";
+import { useAuthHeader} from 'react-auth-kit'
+import axios from "axios";
 
 
 const Thread = () => {
@@ -10,25 +12,20 @@ const Thread = () => {
     const [count, setCount] = useState(5);
     const dispatch = useDispatch();
     const posts = useSelector((state) => state.postReducer);
-  
-    const loadMore = () => {
-      if (window.innerHeight + document.documentElement.scrollTop + 1 > document.scrollingElement.scrollHeight) {
-        setLoadPost(true);
+    const authHeader = useAuthHeader()
+    const config = {
+      headers: { 
+        authorization: authHeader() ,
+        "content-type" : "multipart/form-data",
+        Accept: FormData
       }
     }
-  
-    useEffect(() => {
-      if (loadPost) {
-        dispatch(getPosts(count));
-        setLoadPost(false);
-        setCount(count + 7);
-      }
-  
-      window.addEventListener('scroll', loadMore);
-      return () => window.removeEventListener('scroll', loadMore);
-    }, [loadPost, dispatch, count]);
 
-
+    const fetchPosts = () => {
+      axios.get(getPosts,config)
+     .then((res)=>{setLoadPost(false)})
+     .catch((err) => { console.log(err)})
+    }
 
     return (
         <div className="thread">
@@ -37,7 +34,7 @@ const Thread = () => {
                 {!isEmpty(posts[0]) &&
                 posts.map((post) => {
                     return (
-                      <Card post={post} key={post._id} />
+                      <Card config={config} fetch= {() => fetchPosts()} post={post} key={post._id} />
                     )
                 })}
             </div>

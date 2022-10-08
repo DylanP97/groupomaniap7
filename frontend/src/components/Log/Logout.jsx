@@ -6,6 +6,8 @@ import { Link } from 'react-router-dom'
 import axios from "axios";
 import cookie from "js-cookie";
 
+import { useSignOut } from 'react-auth-kit'
+
 import LogoutIcon from '../../assets/styles/Icons/logout.png'
 
 
@@ -15,6 +17,8 @@ margin: 0px 20px 0px 20px;
 `
 
 const Logout = () => {
+
+  const signOut = useSignOut()
 
   const removeCookie = (key) => {
     if (window !== "undefined") {
@@ -35,8 +39,9 @@ const Logout = () => {
   };
 
   return (
+
     <Link>
-      <Icons src={LogoutIcon} onClick={logout} alt="Icon-Logout"/>
+      <Icons src={LogoutIcon} onClick={e => {signOut()}} alt="Icon-Logout"/>
     </Link>
   );
 };

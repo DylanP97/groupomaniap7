@@ -1,18 +1,19 @@
 const jwt = require('jsonwebtoken')
 
-module.exports =(req, res, next) => {
+module.exports = (req, res, next) => {
     try {
-        const token = req.headers.authorization.split(' ')[1]
-        const decodedToken = jwt.verify(token, process.env.RANDOM_TOKEN_SECRET);
-        const userId = decodedToken.userId
-        const isadmin = decodedToken.isadmin
-        req.auth = { userId , isAdmin}
-        if(req.body.userId && req.body.userId !== userId){
-            throw 'User ID non valable'
-        }else{
-            next()
-        }
+        const token = req.headers.authorization.split(' ')[1];
+        jwt.verify(token, process.env.RANDOM_TOKEN_SECRET, (err, decodedToken) => {
+            if (err) {
+                res.status(402).json({ error })
+            } else {
+                const userId = decodedToken._id;
+                const isAdmin = decodedToken.isAdmin;
+                req.auth = { userId , isAdmin }
+                    next()
+            }
+        });
     } catch (error){
-        res.status(401).json ({ error : error | 'Requête non authentifiée !'})
+        res.status(401).json({ error })
     }
 }
