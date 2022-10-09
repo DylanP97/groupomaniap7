@@ -7,10 +7,10 @@ module.exports = (req, res, next) => {
             if (err) {
                 res.status(402).json({ error })
             } else {
-                const userId = decodedToken._id;
+                const userId = decodedToken.userId;
                 const isAdmin = decodedToken.isAdmin;
-                req.auth = { userId , isAdmin }
-                    next()
+                req.auth = { userId , isAdmin };
+                next()
             }
         });
     } catch (error){

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import styled from 'styled-components'
 import { useDispatch, useSelector } from "react-redux";
+import styled from 'styled-components'
+
 import { addComment, getPosts } from "../../actions/post";
 import { isEmpty, timestampParser } from "../../assets/utils/Utils";
 import EditDeleteComment from "./EditDeleteComment";
@@ -34,39 +35,28 @@ const CardComments = ({ post }) => {
       {post.comments.map((comment) => {
         return (
           <div className="comment"
-            // className={
-            //   comment.commenterId === userData._id
-            //     ? "comment-container client"
-            //     : "comment-container"
-            // }
             key={comment._id}>
-                <div className="comment__UpperDiv">
-                  <div className="comment__UpperLeftDiv">
-                    <ProfileImg
-                        src={
-                        !isEmpty(usersData[0]) &&
-                        usersData
-                            .map((user) => {
-                            if (user._id === comment.commenterId) return user.imageUrl;
-                            else return null;
-                            })
-                            .join("")
-                        }
-                        alt="commenter-pic"
-                    />
-                    <h3>{comment.commenterPseudo}</h3>
-                    {/* {comment.commenterId !== userData._id && (
-                        <FollowHandler
-                        idToFollow={comment.commenterId}
-                        type={"card"}
-                        />
-                    )} */}
-                  </div>
-                  <span>{timestampParser(comment.timestamp)}</span>
+              <div className="comment__UpperDiv">
+                <div className="comment__UpperLeftDiv">
+                  <ProfileImg
+                      src={
+                      !isEmpty(usersData[0]) &&
+                      usersData
+                          .map((user) => {
+                          if (user._id === comment.commenterId) return user.imageUrl;
+                          else return null;
+                          })
+                          .join("")
+                      }
+                      alt="commenter-pic"
+                  />
+                  <h3>{comment.commenterPseudo}</h3>
                 </div>
-              <p>{comment.text}</p>
-              <EditDeleteComment comment={comment} postId={post._id} />
-            </div>
+                <span>{timestampParser(comment.timestamp)}</span>
+              </div>
+            <p>{comment.text}</p>
+            <EditDeleteComment comment={comment} postId={post._id} />
+          </div>
         );
       })}
       {userData._id && (

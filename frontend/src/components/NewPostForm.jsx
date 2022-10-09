@@ -1,9 +1,7 @@
 import React, { useContext, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+
 import { addPost, getPosts } from "../actions/post";
-// import styled from 'styled-components'
-// import colors from "../assets/styles/colors";
-// import ImageIcon from "../assets/styles/Icons/gallery.svg"
 import { isEmpty } from "../assets/utils/Utils";
 import { UidContext } from "./AppContext";
 
@@ -41,35 +39,35 @@ const NewPostForm = () => {
 
 
   return (
-      <div className="NewPostContainer">
-        <div className="NewPostContainer__Main">
-          <img className="ProfileImg"
-            src={
-            !isEmpty(usersData[0]) &&
-            usersData
-                .map((user) => {
-                if (user._id === uid) return user.imageUrl;
-                else return null;
-                })
-                .join("")
-            } 
-            alt="poster-pic"
-          />
-          <textarea aria-label="newpostform" name="message" id="message" placeholder="Quoi de neuf ?"
-          onChange={(e) => setMessage(e.target.value)} value={message} />
-          <label className="UploadImagePart" htmlFor="file">
-            <i className="fa-sharp fa-solid fa-lg fa-images" aria-label="Icon-UploadImage"></i>
-            <p className="helptext">Ajouter une image !</p>
-          </label>
-          <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
-            const file = event.target.files[0]; setFile(file); setPostPicture(URL.createObjectURL(file));
-          }}></input>
-        </div>
-        <div className="NewPostContainer__Footer">  
-          <button className="btn" onClick={cancelPost}>Annuler message </button>
-          <button className="btn sendPost" onClick={handlePost}>Envoyer</button>
-        </div>
+    <div className="NewPostContainer">
+      <div className="NewPostContainer__Main">
+        <img className="ProfileImg"
+          src={
+          !isEmpty(usersData[0]) &&
+          usersData
+              .map((user) => {
+              if (user._id === uid) return user.imageUrl;
+              else return null;
+              })
+              .join("")
+          } 
+          alt="poster-pic"
+        />
+        <textarea aria-label="newpostform" name="message" id="message" placeholder="Quoi de neuf ?"
+        onChange={(e) => setMessage(e.target.value)} value={message} />
+        <label className="UploadImagePart" htmlFor="file">
+          <i className="fa-sharp fa-solid fa-lg fa-images" aria-label="Icon-UploadImage"></i>
+          <p className="helptext">Ajouter une image !</p>
+        </label>
+        <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
+          const file = event.target.files[0]; setFile(file); setPostPicture(URL.createObjectURL(file));
+        }}></input>
       </div>
+      <div className="NewPostContainer__Footer">  
+        <button className="btn" onClick={cancelPost}>Annuler message </button>
+        <button className="btn sendPost" onClick={handlePost}>Envoyer</button>
+      </div>
+    </div>
   );
 };
 

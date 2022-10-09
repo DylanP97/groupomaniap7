@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import SignInForm from "./Log/SignInForm";
-import SignUpForm from "./Log/SignUpForm";
+
+import SignInForm from "../components/Log/SignInForm";
+import SignUpForm from "../components/Log/SignUpForm";
 
 const Log = ( props ) => {
 
@@ -14,7 +15,6 @@ const Log = ( props ) => {
       setSignModal(false)
     }
   };
-
 
 
   return (

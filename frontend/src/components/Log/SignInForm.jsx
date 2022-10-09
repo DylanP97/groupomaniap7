@@ -9,31 +9,10 @@ const SignInForm = () => {
 
   const baseUrl = `${process.env.REACT_APP_API_URL}api/user/login`
   const signIn = useSignIn() 
-  const navigate = useNavigate() //permet de rediriger vers une pages
+  const navigate = useNavigate()
 
-  // const [email, setEmail] = useState("");
-  // const [password, setPassword] = useState("");
-  const [values, setValues] = useState({email:'', password: ''}) //values présentes dans le form envoyé au backend
-
+  const [values, setValues] = useState({email:'', password: ''})
   
-
-
-
-  // const handleLogin = (e) => {
-  //   e.preventDefault();
-  //   const emailError = document.querySelector(".email.error");
-  //   const passwordError = document.querySelector(".password.error");
-
-  //   axios({
-  //     method: "post",
-  //     url: `${process.env.REACT_APP_API_URL}api/user/login`,
-  //     withCredentials: true,
-  //     data: {
-  //       email,
-  //       password,
-  //     },
-  //   })
-
 
 const handleChanges = (prop) => (event) => {
   setValues({ ...values, [prop]: event.target.value })

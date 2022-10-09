@@ -1,11 +1,8 @@
 import React, { useContext, useEffect, useState } from "react";
-import { UidContext } from "../AppContext";
-// import Popup from "reactjs-popup";
-import "reactjs-popup/dist/index.css";
 import { useDispatch } from "react-redux";
+
+import { UidContext } from "../AppContext";
 import { likePost, unlikePost } from "../../actions/post";
-// import HeartIcon from '../../assets/styles/Icons/heart.png';
-// import HeartFilledIcon from '../../assets/styles/Icons/heart-filled.png';
 
 const LikeButton = ({ post }) => {
   const [liked, setLiked] = useState(false);
@@ -30,13 +27,7 @@ const LikeButton = ({ post }) => {
   return (
     <div className="LikeSection">
       {uid === null && (
-        console.log("s")
-        // <Popup
-        //   trigger={<img src={HeartIcon} alt="HeartIcon" />}
-        //   position={["bottom center", "bottom right", "bottom left"]}
-        //   closeOnDocumentClick >
-        //   <div>Connectez-vous pour aimer un post !</div>
-        // </Popup>
+        console.log("uid est null")
       )}
       {uid && liked === false && (
         <i onClick={like} className="fa-regular fa-lg fa-heart"></i>

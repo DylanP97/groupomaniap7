@@ -34,7 +34,6 @@ exports.createPost = (req, res, next) => {
 
 exports.modifyPost = (req, res, next) => {
 
-
     const userId = req.auth.userId
     const isAdmin = req.auth.isadmin
     
@@ -53,12 +52,6 @@ exports.modifyPost = (req, res, next) => {
 }
 
 exports.deletePost = (req, res, next) => {
-
-        // PostModel.findOne({ _id: req.params.id })
-        //     .then(req => fs.unlink(`${req.imageUrl}`, (err) => {
-        //         if (err) throw err;
-        //         console.log('image was deleted');
-        //     }));
 
         PostModel.findOneAndDelete({ _id: req.params.id })
             .then(() => { res.status(200).json({message: "Post supprimé !"})})

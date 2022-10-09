@@ -1,7 +1,6 @@
 import React from "react";
 
 
-
 const Card = ({ user }) => {
 
     return (
@@ -16,7 +15,6 @@ const Card = ({ user }) => {
             {user.bio && (
                 <span className="bioUserCard">Bio : {user.bio}</span>
             )}
-
         </div>
     )
 

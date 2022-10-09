@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-// import { isEmpty } from "../assets/utils/Utils";
-// import { UidContext } from "./AppContext";
+
 import { updateUser } from "../actions/user";
 import { getUsers } from "../actions/users"
 
@@ -9,7 +8,6 @@ import { getUsers } from "../actions/users"
 const ProfileCard = ({ user }) => {
 
     const userData = useSelector((state) => state.userReducer);
-    
     const dispatch = useDispatch();
 
     const [picture, setPicture] = useState(null);
@@ -23,7 +21,6 @@ const ProfileCard = ({ user }) => {
 
     const handleImage = (image) => {
         image.preventDefault();
-
         const file = image.target.files[0]
         console.log(file)
         setFile(file);
@@ -36,7 +33,6 @@ const ProfileCard = ({ user }) => {
         const data = new FormData();
         console.log(data)
         data.append("imageUrl", "./uploads/profil/random-user.png");
-
         await dispatch(updateUser(data, userData._id));
     }
 
@@ -64,23 +60,20 @@ const ProfileCard = ({ user }) => {
   
     const cancelUser = (e) => {
         e.preventDefault();
-
         setPicture("");
         setFile("");  
         setPseudo("")
         setEmail("");
-        // setPassword("");
+        setPassword("");
         setJob("");
         setBio("");
     }; 
-
 
 
     return (
 
         <div className="ProfileCardContainer" key={user._id}>
             <form action="" className="UpdateUserForm" >
-                
                 <div className="profileInput">
                     <p>Photo de profil : </p>
                     <div>
@@ -111,16 +104,11 @@ const ProfileCard = ({ user }) => {
                     <label className="labelProfileForm" htmlFor="bio"/>
                     <textarea className="inputProfileForm textbio" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
                 </div>
-                
-                {/* <label className="labelProfileForm" htmlFor="password">Mot de passe</label>
-                <input className="inputProfileForm" type="password" name="password" id="password" onChange={(e) => setPassword(e.target.value)} placeholder="Mot de Passe" /> */}
-
                 <div className="ProfileBtnDiv">
                     <button className="btn" onClick={cancelUser}>Annuler les modifications</button>
                     <button className="btn" onClick={editUser}>Valider les modifications</button>            
                 </div>
             </form>
-
         </div>
     )
 

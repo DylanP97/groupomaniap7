@@ -34,17 +34,16 @@ exports.signup = (req, res)=>{
 exports.login = (req, res)=>{
     const email = req.body.email
 
-    const userFound = UserModel.findOne({ where: { email: email } })
+    UserModel.findOne({ where: { email: email } })
         .then((user) => {
-            console.log-("test")
             if(!user) return res.status(404).json({ error: 'user not found!' })
             const validPassword = bcrypt.compare(req.body.password, user.password);
             if (validPassword) {
                 res.status(200).json({
                     token: jwt.sign(
                         { 
-                        userId: user.id,
-                        isAdmin :user.isAdmin 
+                        userId: user._id,
+                        isAdmin: user.isAdmin 
                         },
                         process.env.RANDOM_TOKEN_SECRET,
                         { expiresIn: '24h' },
@@ -57,36 +56,6 @@ exports.login = (req, res)=>{
         .catch(error => res.status(500).json({ error }))
 }
 
-
-
-
-// exports.login = async (req, res, next) => {
-
-//     const { email, password } = req.body
-
-//     try {
-//       const user = await UserModel.login(email, password);
-//       const token = createToken(user._id);
-
-//     //   console.log(user._id)
-//     //   const esriejsr = user._id;
-//     //   const userIde = esriejsr.toString();
-//     //   console.log(userIde);
-//     //   res.auth = userIde;
-//     //   console.log(res.auth)
-
-//       res.cookie('jwt', token, { httpOnly: true, maxAge});
-//       res.status(200).json({ user: user._id})
-//     } catch (err){
-//       const errors = signInErrors(err);
-//       res.status(200).json({ errors });
-//     }
-// }
-
-// exports.logout = (req, res) => {
-//     res.cookie('jwt', ' ', { maxAge: 1 });
-//     res.redirect('/');
-// }
   
 exports.getAllUsers = (req, res, next) => {
 

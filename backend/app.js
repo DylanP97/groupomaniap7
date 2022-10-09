@@ -10,8 +10,6 @@ app.use(helmet({ crossOriginResourcePolicy: false }))
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
 
-
-
 mongoose.connect(process.env.MONGO_SECRET,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
@@ -28,12 +26,10 @@ app.use((req, res, next) => {
 
 app.use(express.json())
 
-// jwt
-// app.get('*', checkUser);
-// app.get('/jwtid', requireAuth, (req, res, next) => {
-//   console.log(res.auth.user)
-//   res.status(200).send(res.auth.user)
-// });
+app.get('*', (req, res, next) => {
+  console.log("token headers.authorization ? : " + req.headers.authorization)
+  console.log("auth userId ? : " + req.auth.userId)
+});
 
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);

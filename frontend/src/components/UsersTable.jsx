@@ -1,12 +1,12 @@
 import React  from "react";
 import { useSelector } from "react-redux";
+
 import { isEmpty } from "../assets/utils/Utils";
 import UserCard from "./UsersTable/UserCard";
 
 
 const UsersTable = () => {
     const users = useSelector((state) => state.usersReducer);
-
 
     return (
         <div className="UsersTable">
