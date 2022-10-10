@@ -1,30 +1,25 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
-import { Link } from 'react-router-dom'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
+import { isEmpty } from "../assets/utils/Utils";
 import { UidContext } from "./AppContext";
-import Logout from "./Log/Logout";
 import DarkLogo from '../assets/styles/Logos/icon-left-font-monochrome-black.png'
 import HomeIcon from '../assets/styles/Icons/home.png';
 import GroupIcon from '../assets/styles/Icons/group.png';
 import NotifIcon from '../assets/styles/Icons/bell.png';
-import { isEmpty } from "../assets/utils/Utils";
-
+import Logout from "./Log/Logout";
 
 const Icons = styled.img`
     height: 30px;
     margin: 0px 20px 0px 20px;
 `
 
+const Header = () => {
 
-const Header = (props) => {
-    
-    const usersData = useSelector((state) => state.usersReducer);
-
-    const uid = useContext(UidContext);
-
-
+const usersData = useSelector((state) => state.usersReducer);
+const uid = useContext(UidContext);
 
     return (
         <nav className="NavContainer">

@@ -1,23 +1,16 @@
-import React  from "react";
-import { useSelector } from "react-redux";
-
-import { isEmpty } from "../assets/utils/Utils";
-import UserCard from "./UsersTable/UserCard";
+import React from "react";
+import UsersTable from "../components/UsersTable";
 
 
-const UsersTable = () => {
-    const users = useSelector((state) => state.usersReducer);
+const Users = () => {
 
     return (
-        <div className="UsersTable">
-            {!isEmpty(users[0]) &&
-            users.map((user) => {
-                return (
-                    <UserCard user={user} key={user._id} />
-                )
-            })}
+        <div>
+            <h1>Voici tout les membres du réseau social de Groupomania</h1>
+            <UsersTable/>
         </div>
-    );
+    )
+
 }
 
-export default UsersTable;
+export default Users;

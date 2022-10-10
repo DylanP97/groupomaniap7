@@ -1,19 +1,42 @@
-const jwt = require('jsonwebtoken')
+const jwt = require("jsonwebtoken");
+const UserModel = require("../models/user");
 
-module.exports = (req, res, next) => {
-    try {
-        const token = req.headers.authorization.split(' ')[1];
-        jwt.verify(token, process.env.RANDOM_TOKEN_SECRET, (err, decodedToken) => {
-            if (err) {
-                res.status(402).json({ error })
-            } else {
-                const userId = decodedToken.userId;
-                const isAdmin = decodedToken.isAdmin;
-                req.auth = { userId , isAdmin };
-                next()
-            }
-        });
-    } catch (error){
-        res.status(401).json({ error })
-    }
-}
+module.exports.checkUser = (req, res, next) => {
+  const token = req.cookies.jwt;
+
+  if (token) {
+    jwt.verify(token, process.env.RANDOM_TOKEN_SECRET, async (err, decodedToken) => {
+      if (err) {
+        res.locals.user = null;
+        res.cookie("jwt", " ", { maxAge: 1 });
+        next();
+      } else {
+        let user = await UserModel.findById(decodedToken.id);
+        res.locals.user = user;
+        res.auth = decodedToken.id;
+        console.log("il y a un token checkUser")
+        next();
+      }
+    });
+  } else {
+    res.locals.user = null;
+    console.log("erreur token checkUser")
+    next();
+  }
+};  
+
+// module.exports.requireAuth = (req, res, next) => {
+//   const token = req.cookies.jwt;
+//   if (token) {
+//     jwt.verify(token, process.env.RANDOM_TOKEN_SECRET, async (err, decodedToken) => {
+//       if (err) {
+//         res.sendStatus(200).json('token error when verified /jwtid RequireAuth')
+//       } else {
+//         console.log('Token was verified RequireAuth');
+//         next();
+//       }
+//     });
+//   } else {
+//     console.log('No token here when /jwtid RequireAuth');
+//   }
+// };

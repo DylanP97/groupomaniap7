@@ -1,43 +1,78 @@
-import React from "react";
-import { AuthProvider , RequireAuth} from 'react-auth-kit'
-import { Routes, Route, Navigate } from 'react-router-dom'
+import React, { useEffect, useState } from "react";
+import { Routes, Route } from 'react-router-dom'
+import { useDispatch, useSelector } from "react-redux";
+import { getUser } from "./actions/user";
+import { UidContext } from "./components/AppContext";
+import axios from "axios";
+import { isEmpty } from "./assets/utils/Utils";
 
-import './assets/styles/index.css';
+import Header from './components/Header';
+import Home from './pages/Home'
 import Profile from './pages/Profile';
 import Users from './pages/Users';
-import Home from "./pages/Home";
+import './assets/styles/index.css';
 import Log from "./pages/Log";
+import { Loader } from "./assets/styles/Loader";
+import UseTerms from "./pages/UseTerms";
 
 
 const App = () => {
 
-  return (
-    <AuthProvider 
-      authType = {'cookie'}
-      authName={'_auth'}
-      cookieDomain={window.location.hostname}
-      cookieSecure={true}>
-          <Routes>
-          <Route path="/login" element={<Log signin={false} signup={true}/>} />
+  const [isLoading, setIsLoading] = useState(true);
+  const [uid, setUid] = useState(null);
+  const dispatch = useDispatch();
+  const usersData = useSelector((state) => state.usersReducer);
 
-            <Route path="/" element={
-              <RequireAuth loginPath={'/login'}>
-                <Home />
-              </RequireAuth>
-            }/>
-            <Route path="/profile/:id" element={
-              <RequireAuth loginPath={'/login'}>
-                <Profile/>
-              </RequireAuth>
-            }/>
-            <Route path="/users" element={
-              <RequireAuth loginPath={'/login'}>
-                <Users />
-              </RequireAuth>
-            }/>
-            <Route path="*" element={<Navigate to="/" replace />}/>
-          </Routes > 
-    </AuthProvider>
+
+  useEffect(() => {
+    !isEmpty(usersData[0]) && setIsLoading(false);
+  }, [usersData]);
+
+  useEffect(() => {
+    const fetchToken = async () => {
+      await axios({
+        method: "get",
+        url: `${process.env.REACT_APP_API_URL}jwtid`,
+        withCredentials: true},
+      )
+        .then((res) => {
+          setUid(res.data);
+        })
+        .catch((err) => console.log("No token in app"));
+    };
+    fetchToken();
+
+    if (uid) dispatch(getUser(uid));
+  }, [uid, dispatch]);
+
+  return (
+    <UidContext.Provider value={uid}>
+      {isLoading ? (
+          <Loader/>
+        ) : (
+          <>
+            {uid ?
+            <>
+              <Header />
+              <div className="bodyContent">
+                <Routes>
+                  <Route index element={<Home />}/>
+                  <Route path="/" element={<Home />}/>
+                  <Route path="/profile" element={<Profile />}/>
+                  <Route path="/users" element={<Users />}/>
+                  <Route path="/useterms" element={<UseTerms/>}/>
+                </Routes > 
+              </div>
+            </>
+            :
+            <Routes>
+              <Route path="/" element={<Log signin={false} signup={true}/>}/>
+              <Route path="/useterms" element={<UseTerms/>}/>
+            </Routes>
+            }
+         </>
+        )}
+    </UidContext.Provider>
   )
 }
 

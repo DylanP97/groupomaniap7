@@ -2,12 +2,14 @@ const PostModel = require('../models/post');
 const ObjectID = require("mongoose").Types.ObjectId;
 const fs = require('fs');
 
+
 exports.getAllPosts = (req, res, next) => {
-    
+   
     PostModel.find().sort({ createdAt: -1 })
         .then((posts) => res.status(200).json(posts))
         .catch((error) => res.status(400).json({ message: error }))
 }
+
 
 exports.getOnePost = (req, res, next) => {
 
@@ -34,17 +36,12 @@ exports.createPost = (req, res, next) => {
 
 exports.modifyPost = (req, res, next) => {
 
-    const userId = req.auth.userId
-    const isAdmin = req.auth.isadmin
-    
-    console.log(userId)
-    console.log(isAdmin)
+    console.log(res.auth)
 
     const postObject = req.file ? {
         ...req.body,
         imageUrl: `${req.file.filename}`
     } : { ...req.body };
-
 
     PostModel.findOneAndUpdate({ _id: req.params.id}, { ...postObject, _id: req.params.id})
         .then(() => {res.status(200).json({message: "Post modifié !"})})
@@ -80,7 +77,6 @@ module.exports.likePost = async (req, res) => {
       }
   };
 
-
 module.exports.unlikePost = (req, res) => {
 if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
@@ -98,8 +94,6 @@ if (!ObjectID.isValid(req.params.id))
         return res.status(400).send(err);
     }
 };
-
-
 
 module.exports.commentPost = (req, res) => {
 if (!ObjectID.isValid(req.params.id))

@@ -1,14 +1,17 @@
-require('dotenv').config()
 const express = require('express');
-const helmet = require("helmet");
-const path = require('path')
-const app = express();
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
+const cors = require('cors')
+const {checkUser, requireAuth} = require('./middleware/auth');
 
-app.use(helmet({ crossOriginResourcePolicy: false }))
+require('dotenv').config()
 
+const path = require('path')
 const userRoutes = require('./routes/user');
 const postRoutes = require('./routes/post');
+const helmet = require("helmet");
+
 
 mongoose.connect(process.env.MONGO_SECRET,
   { useNewUrlParser: true,
@@ -16,23 +19,31 @@ mongoose.connect(process.env.MONGO_SECRET,
   .then(() => console.log('Connexion à MongoDB réussie !'))
   .catch(() => console.log('Connexion à MongoDB échouée !'));
 
+const app = express();
 
-app.use((req, res, next) => {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content, Accept, Content-Type, Authorization');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, PATCH, OPTIONS');
-  next();
+const corsOptions = {
+  origin: process.env.FRONTEND_URL,
+  credentials: true,
+  'allowedHeaders': ['sessionId', 'Content-Type'],
+  'exposedHeaders': ['sessionId'],
+  'methods': 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  'preflightContinue': false
+}
+app.use(cors(corsOptions));
+
+app.use(bodyParser.json());
+app.use(helmet());
+app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
+app.use(cookieParser());
+
+
+// jwt
+app.get('/jwtid', checkUser, (req, res) => {
+  res.status(200).send(res.auth)
 });
 
-app.use(express.json())
-
-app.get('*', (req, res, next) => {
-  console.log("token headers.authorization ? : " + req.headers.authorization)
-  console.log("auth userId ? : " + req.auth.userId)
-});
 
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
-app.use('/images', express.static(path.join(__dirname, 'images')))
 
 module.exports = app;

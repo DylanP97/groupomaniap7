@@ -41,7 +41,6 @@ const ProfileCard = ({ user }) => {
 
       if (picture || pseudo || email || password || job || bio) {
         const data = new FormData();
-        // data.append('posterId', userData._id);
         pseudo ? data.append('pseudo', pseudo) : data.append('pseudo', userData.pseudo)
         email ? data.append('email', email) : data.append('email', userData.email)
         // password ? data.append('password', password) : data.append('password', userData.password)
@@ -71,7 +70,6 @@ const ProfileCard = ({ user }) => {
 
 
     return (
-
         <div className="ProfileCardContainer" key={user._id}>
             <form action="" className="UpdateUserForm" >
                 <div className="profileInput">

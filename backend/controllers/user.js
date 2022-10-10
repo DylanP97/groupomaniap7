@@ -2,61 +2,54 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user');
 const ObjectID = require("mongoose").Types.ObjectId;
+const { signUpErrors, signInErrors } = require('../middleware/errors');
 const fs = require('fs');
+
 
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 
-// const createToken = (id) => {
-//     return jwt.sign({id}, process.env.RANDOM_TOKEN_SECRET, {
-//       expiresIn: maxAge
-//     })
-// };
-
-
-exports.signup = (req, res)=>{
-
-    bcrypt.hash(req.body.password, 10)
-    .then(hash => {
-        const user = UserModel.create({
-            email: req.body.email,
-            password: hash,
-            pseudo: req.body.pseudo,
-        })
-            .then(() => res.status(201).json({ message: 'user created' }))
-            .catch(error => res.status(400).json({ error }))
+const createToken = (id) => {
+    return jwt.sign({id}, process.env.RANDOM_TOKEN_SECRET, {
+      expiresIn: maxAge
     })
-    .catch(error => res.status(500).json({ error }))
+};
+
+
+exports.signup = async (req, res, next) => {
+
+    const {pseudo, email, password} = req.body
+
+    try {
+        const user = await UserModel.create({pseudo, email, password });
+        user.save()
+        res.status(201).json({ message: 'Utilisateur créé !'})
+    }  
+    catch(err) {
+        const errors = signUpErrors(err);
+        res.status(200).json({ errors })
+      }
 }
 
+exports.login = async (req, res, next) => {
 
+    const { email, password } = req.body
 
-//connection d'un utilisateur 
-exports.login = (req, res)=>{
-    const email = req.body.email
-
-    UserModel.findOne({ where: { email: email } })
-        .then((user) => {
-            if(!user) return res.status(404).json({ error: 'user not found!' })
-            const validPassword = bcrypt.compare(req.body.password, user.password);
-            if (validPassword) {
-                res.status(200).json({
-                    token: jwt.sign(
-                        { 
-                        userId: user._id,
-                        isAdmin: user.isAdmin 
-                        },
-                        process.env.RANDOM_TOKEN_SECRET,
-                        { expiresIn: '24h' },
-                    )
-                })
-            } else {
-                res.status(400).json({ error: "Invalid Password" });
-            }
-                })
-        .catch(error => res.status(500).json({ error }))
+    try {
+      const user = await UserModel.login(email, password);
+      const token = createToken(user._id);
+      res.cookie('jwt', token, { httpOnly: true, maxAge});
+      res.status(200).json({ user: user._id})
+    } catch (err){
+      const errors = signInErrors(err);
+      res.status(200).json({ errors });
+    }
 }
 
-  
+exports.logout = (req, res) => {
+    res.cookie('jwt', ' ', { maxAge: 1 });
+    res.redirect('/');
+}
+
 exports.getAllUsers = (req, res, next) => {
 
     UserModel.find().select("-password")

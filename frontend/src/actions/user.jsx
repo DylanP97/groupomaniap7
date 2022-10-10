@@ -2,11 +2,9 @@ import axios from "axios";
 
 export const GET_USER = "GET_USER";
 export const UPDATE_USER = "UPDATE_USER"
-
 export const GET_USER_ERRORS = "GET_USER_ERRORS";
 
 export const getUser = (uid) => {
-  
   return (dispatch) => {
     return axios
       .get(`${process.env.REACT_APP_API_URL}api/user/${uid}`)
@@ -17,12 +15,8 @@ export const getUser = (uid) => {
   };
 };
 
-
-
 export const updateUser = (data, id) => {
   return (dispatch) => {
-
-    console.log(id)
 
     return axios({
       method: "put",

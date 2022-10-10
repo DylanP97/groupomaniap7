@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 import { useSelector } from "react-redux";
 
-import { isEmpty } from "../assets/utils/Utils";
 import { UidContext } from "../components/AppContext";
+import { isEmpty } from "../assets/utils/Utils";
 import ProfileCard from "../components/ProfileCard"
-import Header from "../components/Header";
 
 
 const Profile = () => {
@@ -14,7 +13,6 @@ const Profile = () => {
 
     return (
         <div>
-            <Header/>
             <h1>Mon Profil 👤</h1>
             <div className="UsersTable">
                 {!isEmpty(users[0]) &&
