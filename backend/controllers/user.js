@@ -93,13 +93,19 @@ exports.deleteUser = (req, res, next) => {
 
     UserModel.findOne({ _id: req.params.id })
     .then(user => {
-        
+
+        if (req.params.id === res.auth || res.isadmin === true) {
+
         const filename = user.imageUrl.split('/uploads/profil/')[1]
         fs.unlink(`/uploads/profil/${filename}`, () => {
             UserModel.deleteOne({_id: req.params.id})
             .then(() => { res.status(200).json({message: "Compte supprimé !"})})
             .catch(error => res.status(401).json({ message : "Non-authorisé 2" }));
         })
+
+        } else {
+            { res.status(401).json({message: "Vous n'êtes pas authorisé à supprimer cete utilisateur!"})}
+        }
     })
     .catch(error => res.status(500).json({ error }));
 }
