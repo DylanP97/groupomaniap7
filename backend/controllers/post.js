@@ -27,10 +27,14 @@ exports.createPost = (req, res, next) => {
     const post = new PostModel({
         ...postObject
     });
-    
+
+    if (post.posterId === res.auth || res.isadmin === true) {
     post.save()
-    .then(() => { res.status(201).json({message: 'Post ajouté !'})})
-    .catch(error => { res.status(400).json( { error })})
+        .then(() => { res.status(201).json({message: 'Post ajouté !'})})
+        .catch(error => { res.status(400).json( { error })})
+    } else {
+        { res.status(401).json({message: "Vous n'êtes pas posté avec ce compte!"})}
+    }
 }
 
 exports.modifyPost = (req, res, next) => {

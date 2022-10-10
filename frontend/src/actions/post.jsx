@@ -43,6 +43,7 @@ export const addPost = (data) => {
       method: "post",
       url: `${process.env.REACT_APP_API_URL}api/post/`,
       data: data,
+      withCredentials: true
     })
       .then((res) => {
         if (res.data.errors) {

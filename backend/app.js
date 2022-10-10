@@ -53,6 +53,6 @@ app.get('/jwtid', checkUser, (req, res, next) => {
 
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
-app.use('./frontend/public/uploads', express.static('uploads'));
+// app.use('./frontend/public/uploads', express.static('uploads'));
 
 module.exports = app;

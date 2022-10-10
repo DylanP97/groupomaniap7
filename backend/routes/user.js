@@ -4,6 +4,7 @@ const userCtrl = require('../controllers/user')
 
 // middleware
 const auth = require('../middleware/auth');
+const {checkUser, requireAuth} = require('../middleware/auth');
 const multer = require('../middleware/multer-config');
 
 router.post('/signup', userCtrl.signup);
@@ -12,7 +13,7 @@ router.get("/logout", userCtrl.logout);
 
 router.get('/', userCtrl.getAllUsers);
 router.get('/:id', userCtrl.getOneUser);
-router.put('/:id', multer, userCtrl.updateUser);  
-router.delete('/:id', userCtrl.deleteUser);
+router.put('/:id', checkUser, multer, userCtrl.updateUser);  
+router.delete('/:id', checkUser, userCtrl.deleteUser);
 
 module.exports = router;

@@ -22,6 +22,7 @@ export const updateUser = (data, id) => {
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/user/${id}`,
       data: data,
+      withCredentials: true
     })
       .then((res) => {
         dispatch({ type: UPDATE_USER, payload: res.data });
