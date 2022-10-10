@@ -36,14 +36,13 @@ app.use(helmet());
 app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(cookieParser());
 
-
 // jwt
 app.get('/jwtid', checkUser, (req, res) => {
-  res.status(200).send(res.auth)
+  res.status(200).send(res.auth);
 });
-
 
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
+app.use('./frontend/public/uploads', express.static('uploads'));
 
 module.exports = app;

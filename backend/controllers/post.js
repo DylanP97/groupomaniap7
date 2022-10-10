@@ -10,7 +10,6 @@ exports.getAllPosts = (req, res, next) => {
         .catch((error) => res.status(400).json({ message: error }))
 }
 
-
 exports.getOnePost = (req, res, next) => {
 
     PostModel.findOne({ _id: req.params.id })
@@ -19,6 +18,8 @@ exports.getOnePost = (req, res, next) => {
 }    
 
 exports.createPost = (req, res, next) => {
+
+    console.log(req.auth)
     
     const postObject =  req.file ? {
         ...req.body,

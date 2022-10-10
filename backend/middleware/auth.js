@@ -12,8 +12,10 @@ module.exports.checkUser = (req, res, next) => {
         next();
       } else {
         let user = await UserModel.findById(decodedToken.id);
+        
         res.locals.user = user;
         res.auth = decodedToken.id;
+
         console.log("il y a un token checkUser")
         next();
       }
