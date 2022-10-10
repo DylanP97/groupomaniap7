@@ -1,9 +1,17 @@
+const http = require('http');
 const express = require('express');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const mongoose = require('mongoose');
 const cors = require('cors')
 const {checkUser, requireAuth} = require('./middleware/auth');
+const jwt = require("jsonwebtoken");
+const UserModel = require("./models/user");
+
+const postCtrl = require('./controllers/post')
+
+const auth = require('./middleware/auth');
+const multer = require('./middleware/multer-config');
 
 require('dotenv').config()
 
@@ -37,9 +45,11 @@ app.use(helmet.crossOriginResourcePolicy({ policy: "cross-origin" }));
 app.use(cookieParser());
 
 // jwt
-app.get('/jwtid', checkUser, (req, res) => {
+app.get('/jwtid', checkUser, (req, res, next) => {
   res.status(200).send(res.auth);
-});
+  next();
+})
+
 
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);

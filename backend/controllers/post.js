@@ -18,8 +18,6 @@ exports.getOnePost = (req, res, next) => {
 }    
 
 exports.createPost = (req, res, next) => {
-
-    console.log(req.auth)
     
     const postObject =  req.file ? {
         ...req.body,
@@ -29,7 +27,7 @@ exports.createPost = (req, res, next) => {
     const post = new PostModel({
         ...postObject
     });
-
+    
     post.save()
     .then(() => { res.status(201).json({message: 'Post ajouté !'})})
     .catch(error => { res.status(400).json( { error })})
@@ -37,25 +35,37 @@ exports.createPost = (req, res, next) => {
 
 exports.modifyPost = (req, res, next) => {
 
-    console.log(res.auth)
-
     const postObject = req.file ? {
         ...req.body,
         imageUrl: `${req.file.filename}`
     } : { ...req.body };
 
-    PostModel.findOneAndUpdate({ _id: req.params.id}, { ...postObject, _id: req.params.id})
-        .then(() => {res.status(200).json({message: "Post modifié !"})})
+    PostModel.findOne({ _id: req.params.id})
+        .then((post) => {
+            if (post.posterId === res.auth || res.isadmin === true) {
+                PostModel.findOneAndUpdate({ _id: req.params.id}, { ...postObject, _id: req.params.id})
+                .then(() => {res.status(200).json({message: "Post modifié !"})})
+                .catch(error => {res.status(400).json({ error })});
+            } else {
+                { res.status(401).json({message: "Vous n'êtes pas authorisé à modifier ce post!"})}
+            }
+        })
         .catch(error => {res.status(400).json({ error })});
-}
+    }
 
 exports.deletePost = (req, res, next) => {
-
-        PostModel.findOneAndDelete({ _id: req.params.id })
-            .then(() => { res.status(200).json({message: "Post supprimé !"})})
-            .catch(error => res.status(401).json({ error }))
-         
-    .catch(error => res.status(500).json({ error }));
+    
+    PostModel.findOne({ _id: req.params.id})
+        .then((post) => {
+            if (post.posterId === res.auth || res.isadmin === true) {
+            PostModel.findOneAndDelete({ _id: req.params.id })
+                .then(() => { res.status(200).json({message: "Post supprimé !"})})
+                .catch(error => res.status(401).json({ error }))
+            } else {
+                { res.status(401).json({message: "Vous n'êtes pas authorisé à modifier ce post!"})}
+            }
+        })
+        .catch(error => res.status(500).json({ error }));
 };
 
 
@@ -63,7 +73,7 @@ exports.deletePost = (req, res, next) => {
 module.exports.likePost = async (req, res) => {
     if (!ObjectID.isValid(req.params.id))
       return res.status(400).send("ID unknown : " + req.params.id);
-  
+
     try {
       await PostModel.findByIdAndUpdate(
         req.params.id,
@@ -74,8 +84,8 @@ module.exports.likePost = async (req, res) => {
         .then((data) => res.send(data))
         .catch((err) => res.status(500).send({ message: err }));
     } catch (err) {
-          return res.status(400).send(err);
-      }
+        return res.status(400).send(err);
+    }
   };
 
 module.exports.unlikePost = (req, res) => {
@@ -124,7 +134,7 @@ if (!ObjectID.isValid(req.params.id))
 module.exports.editCommentPost = (req, res) => {
 if (!ObjectID.isValid(req.params.id))
     return res.status(400).send("ID unknown : " + req.params.id);
-
+    
     try {
         return PostModel.findById(req.params.id, (err, docs) => {
         const theComment = docs.comments.find((comment) =>

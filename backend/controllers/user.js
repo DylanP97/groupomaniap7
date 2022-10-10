@@ -74,12 +74,18 @@ exports.updateUser = (req, res, next) => {
         imageUrl: req.file !== null ? "./uploads/profil/" + `${req.file.filename}` : "",
     } : { ...req.body };
 
-    UserModel.findOneAndUpdate({ _id: req.params.id },{ ...userObject, $set: { bio: req.body.bio, } },
-        { new: true, upsert: true, setDefaultsOnInsert: true })
+    if (req.params.id === res.auth || res.isadmin === true) {
 
-        .then((data) => res.send(data))
-        .catch((err) => res.status(500).send({ message: err }));
-} 
+        UserModel.findOneAndUpdate({ _id: req.params.id },{ ...userObject, $set: { bio: req.body.bio, } },
+            { new: true, upsert: true, setDefaultsOnInsert: true })
+
+            .then((data) => res.send(data))
+            .catch((err) => res.status(500).send({ message: err }));
+
+    } else {
+        { res.status(401).json({message: "Vous n'êtes pas authorisé à modifier cete utilisateur!"})}
+    }
+}
 
 exports.deleteUser = (req, res, next) => {
     if (!ObjectID.isValid(req.params.id))

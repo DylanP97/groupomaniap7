@@ -19,6 +19,9 @@ export const DELETE_COMMENT = "DELETE_COMMENT";
 // errors
 export const GET_POST_ERRORS = "GET_POST_ERRORS";
 
+
+
+
 export const getPosts = (num) => {
     return (dispatch) => {
       return axios
@@ -34,9 +37,13 @@ export const getPosts = (num) => {
 
 
 export const addPost = (data) => {
+
   return (dispatch) => {
-    return axios
-      .post(`${process.env.REACT_APP_API_URL}api/post/`, data)
+    return axios({
+      method: "post",
+      url: `${process.env.REACT_APP_API_URL}api/post/`,
+      data: data,
+    })
       .then((res) => {
         if (res.data.errors) {
           dispatch({ type: GET_POST_ERRORS, payload: res.data.errors });
@@ -54,6 +61,7 @@ export const likePost = (postId, userId) => {
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/like/` + postId,
       data: { id: userId },
+      withCredentials: true
     })
       .then((res) => {
         dispatch({ type: LIKE_POST, payload: { postId, userId } });
@@ -68,6 +76,7 @@ export const unlikePost = (postId, userId) => {
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/unlike/` + postId,
       data: { id: userId },
+      withCredentials: true
     })
       .then((res) => {
         dispatch({ type: UNLIKE_POST, payload: { postId, userId } });
@@ -82,6 +91,7 @@ export const modifyPost = (postId, message) => {
       method: "put",
       url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
       data: { message },
+      withCredentials: true
     })
       .then((res) => {
         dispatch({ type: MODIFY_POST, payload: { message, postId } });
@@ -95,6 +105,7 @@ export const deletePost = (postId) => {
     return axios({
       method: "delete",
       url: `${process.env.REACT_APP_API_URL}api/post/${postId}`,
+      withCredentials: true
     })
       .then((res) => {
         dispatch({ type: DELETE_POST, payload: { postId } });
@@ -109,6 +120,7 @@ export const addComment = (postId, commenterId, text, commenterPseudo) => {
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/add-comment/${postId}`,
       data: { commenterId, text, commenterPseudo },
+      withCredentials: true
     })
       .then((res) => {
         dispatch({ type: ADD_COMMENT, payload: { postId } });
@@ -123,6 +135,7 @@ export const editComment = (postId, commentId, text) => {
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/edit-comment/${postId}`,
       data: { commentId, text },
+      withCredentials: true
     })
       .then((res) => {
         dispatch({ type: EDIT_COMMENT, payload: { postId, commentId, text } });
@@ -137,6 +150,7 @@ export const deleteComment = (postId, commentId) => {
       method: "patch",
       url: `${process.env.REACT_APP_API_URL}api/post/delete-comment/${postId}`,
       data: { commentId },
+      withCredentials: true
     })
       .then((res) => {
         dispatch({ type: DELETE_COMMENT, payload: { postId, commentId } });

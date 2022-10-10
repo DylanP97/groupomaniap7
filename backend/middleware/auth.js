@@ -15,6 +15,7 @@ module.exports.checkUser = (req, res, next) => {
         
         res.locals.user = user;
         res.auth = decodedToken.id;
+        res.isadmin = user.isAdmin;
 
         console.log("il y a un token checkUser")
         next();
