@@ -60,7 +60,7 @@ const EditDeleteComment = ({ comment, postId }) => {
               }} className="interact">Supprimer le commentaire
                 {/* <Icons src={DeleteIcon} alt="DeleteIcon"/> */}
             </span>
-            <input className="spanBtnSubmit" type="submit" value="Valider modification" ></input>
+            <input className="btn sendPost" type="submit" value="Valider modification" ></input>
           </div>
         </form>
       )}

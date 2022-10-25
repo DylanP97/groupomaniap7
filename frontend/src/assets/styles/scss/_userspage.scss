@@ -4,7 +4,7 @@
     justify-content: center;
     flex-wrap: wrap;
     flex-direction: row;
-    margin: 5%;
+    margin: 2%;
 }
 
 .UserCardContainer {
@@ -12,13 +12,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    margin: 20px;
+    margin: 10px;
     border-radius: 30px;
     min-width: 200px;
-    max-width: 300px;
-    max-height: 200px;
+    max-width: 200px;
+    height: 100px;
     padding: 15px;
-    margin-bottom: 20px;
     box-shadow: 0px 0px 7px $tertiary;
     color: black;
     transition: transform .3s;
@@ -33,13 +32,19 @@
         justify-content: center;
         align-items: center;
         flex-direction: row;
-        margin-bottom: 20px;
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    & span {
+        text-align: center;
     }
 }
 
 .bioUserCard {
+    text-align: center;
     margin-top: 10px;
-    overflow: scroll;
+    overflow: hidden;
     white-space: wrap;
     text-overflow: ellipsis;
 }

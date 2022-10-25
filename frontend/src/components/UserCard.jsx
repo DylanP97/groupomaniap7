@@ -1,7 +1,7 @@
 import React from "react";
 
 
-const Card = ({ user }) => {
+const UserCard = ({ user }) => {
 
     return (
         <div className="UserCardContainer" key={user._id}>
@@ -12,12 +12,12 @@ const Card = ({ user }) => {
             {user.job && (
                 <span>Métier : {user.job}</span>
             )}
-            {user.bio && (
+            {/* {user.bio && (
                 <span className="bioUserCard">Bio : {user.bio}</span>
-            )}
+            )} */}
         </div>
     )
 
 }
 
-export default Card;
+export default UserCard;

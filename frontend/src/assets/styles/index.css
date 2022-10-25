@@ -6,8 +6,8 @@
 
 * {
   box-sizing: border-box;
-  font-size: 14px;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 16px;
+  font-family: "Calibri", "Trebuchet MS", Helvetica, sans-serif;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
 
 h1 {
   font-size: 1.5rem;
-  margin: 4% 6%;
+  margin: 2% 6%;
 }
 
 h2 {
@@ -30,16 +30,14 @@ h3 {
 }
 
 .bodyContent {
-  padding: 2% 10% 5% 10%;
+  padding: 0% 20% 5% 20%;
 }
 
 input {
   border-radius: 10px;
   padding: 5px;
+  border: 2px solid #FFD7D7;
   background-color: rgba(243, 243, 243, 0.653);
-}
-input:focus {
-  outline: #FFD7D7 3px solid;
 }
 
 .inputSignForm {
@@ -74,13 +72,13 @@ textarea {
   background-color: rgba(243, 243, 243, 0.653);
   border-radius: 20px;
   padding: 10px;
-  border: 1px solid #FD2D01;
+  border: 1px solid #FFD7D7;
   width: 100%;
   resize: none;
 }
 
 .NavContainer {
-  padding: 20px;
+  padding: 0px 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -151,7 +149,7 @@ textarea {
   border-radius: 20px;
   text-align: center;
   padding: 15px;
-  margin: 0% 15% 7% 15%;
+  margin: 0% 15% 4% 15%;
   background-color: white;
   box-shadow: 0px 0px 7px #4E5166;
 }
@@ -214,6 +212,9 @@ textarea {
   background-color: white;
   box-shadow: 0px 0px 7px #4E5166;
   padding: 20%;
+  width: -webkit-max-content;
+  width: -moz-max-content;
+  width: max-content;
   border-radius: 10px;
 }
 
@@ -269,7 +270,7 @@ p::selection {
   font-size: 1.2rem;
   border-radius: 20px;
   padding: 15px;
-  margin: 0% 15% 5% 15%;
+  margin: 0% 15% 2% 15%;
   background-color: white;
   box-shadow: 0px 0px 7px #4E5166;
 }
@@ -279,8 +280,8 @@ p::selection {
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 .CardHeader__Left {
   display: flex;
@@ -589,7 +590,7 @@ p::selection {
   justify-content: center;
   flex-wrap: wrap;
   flex-direction: row;
-  margin: 5%;
+  margin: 2%;
 }
 
 .UserCardContainer {
@@ -597,13 +598,12 @@ p::selection {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  margin: 20px;
+  margin: 10px;
   border-radius: 30px;
   min-width: 200px;
-  max-width: 300px;
-  max-height: 200px;
+  max-width: 200px;
+  height: 100px;
   padding: 15px;
-  margin-bottom: 20px;
   box-shadow: 0px 0px 7px #4E5166;
   color: black;
   transition: transform 0.3s;
@@ -617,12 +617,17 @@ p::selection {
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  margin-bottom: 20px;
+  width: 100%;
+  margin-bottom: 10px;
+}
+.UserCardContainer span {
+  text-align: center;
 }
 
 .bioUserCard {
+  text-align: center;
   margin-top: 10px;
-  overflow: scroll;
+  overflow: hidden;
   white-space: wrap;
   text-overflow: ellipsis;
 }
@@ -633,9 +638,9 @@ p::selection {
   align-items: flex-start;
   flex-direction: row;
   text-align: left;
-  width: 100%;
   background-color: white;
   box-shadow: 0px 0px 7px #4E5166;
+  border-radius: 20px;
   padding: 5%;
   position: relative;
 }

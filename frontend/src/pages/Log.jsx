@@ -19,7 +19,6 @@ const Log = ( props ) => {
 
   return (
     <main className="logPage">
-      <h1>Bienvenue chez Groupomania</h1>
       <section className="logPage__container">
         <div className="logPage__leftContainer"/>
         <div className="logPage__rightContainer">
