@@ -48,16 +48,15 @@ input {
 
 .inputSignForm{
   border: none;
+  outline: none;
 
-  &:not(:focus):not(:placeholder-shown) {
-    &:valid{
+  &:not(:focus):not(:placeholder-shown):valid {
       outline: 2px solid rgb(0, 232, 0);
     }
   
-    &:invalid{
+  &:not(:focus):not(:placeholder-shown):invalid {
       outline: 2px solid red;
     }
-  }
 }
 
 
@@ -82,7 +81,7 @@ textarea {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: $gradientColor;
+  background: $secondary;
 
   &__menu {
     display: flex;
