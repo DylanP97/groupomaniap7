@@ -1,7 +1,5 @@
-import React, { useContext } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
-import { UidContext } from "../components/AppContext";
-import Header from "../components/Header";
 import UserCard from "../components/UserCard";
 import { isEmpty } from "../assets/utils/Utils";
 
