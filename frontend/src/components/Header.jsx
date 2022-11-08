@@ -9,6 +9,7 @@ import DarkLogo from '../assets/styles/Logos/icon-left-font-monochrome-black.png
 import HomeIcon from '../assets/styles/Icons/home.png';
 import GroupIcon from '../assets/styles/Icons/group.png';
 // import NotifIcon from '../assets/styles/Icons/bell.png';
+// import NotifIcon from '../assets/styles/Icons/bell.png';
 import Logout from "./Log/Logout";
 
 const Icons = styled.img`
