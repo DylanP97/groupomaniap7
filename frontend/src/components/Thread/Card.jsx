@@ -73,13 +73,13 @@ const updateItem = () => {
                         </p>
                     </div>
                     <div className="CardHeader__Right">
-                        <span> le {dateParser(post.createdAt)}</span>
+                        <span>{dateParser(post.createdAt)}</span>
                         {userData._id === post.posterId || userData.isAdmin === true ? (
                         <div className="dropdown">
                             <i className="fa-solid fa-lg fa-ellipsis-vertical"></i>
                             <div className="dropdown-content">
                                 <div className="dropdown-list" onClick={() => setIsUpdated(!isUpdated)}>
-                                    <p onClick={updateItem}>Editer le post</p>
+                                    <p onClick={updateItem}>Edit post</p>
                                 </div>
                                 <CardDelete id={post._id} />
                             </div>
@@ -87,7 +87,7 @@ const updateItem = () => {
                         ) : null}
                     </div>
                 </div>
-                <div className="CardMain">
+                <div className="CardMain" style={{textAlign: post.message.length > 100 ? 'left' : 'center'}}>
                     {post.imageUrl && (
                     <CardImg src={post.imageUrl} alt={post.imageUrl} />
                     )}
@@ -97,7 +97,7 @@ const updateItem = () => {
                             <textarea defaultValue={post.message} onChange={(e) => setTextUpdate(e.target.value)} />
                             <div>
                                 <button className="btn" onClick={updateItem} >
-                                    Valider modification
+                                    Send
                                 </button>
                             </div>
                         </>

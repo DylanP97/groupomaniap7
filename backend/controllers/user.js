@@ -5,7 +5,6 @@ const ObjectID = require("mongoose").Types.ObjectId;
 const { signUpErrors, signInErrors } = require('../middleware/errors');
 const fs = require('fs');
 
-
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 
 const createToken = (id) => {
@@ -14,14 +13,16 @@ const createToken = (id) => {
     })
 };
 
-
 exports.signup = async (req, res, next) => {
 
     const {pseudo, email, password} = req.body
 
     try {
-        const user = await UserModel.create({pseudo, email, password });
-        user.save()
+        console.log("e0")
+        const user = await UserModel.create({pseudo, email, password});
+        console.log("e1")
+        // await user.save()
+        console.log("e2")
         res.status(201).json({ message: 'Utilisateur créé !'})
     }  
     catch(err) {

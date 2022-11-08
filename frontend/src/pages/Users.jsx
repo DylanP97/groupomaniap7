@@ -13,7 +13,7 @@ const Users = () => {
     return (
 
         <div>
-            <h1>Voici tout les membres du réseau social de Groupomania</h1>
+            <h1>Discover all our members!</h1>
             <div className="UsersTable">
                 {!isEmpty(users[0]) &&
                 users.map((user) => {

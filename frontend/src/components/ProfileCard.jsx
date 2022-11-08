@@ -28,12 +28,26 @@ const ProfileCard = ({ user }) => {
         console.log(file)
     }
 
+    const saveImage = async (e) => {
+        e.preventDefault();
+        const data = new FormData();
+        pseudo ? data.append('pseudo', pseudo) : data.append('pseudo', userData.pseudo)
+        email ? data.append('email', email) : data.append('email', userData.email)
+        if (file) data.append("imageUrl", file);
+        await dispatch(updateUser(data, userData._id));
+        dispatch(getUsers());
+        cancelUser();
+    }
+
     const removeImage = async (e) => {
         e.preventDefault();
         const data = new FormData();
-        console.log(data)
+        pseudo ? data.append('pseudo', pseudo) : data.append('pseudo', userData.pseudo)
+        email ? data.append('email', email) : data.append('email', userData.email)
         data.append("imageUrl", "./uploads/profil/random-user.png");
         await dispatch(updateUser(data, userData._id));
+        dispatch(getUsers());
+        cancelUser();
     }
 
     const editUser = async (e) => {
@@ -53,7 +67,7 @@ const ProfileCard = ({ user }) => {
         dispatch(getUsers());
         cancelUser();
       } else {
-        alert("Vous n'avez rien modifié")
+        alert("There is no changes!")
       }
     };
   
@@ -73,38 +87,37 @@ const ProfileCard = ({ user }) => {
         <div className="ProfileCardContainer" key={user._id}>
             <form action="" className="UpdateUserForm" >
                 <div className="profileInput">
-                    <p>Photo de profil : </p>
-                    <div>
+                    <p>Profile picture: </p>
                     <label className="labelProfileForm" htmlFor="file">
-                    <img className="ProfilePageImg" src={user.imageUrl} alt={user.imageUrl}></img>
+                        <img className="ProfilePageImg" src={user.imageUrl} alt={user.imageUrl}></img>
+                        <input onChange={img => handleImage(img)} className="inputProfileForm inputImgProfile" type="file" id="file" accept=".jpg, .jpeg, .png"/>
+                        <button className="btn" onClick={removeImage}>Delete photo</button>
+                        <button className="btn" onClick={saveImage}>Save photo</button>
                     </label>
-                    <input onChange={img => handleImage(img)} className="inputProfileForm inputImgProfile" type="file" id="file" accept=".jpg, .jpeg, .png"/>
-                    <button className="btn" onClick={removeImage}>Supprimer la photo</button>
-                    </div>
                 </div>
                 <div className="profileInput">
-                    <p>Pseudo : "{user.pseudo}"</p>
+                    <p>Username: "{user.pseudo}"</p>
                     <label className="labelProfileForm" htmlFor="pseudo"/>
                     <input className="inputProfileForm" type="text" name="pseudo" id="pseudo" onChange={(e) => setPseudo(e.target.value)} placeholder={user.pseudo} />
                 </div>
                 <div className="profileInput">
-                    <p>Email : "{user.email}"</p>
+                    <p>Email: "{user.email}"</p>
                     <label className="labelProfileForm" htmlFor="email"/>
                     <input className="inputProfileForm" type="text" name="email" id="email" onChange={(e) => setEmail(e.target.value)} placeholder={user.email}/>
                 </div>
                 <div className="profileInput">
-                    <p>Métier : "{user.job}"</p>
+                    <p>Job: "{user.job}"</p>
                     <label className="labelProfileForm" htmlFor="job"/>
                     <input className="inputProfileForm" type="text" name="job" id="job" onChange={(e) => setJob(e.target.value)} placeholder={user.job} />
                 </div>
                 <div className="profileInput">
-                    <p>Bio : "{user.bio}"</p>
+                    <p>About me: "{user.bio}"</p>
                     <label className="labelProfileForm" htmlFor="bio"/>
                     <textarea className="inputProfileForm textbio" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
                 </div>
                 <div className="ProfileBtnDiv">
-                    <button className="btn" onClick={cancelUser}>Annuler les modifications</button>
-                    <button className="btn" onClick={editUser}>Valider les modifications</button>            
+                    <button className="btn" onClick={cancelUser}>Cancel</button>
+                    <button className="btn" onClick={editUser}>Save</button>            
                 </div>
             </form>
         </div>

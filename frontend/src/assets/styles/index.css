@@ -42,6 +42,7 @@ input {
 
 .inputSignForm {
   border: none;
+  outline: none;
 }
 .inputSignForm:not(:focus):not(:-moz-placeholder-shown):valid {
   outline: 2px solid rgb(0, 232, 0);
@@ -82,7 +83,7 @@ textarea {
   display: flex;
   justify-content: space-around;
   align-items: center;
-  background: linear-gradient(10deg, rgb(253, 45, 1) 0%, rgb(253, 79, 44) 20%, rgb(255, 215, 215) 100%);
+  background: #FFD7D7;
 }
 .NavContainer__menu {
   display: flex;
@@ -305,7 +306,6 @@ p::selection {
   display: flex;
   justify-content: center;
   align-items: center;
-  text-align: center;
   flex-direction: column;
   position: relative;
   width: 100%;
@@ -406,13 +406,14 @@ p::selection {
   text-align: center;
   flex-direction: column;
   height: 100vh;
-  background: linear-gradient(10deg, rgb(253, 45, 1) 0%, rgb(253, 79, 44) 20%, rgb(255, 215, 215) 100%);
+  background: #FFD7D7;
 }
 .logPage h1 {
-  margin-bottom: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 .logPage__container {
-  height: 70%;
+  min-height: 70%;
   width: 70%;
   display: flex;
   justify-content: center;
@@ -437,14 +438,24 @@ p::selection {
   width: 50%;
   background-color: white;
 }
+.logPage .error {
+  padding: 0px 10%;
+}
 
-.logUpperPart {
+.logBottomPart {
   display: flex;
   align-items: center;
   height: 15%;
   justify-content: space-around;
   flex-direction: row;
   width: 100%;
+}
+.logBottomPart p {
+  text-decoration: underline;
+  font-style: italic;
+}
+.logBottomPart p:hover {
+  color: #FD2D01;
 }
 
 .logModalBtn {
@@ -469,9 +480,8 @@ p::selection {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  padding-bottom: 20px;
   background: white;
-  height: 85%;
+  max-height: 85%;
   width: 100%;
 }
 
@@ -639,9 +649,7 @@ p::selection {
   flex-direction: row;
   text-align: left;
   background-color: white;
-  box-shadow: 0px 0px 7px #4E5166;
-  border-radius: 20px;
-  padding: 5%;
+  padding: 0%;
   position: relative;
 }
 
@@ -649,6 +657,7 @@ p::selection {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  width: 90%;
 }
 
 .profileInput {
@@ -660,6 +669,9 @@ p::selection {
 .labelProfileForm {
   margin-bottom: 5px;
   width: 100%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
 }
 
 .inputProfileForm {
@@ -674,7 +686,7 @@ p::selection {
           clip-path: circle();
   -o-object-fit: cover;
      object-fit: cover;
-  position: absolute;
+  position: relative;
   top: 2%;
   right: 2%;
 }

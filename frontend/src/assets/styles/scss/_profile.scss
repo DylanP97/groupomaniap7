@@ -5,9 +5,7 @@
     flex-direction: row;
     text-align: left;
     background-color: white;
-    box-shadow: 0px 0px 7px $tertiary;
-    border-radius: 20px;
-    padding: 5%;
+    padding: 0%;
     position: relative;
 }
 
@@ -15,6 +13,7 @@
     display: flex;
     align-items: flex-start;
     flex-direction: column;
+    width: 90%;
 }
 
 .profileInput {
@@ -26,6 +25,9 @@
 .labelProfileForm {
     margin-bottom: 5px;
     width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
   }
 
   .inputProfileForm {
@@ -38,7 +40,7 @@
     width: 120px;
     clip-path: circle();
     object-fit: cover;
-    position: absolute;
+    position: relative;
     top: 2%;
     right: 2%;
   }

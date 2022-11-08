@@ -13,7 +13,6 @@ const ProfileImg = styled.img`
     margin: 0px 10px 0px 0px;
 `
 
-
 const CardComments = ({ post }) => {
   const [text, setText] = useState("");
   const usersData = useSelector((state) => state.usersReducer);
@@ -66,10 +65,10 @@ const CardComments = ({ post }) => {
               src={userData.imageUrl}
               alt="commenter-pic"
             />
-            <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Laisser un commentaire"/>
+            <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Leave a comment"/>
           </div>
           <div className="leaveComment__Btn">
-            <input className="btn" type="submit" value="Envoyer" />
+            <input className="btn" type="submit" value="Send" />
           </div>
         </form>
       )}

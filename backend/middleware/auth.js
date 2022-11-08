@@ -27,19 +27,3 @@ module.exports.checkUser = (req, res, next) => {
     next();
   }
 };  
-
-// module.exports.requireAuth = (req, res, next) => {
-//   const token = req.cookies.jwt;
-//   if (token) {
-//     jwt.verify(token, process.env.RANDOM_TOKEN_SECRET, async (err, decodedToken) => {
-//       if (err) {
-//         res.sendStatus(200).json('token error when verified /jwtid RequireAuth')
-//       } else {
-//         console.log('Token was verified RequireAuth');
-//         next();
-//       }
-//     });
-//   } else {
-//     console.log('No token here when /jwtid RequireAuth');
-//   }
-// };

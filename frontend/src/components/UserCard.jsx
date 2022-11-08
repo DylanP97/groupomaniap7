@@ -10,11 +10,8 @@ const UserCard = ({ user }) => {
                <h3>{user.pseudo}</h3>
             </div>
             {user.job && (
-                <span>Métier : {user.job}</span>
+                <span>{user.job}</span>
             )}
-            {/* {user.bio && (
-                <span className="bioUserCard">Bio : {user.bio}</span>
-            )} */}
         </div>
     )
 

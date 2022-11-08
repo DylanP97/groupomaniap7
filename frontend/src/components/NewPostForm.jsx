@@ -53,19 +53,19 @@ const NewPostForm = () => {
           } 
           alt="poster-pic"
         />
-        <textarea aria-label="newpostform" name="message" id="message" placeholder="Quoi de neuf ?"
+        <textarea aria-label="newpostform" name="message" id="message" placeholder="What's new?"
         onChange={(e) => setMessage(e.target.value)} value={message} />
         <label className="UploadImagePart" htmlFor="file">
           <i className="fa-sharp fa-solid fa-lg fa-images" aria-label="Icon-UploadImage"></i>
-          <p className="helptext">Ajouter une image !</p>
+          <p className="helptext">Add an image</p>
         </label>
         <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
           const file = event.target.files[0]; setFile(file); setPostPicture(URL.createObjectURL(file));
         }}></input>
       </div>
       <div className="NewPostContainer__Footer">  
-        <button className="btn" onClick={cancelPost}>Annuler message </button>
-        <button className="btn sendPost" onClick={handlePost}>Envoyer</button>
+        <button className="btn" onClick={cancelPost}>Cancel</button>
+        <button className="btn sendPost" onClick={handlePost}>Send</button>
       </div>
     </div>
   );

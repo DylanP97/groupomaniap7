@@ -3,10 +3,27 @@ const uniqueValidator = require('mongoose-unique-validator');
 const validator = require('validator');
 const bcrypt = require('bcrypt');
 const { isEmail } = require('validator');
+const passwordValidator = require('password-validator');
 
 let emailRegExp = new RegExp('^[a-zA-Z0-9._\-]+[@]{1}(groupomania)+[.]{1}[a-z]{2,10}$');
 
-const userSchema = new mongoose.Schema({
+var schema = new passwordValidator();
+
+  schema
+  .is().min(6)
+  .is().max(100)                                             
+  .has().uppercase()  
+  .has().lowercase()                                          
+  .has().digits(1)                                          
+  .has().symbols(1)                                           
+  .has().not().spaces()                                       
+  .has().not('password')                                      
+  .has().not('123')                                           
+  .has().not('{', '}', '=', "'");
+
+
+const userSchema = new mongoose.Schema(
+  {    
     pseudo: {
       type: String,
       required: true,
@@ -46,24 +63,44 @@ const userSchema = new mongoose.Schema({
       default: false,
       required: true
     },
-});
+  },
+  {
+    timestamps: true,
+  }
+);
 
 userSchema.pre("save", async function(next) {
-      const salt = await bcrypt.genSalt();
-      this.password = await bcrypt.hash(this.password, salt);
+  if (schema.validate(this.password)){
+    console.log("triggerda")
+    // const salt = await bcrypt.genSalt();
+    // console.log("salt : " + salt)
+    let hash = await bcrypt.hash(this.password, 10);
+    console.log("hash : " + hash)
+    this.password = hash
+    console.log("this.password : " + this.password)
+
+  } else {
+    throw Error('incorrect password');
+  }
   next();
 });
 
-userSchema.statics.login = function(email, password) {
-  const user = this.findOne({email});
+userSchema.statics.login = async function(email, password) {
+  const user = await this.findOne({email});
   if (user) {
-    const auth = bcrypt.compare(password, `${user.password}`);
+    console.log(password)
+    console.log(user.password)
+    const auth = await bcrypt.compare(password, user.password);
+    console.log(auth)
     if (auth) {
+      console.log("truee")
       return user;
+    } else {
+      throw Error('incorrect password');
     }
-    throw Error('incorrect password');
+  } else {
+    throw Error('incorrect email')
   }
-  throw Error('incorrect email')
 };
 
 const UserModel = mongoose.model("user", userSchema);

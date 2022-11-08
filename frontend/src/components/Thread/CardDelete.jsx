@@ -10,9 +10,9 @@ const CardDelete = (props) => {
 
   return (
     <div className="dropdown-list" onClick={() => {
-        if (window.confirm("Voulez-vous supprimer ce post ?")) {
+        if (window.confirm("Do you want to delete this post?")) {
           deleteQuote(); }}}>
-      <p>Supprimer le post</p>
+      <p>Delete post</p>
     </div>
   );
 };

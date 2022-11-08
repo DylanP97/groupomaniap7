@@ -8,7 +8,7 @@ import { UidContext } from "./AppContext";
 import DarkLogo from '../assets/styles/Logos/icon-left-font-monochrome-black.png'
 import HomeIcon from '../assets/styles/Icons/home.png';
 import GroupIcon from '../assets/styles/Icons/group.png';
-import NotifIcon from '../assets/styles/Icons/bell.png';
+// import NotifIcon from '../assets/styles/Icons/bell.png';
 import Logout from "./Log/Logout";
 
 const Icons = styled.img`
@@ -47,9 +47,6 @@ const uid = useContext(UidContext);
 
                 <Link to="/users">
                     <Icons src={GroupIcon} alt="Icon-Group"/>
-                </Link>
-                <Link to="/notification">
-                    <Icons src={NotifIcon} alt="Icon-Notification"/>
                 </Link>
                 <Logout />
             </div>

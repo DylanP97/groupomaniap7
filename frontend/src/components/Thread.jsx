@@ -22,7 +22,7 @@ const Thread = () => {
     if (loadPost) {
       dispatch(getPosts(count));
       setLoadPost(false);
-      setCount(count + 7);
+      setCount(count + 5);
     }
 
     window.addEventListener('scroll', loadMore);
@@ -33,7 +33,6 @@ const Thread = () => {
 
   return (
     <div className="thread">
-        <h1 aria-label="hey-emoji">Le fil d'actualité 🙋</h1>
         <div>
             {!isEmpty(posts[0]) &&
             posts.map((post) => {
