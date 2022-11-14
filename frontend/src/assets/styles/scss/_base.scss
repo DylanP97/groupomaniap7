@@ -40,10 +40,6 @@ input {
   padding: 5px;
   border: 2px solid $secondary;
   background-color: rgba(243, 243, 243, 0.653);
-
-  // &:focus {
-  //   border: $secondary 3px solid;
-  // }
 }
 
 .inputSignForm{
@@ -58,7 +54,6 @@ input {
       outline: 2px solid red;
     }
 }
-
 
 span {
   font-style: italic;
@@ -76,7 +71,7 @@ textarea {
 }
 
 
-.NavContainer {
+.navContainer {
   padding: 0px 20px;
   display: flex;
   justify-content: space-around;
@@ -114,7 +109,7 @@ textarea {
   padding-bottom: 50px;
 }
 
-.image-upload {
+.imageUpload {
   display: none;
 }
 
@@ -132,7 +127,7 @@ textarea {
   }
 }
 
-.ProfileImg {
+.profileImg {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -145,7 +140,7 @@ textarea {
   object-fit: cover;
 }
 
-.NewPostContainer {
+.newPostContainer {
   border-radius: 20px;
   text-align: center;
   padding: 15px;
@@ -153,13 +148,13 @@ textarea {
   background-color: white;
   box-shadow: 0px 0px 7px $tertiary;
 
-  &__Main {
+  &__main {
     display: flex;
     justify-content: center;
     align-items: center;
   }
 
-  &__Footer {
+  &__footer {
     display: flex;
     justify-content: flex-end;
     padding-right: 20px;
@@ -187,27 +182,26 @@ textarea {
 .fa-heart {
   color: $primary;
 
- &:hover {
-  color: $primary;
-  cursor: pointer;
- }
+  &:hover {
+    color: $primary;
+    cursor: pointer;
+  }
 }
 
 .fa-images {
   margin: 0px 20px 0px 20px;
 }
 
-
-.UploadImagePart {
+.uploadImagePart {
   position: relative;
 }
 
-.fa-images:hover + .helptext {
+.fa-images:hover + .helpText {
     display: block;
     opacity: 1;
 }
 
-.helptext {
+.helpText {
   display: none;
   opacity: 0;
   position: absolute;
@@ -237,7 +231,7 @@ p::selection {
   font-weight: bold;
 }
 
-.DarkLogo{
+.darkLogo{
   height: 100px;
 }
 
@@ -247,19 +241,19 @@ p::selection {
     padding: 5% 0% 10% 0%;
   }
 
-  .NavContainer {
+  .navContainer {
     padding: 10px 40px;
   }  
 
-  .LogoLink {
+  .logoLink {
     display: none;
   }
 
-  .NewPostContainer {
+  .newPostContainer {
     margin: 0% 5% 10% 5%;
   }
 
-  nav .ProfileImg {
+  nav .profileImg {
     margin: 20px;
   }
 

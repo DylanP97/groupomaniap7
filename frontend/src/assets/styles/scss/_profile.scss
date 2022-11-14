@@ -1,4 +1,4 @@
-.ProfileCardContainer {
+.profileCardContainer {
     display: flex;
     justify-content: center;
     align-items: flex-start;
@@ -9,7 +9,7 @@
     position: relative;
 }
 
-.UpdateUserForm{
+.updateUserForm{
     display: flex;
     align-items: flex-start;
     flex-direction: column;
@@ -35,7 +35,7 @@
     width: 100%;
 }
 
-.ProfilePageImg {
+.profilePageImg {
     height: 120px;
     width: 120px;
     clip-path: circle();
@@ -46,7 +46,7 @@
   }
   
 
-.textbio {
+.textBio {
     height: 120px;
 }
 
@@ -55,7 +55,7 @@
     display: none;
 }
 
-.ProfileBtnDiv {
+.profileBtnDiv {
     width: 100%;
     height: 100%;
     display: flex;
@@ -69,11 +69,8 @@
     }
 }
 
-
-
 @media only screen and (max-width: 768px) {
-
-    .ProfilePageImg {
+    .profilePageImg {
         height: 100px;
         width: 100px;
     }

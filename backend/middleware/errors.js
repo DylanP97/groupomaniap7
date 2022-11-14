@@ -1,7 +1,5 @@
 module.exports.signUpErrors = (err) => {
     let errors = { password: "", pseudo: "", email: ""};
-
-    console.log(err.message)
   
     if (err.message.includes("pseudo"))
       errors.pseudo = "Username already taken or wrong";
@@ -24,8 +22,6 @@ module.exports.signUpErrors = (err) => {
   module.exports.signInErrors = (err) => {
     let errors = { email: '', password: ''}
   
-    console.log(err.message)
-
     if (err.message.includes("email")) 
       errors.email = "Unknown email";
     

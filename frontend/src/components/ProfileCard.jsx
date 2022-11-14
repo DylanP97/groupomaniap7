@@ -84,12 +84,12 @@ const ProfileCard = ({ user }) => {
 
 
     return (
-        <div className="ProfileCardContainer" key={user._id}>
-            <form action="" className="UpdateUserForm" >
+        <div className="profileCardContainer" key={user._id}>
+            <form action="" className="updateUserForm" >
                 <div className="profileInput">
                     <p>Profile picture: </p>
                     <label className="labelProfileForm" htmlFor="file">
-                        <img className="ProfilePageImg" src={user.imageUrl} alt={user.imageUrl}></img>
+                        <img className="profilePageImg" src={process.env.REACT_APP_API_URL + user.imageUrl} alt={user.imageUrl}></img>
                         <input onChange={img => handleImage(img)} className="inputProfileForm inputImgProfile" type="file" id="file" accept=".jpg, .jpeg, .png"/>
                         <button className="btn" onClick={removeImage}>Delete photo</button>
                         <button className="btn" onClick={saveImage}>Save photo</button>
@@ -113,9 +113,9 @@ const ProfileCard = ({ user }) => {
                 <div className="profileInput">
                     <p>About me: "{user.bio}"</p>
                     <label className="labelProfileForm" htmlFor="bio"/>
-                    <textarea className="inputProfileForm textbio" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
+                    <textarea className="inputProfileForm textBio" type="text" name="bio" id="bio" onChange={(e) => setBio(e.target.value)} placeholder={user.bio} />
                 </div>
-                <div className="ProfileBtnDiv">
+                <div className="profileBtnDiv">
                     <button className="btn" onClick={cancelUser}>Cancel</button>
                     <button className="btn" onClick={editUser}>Save</button>            
                 </div>

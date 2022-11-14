@@ -48,9 +48,9 @@ const EditDeleteComment = ({ comment, postId }) => {
             <span className="interact">Cancel</span>
           </label>
           <br />
-          <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} defaultValue={comment.text} />
+          <input className="leaveComment__field" type="text" name="text" onChange={(e) => setText(e.target.value)} defaultValue={comment.text} />
           <br />
-          <div className="CommentEditFooter">
+          <div className="commentEditFooter">
             <span onClick={() => {
                 if (window.confirm("Do you want to delete this comment?")) {
                   handleDelete();

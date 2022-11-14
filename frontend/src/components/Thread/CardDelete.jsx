@@ -9,7 +9,7 @@ const CardDelete = (props) => {
   const deleteQuote = () => dispatch(deletePost(props.id));
 
   return (
-    <div className="dropdown-list" onClick={() => {
+    <div className="dropdownList" onClick={() => {
         if (window.confirm("Do you want to delete this post?")) {
           deleteQuote(); }}}>
       <p>Delete post</p>

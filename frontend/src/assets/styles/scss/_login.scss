@@ -78,7 +78,7 @@
   }
 } 
 
-.modal-noactive {
+.modalNoActive {
   background-color: $secondary;
 }
 
@@ -105,18 +105,8 @@
   width: 75%;
 }
 
-@media only screen and (max-width: 1024px) {
-  // .logPage {
-
-  //   &__container {
-  //     flex-direction: column;
-  //   }
-}
-
 @media only screen and (max-width: 768px) {
-
   .logPage {
-
     &__container {
       flex-direction: column;
     }
@@ -130,5 +120,4 @@
       width: 100%;
     }
   }
-
 }

@@ -39,14 +39,14 @@ const NewPostForm = () => {
 
 
   return (
-    <div className="NewPostContainer">
-      <div className="NewPostContainer__Main">
-        <img className="ProfileImg"
+    <div className="newPostContainer">
+      <div className="newPostContainer__main">
+        <img className="profileImg"
           src={
           !isEmpty(usersData[0]) &&
           usersData
               .map((user) => {
-              if (user._id === uid) return user.imageUrl;
+              if (user._id === uid) return process.env.REACT_APP_API_URL + user.imageUrl;
               else return null;
               })
               .join("")
@@ -55,15 +55,15 @@ const NewPostForm = () => {
         />
         <textarea aria-label="newpostform" name="message" id="message" placeholder="What's new?"
         onChange={(e) => setMessage(e.target.value)} value={message} />
-        <label className="UploadImagePart" htmlFor="file">
+        <label className="uploadImagePart" htmlFor="file">
           <i className="fa-sharp fa-solid fa-lg fa-images" aria-label="Icon-UploadImage"></i>
-          <p className="helptext">Add an image</p>
+          <p className="helpText">Add an image</p>
         </label>
-        <input className="image-upload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
+        <input className="imageUpload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {
           const file = event.target.files[0]; setFile(file); setPostPicture(URL.createObjectURL(file));
         }}></input>
       </div>
-      <div className="NewPostContainer__Footer">  
+      <div className="newPostContainer__footer">  
         <button className="btn" onClick={cancelPost}>Cancel</button>
         <button className="btn sendPost" onClick={handlePost}>Send</button>
       </div>

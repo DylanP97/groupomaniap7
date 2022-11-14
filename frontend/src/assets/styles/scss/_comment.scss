@@ -1,12 +1,12 @@
 
 
-.CommentSection {
+.commentSection {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
 
-    &__Trigger {
+    &__trigger {
         display: flex;
         justify-content: flex-start;
         align-items: center;
@@ -14,31 +14,24 @@
     }
 }
 
-.CardComments {
+.cardComments {
     width: 100%;
 }
 
-// .allComments {
-//     padding: 10px;
-//     margin: 10px;
-// }
-
-
 .comment {
-    
     padding: 10px;
     margin: 10px;
     box-shadow: 0px 0px 7px $tertiary;
     border-radius: 10px;
 
-    &__UpperDiv {
+    &__upperDiv {
         display: flex;
         justify-content: space-between;
         align-items: center;
         flex-direction: row;
     }
     
-    &__UpperLeftDiv {
+    &__upperLeftDiv {
         display: flex;
         justify-content: space-between;
         align-items: center;
@@ -49,17 +42,17 @@
 .leaveComment {
     margin: 10px;
 
-    &__UpperDiv {
+    &__upperDiv {
         display: flex;
         align-items: center;
         justify-content: center;
         flex-direction: row;
     }
 
-    &__Field {
+    &__field {
         width: 100%;
     }
-    &__Btn {
+    &__btn {
         display: flex;
         justify-content: flex-end;
         align-items: center;
@@ -67,7 +60,7 @@
     }
 }
 
-.CommentEditFooter {
+.commentEditFooter {
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -85,7 +78,6 @@
     transition: transform .3s;
 
     &:hover {
-
         background-color: $primary;
         color: white;
         transform: scale(1.1);
@@ -95,7 +87,6 @@
 
 
 @media only screen and (max-width: 768px) {
-
   .comment {
     margin: 10px 0px;
     padding: 10px 5px;

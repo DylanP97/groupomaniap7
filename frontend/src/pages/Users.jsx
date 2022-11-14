@@ -12,7 +12,7 @@ const Users = () => {
 
         <div>
             <h1>Discover all our members!</h1>
-            <div className="UsersTable">
+            <div className="usersTable">
                 {!isEmpty(users[0]) &&
                 users.map((user) => {
                     return <UserCard user={user} key={user._id} />;

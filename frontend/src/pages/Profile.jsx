@@ -14,7 +14,7 @@ const Profile = () => {
     return (
         <div>
             <h1>My Profil 👤</h1>
-            <div className="profile-main">
+            <div className="profileMain">
                 {!isEmpty(users[0]) &&
                 users.map((user) => {
                     if (user._id === uid) return <ProfileCard user={user} key={user._id} />;

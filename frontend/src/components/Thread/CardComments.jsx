@@ -35,14 +35,14 @@ const CardComments = ({ post }) => {
         return (
           <div className="comment"
             key={comment._id}>
-              <div className="comment__UpperDiv">
-                <div className="comment__UpperLeftDiv">
+              <div className="comment__upperDiv">
+                <div className="comment__upperLeftDiv">
                   <ProfileImg
                       src={
                       !isEmpty(usersData[0]) &&
                       usersData
                           .map((user) => {
-                          if (user._id === comment.commenterId) return user.imageUrl;
+                          if (user._id === comment.commenterId) return process.env.REACT_APP_API_URL + user.imageUrl;
                           else return null;
                           })
                           .join("")
@@ -60,14 +60,14 @@ const CardComments = ({ post }) => {
       })}
       {userData._id && (
         <form className="leaveComment" action="" onSubmit={handleComment}>
-          <div className="leaveComment__UpperDiv">
+          <div className="leaveComment__upperDiv">
             <ProfileImg
-              src={userData.imageUrl}
+              src={process.env.REACT_APP_API_URL + userData.imageUrl}
               alt="commenter-pic"
             />
-            <input className="leaveComment__Field" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Leave a comment"/>
+            <input className="leaveComment__field" type="text" name="text" onChange={(e) => setText(e.target.value)} value={text} placeholder="Leave a comment"/>
           </div>
-          <div className="leaveComment__Btn">
+          <div className="leaveComment__btn">
             <input className="btn" type="submit" value="Send" />
           </div>
         </form>

@@ -78,14 +78,14 @@ textarea {
   resize: none;
 }
 
-.NavContainer {
+.navContainer {
   padding: 0px 20px;
   display: flex;
   justify-content: space-around;
   align-items: center;
   background: #FFD7D7;
 }
-.NavContainer__menu {
+.navContainer__menu {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -114,7 +114,7 @@ textarea {
   padding-bottom: 50px;
 }
 
-.image-upload {
+.imageUpload {
   display: none;
 }
 
@@ -131,7 +131,7 @@ textarea {
   cursor: pointer;
 }
 
-.ProfileImg {
+.profileImg {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -146,7 +146,7 @@ textarea {
      object-fit: cover;
 }
 
-.NewPostContainer {
+.newPostContainer {
   border-radius: 20px;
   text-align: center;
   padding: 15px;
@@ -154,12 +154,12 @@ textarea {
   background-color: white;
   box-shadow: 0px 0px 7px #4E5166;
 }
-.NewPostContainer__Main {
+.newPostContainer__main {
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.NewPostContainer__Footer {
+.newPostContainer__footer {
   display: flex;
   justify-content: flex-end;
   padding-right: 20px;
@@ -194,16 +194,16 @@ textarea {
   margin: 0px 20px 0px 20px;
 }
 
-.UploadImagePart {
+.uploadImagePart {
   position: relative;
 }
 
-.fa-images:hover + .helptext {
+.fa-images:hover + .helpText {
   display: block;
   opacity: 1;
 }
 
-.helptext {
+.helpText {
   display: none;
   opacity: 0;
   position: absolute;
@@ -239,7 +239,7 @@ p::selection {
   font-weight: bold;
 }
 
-.DarkLogo {
+.darkLogo {
   height: 100px;
 }
 
@@ -247,23 +247,23 @@ p::selection {
   .bodyContent {
     padding: 5% 0% 10% 0%;
   }
-  .NavContainer {
+  .navContainer {
     padding: 10px 40px;
   }
-  .LogoLink {
+  .logoLink {
     display: none;
   }
-  .NewPostContainer {
+  .newPostContainer {
     margin: 0% 5% 10% 5%;
   }
-  nav .ProfileImg {
+  nav .profileImg {
     margin: 20px;
   }
   h3 {
     margin: 5% 6%;
   }
 }
-.CardContainer {
+.cardContainer {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -276,7 +276,7 @@ p::selection {
   box-shadow: 0px 0px 7px #4E5166;
 }
 
-.CardHeader {
+.cardHeader {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -284,17 +284,17 @@ p::selection {
   padding-top: 0px;
   padding-bottom: 0px;
 }
-.CardHeader__Left {
+.cardHeader__left {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
-.CardHeader__Right {
+.cardHeader__right {
   display: flex;
   align-items: center;
   flex-direction: row;
 }
-.CardHeader__RightInner {
+.cardHeader__rightInner {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -302,7 +302,7 @@ p::selection {
   margin-left: 30px;
 }
 
-.CardMain {
+.cardMain {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -310,15 +310,15 @@ p::selection {
   position: relative;
   width: 100%;
 }
-.CardMain p {
+.cardMain p {
   white-space: pre-line;
 }
 
-.CardMain > textarea {
+.cardMain > textarea {
   margin-bottom: 5px;
 }
 
-.CardFooter {
+.cardFooter {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -328,30 +328,18 @@ p::selection {
   width: 100%;
 }
 
-.LikeSection {
+.likeSection {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
 }
 
-.fa-heart {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 20px;
-  margin: 0px 20px 0px 20px;
-  color: black;
-}
-.fa-heart--hover {
-  color: #FD2D01;
-}
-
 .dropdown {
   position: relative;
 }
 
-.dropdown-content {
+.dropdownContent {
   display: none;
   justify-content: center;
   align-items: center;
@@ -367,10 +355,22 @@ p::selection {
   transform: translateY(-20px);
   transition: opacity 260ms ease-in-out transform 260ms ease-in-out;
 }
-.dropdown-content:hover {
+.dropdownContent:hover {
   display: block;
   transform: translateY(0px);
   z-index: 300;
+}
+
+.fa-heart {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 20px;
+  margin: 0px 20px 0px 20px;
+  color: black;
+}
+.fa-heart--hover {
+  color: #FD2D01;
 }
 
 .fa-ellipsis-vertical {
@@ -383,18 +383,18 @@ p::selection {
   z-index: 300;
 }
 
-.dropdown-list {
+.dropdownList {
   padding: 5px 20px 5px 20px;
   border-radius: 20px;
 }
 
-.dropdown-list:hover {
+.dropdownList:hover {
   color: white;
   background-color: #FD2D01;
 }
 
 @media only screen and (max-width: 768px) {
-  .CardContainer {
+  .cardContainer {
     margin: 5%;
     padding: 10px;
   }
@@ -471,7 +471,7 @@ p::selection {
   background-color: #FFD7D7;
 }
 
-.modal-noactive {
+.modalNoActive {
   background-color: #FFD7D7;
 }
 
@@ -511,20 +511,20 @@ p::selection {
     width: 100%;
   }
 }
-.CommentSection {
+.commentSection {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: column;
 }
-.CommentSection__Trigger {
+.commentSection__trigger {
   display: flex;
   justify-content: flex-start;
   align-items: center;
   flex-direction: row;
 }
 
-.CardComments {
+.cardComments {
   width: 100%;
 }
 
@@ -534,13 +534,13 @@ p::selection {
   box-shadow: 0px 0px 7px #4E5166;
   border-radius: 10px;
 }
-.comment__UpperDiv {
+.comment__upperDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
   flex-direction: row;
 }
-.comment__UpperLeftDiv {
+.comment__upperLeftDiv {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -550,23 +550,23 @@ p::selection {
 .leaveComment {
   margin: 10px;
 }
-.leaveComment__UpperDiv {
+.leaveComment__upperDiv {
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: row;
 }
-.leaveComment__Field {
+.leaveComment__field {
   width: 100%;
 }
-.leaveComment__Btn {
+.leaveComment__btn {
   display: flex;
   justify-content: flex-end;
   align-items: center;
   padding: 5px 20px 5px 20px;
 }
 
-.CommentEditFooter {
+.commentEditFooter {
   display: flex;
   justify-content: flex-end;
   align-items: center;
@@ -595,7 +595,7 @@ p::selection {
     padding: 10px 5px;
   }
 }
-.UsersTable {
+.usersTable {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -603,7 +603,7 @@ p::selection {
   margin: 2%;
 }
 
-.UserCardContainer {
+.userCardContainer {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -618,11 +618,11 @@ p::selection {
   color: black;
   transition: transform 0.3s;
 }
-.UserCardContainer:hover {
+.userCardContainer:hover {
   background-color: #FFD7D7;
   transform: scale(1.1);
 }
-.UserCardContainer__UpperDiv {
+.userCardContainer__upperDiv {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -630,7 +630,7 @@ p::selection {
   width: 100%;
   margin-bottom: 10px;
 }
-.UserCardContainer span {
+.userCardContainer span {
   text-align: center;
 }
 
@@ -642,7 +642,7 @@ p::selection {
   text-overflow: ellipsis;
 }
 
-.ProfileCardContainer {
+.profileCardContainer {
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -653,7 +653,7 @@ p::selection {
   position: relative;
 }
 
-.UpdateUserForm {
+.updateUserForm {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
@@ -679,7 +679,7 @@ p::selection {
   width: 100%;
 }
 
-.ProfilePageImg {
+.profilePageImg {
   height: 120px;
   width: 120px;
   -webkit-clip-path: circle();
@@ -691,7 +691,7 @@ p::selection {
   right: 2%;
 }
 
-.textbio {
+.textBio {
   height: 120px;
 }
 
@@ -699,7 +699,7 @@ p::selection {
   display: none;
 }
 
-.ProfileBtnDiv {
+.profileBtnDiv {
   width: 100%;
   height: 100%;
   display: flex;
@@ -707,13 +707,13 @@ p::selection {
   align-items: center;
   margin-top: 10px;
 }
-.ProfileBtnDiv .btn {
+.profileBtnDiv .btn {
   width: 45%;
   height: 100%;
 }
 
 @media only screen and (max-width: 768px) {
-  .ProfilePageImg {
+  .profilePageImg {
     height: 100px;
     width: 100px;
   }

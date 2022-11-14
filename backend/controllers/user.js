@@ -18,11 +18,7 @@ exports.signup = async (req, res, next) => {
     const {pseudo, email, password} = req.body
 
     try {
-        console.log("e0")
         const user = await UserModel.create({pseudo, email, password});
-        console.log("e1")
-        // await user.save()
-        console.log("e2")
         res.status(201).json({ message: 'Utilisateur créé !'})
     }  
     catch(err) {
@@ -72,7 +68,7 @@ exports.updateUser = (req, res, next) => {
 
     const userObject = req.file ? {
         ...req.body,
-        imageUrl: req.file !== null ? "./uploads/profil/" + `${req.file.filename}` : "",
+        imageUrl: req.file !== null ? "uploads/profil/" + `${req.file.filename}` : "",
     } : { ...req.body };
 
     if (req.params.id === res.auth || res.isadmin === true) {

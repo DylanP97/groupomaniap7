@@ -25,7 +25,7 @@ const LikeButton = ({ post }) => {
   }, [uid, post.usersLiked, liked]);
 
   return (
-    <div className="LikeSection">
+    <div className="likeSection">
       {uid === null && (
         console.log("uid est null")
       )}

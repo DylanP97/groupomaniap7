@@ -1,7 +1,7 @@
 
 
 
-.CardContainer {
+.cardContainer {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -15,7 +15,7 @@
 }
 
 
-.CardHeader {
+.cardHeader {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -23,21 +23,21 @@
     padding-top: 0px;
     padding-bottom: 0px;
 
-    &__Left {
+    &__left {
         display: flex;
         align-items: center;
         flex-direction: row;
 
     }
 
-    &__Right {
+    &__right {
         display: flex;
         align-items: center;
         flex-direction: row;        
 
     }
 
-    &__RightInner {
+    &__rightInner {
         display: flex;
         justify-content: center;
         align-items: center;
@@ -46,7 +46,7 @@
     }
 }
 
-.CardMain {
+.cardMain {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -59,11 +59,11 @@
     }
 }
 
-.CardMain > textarea {
+.cardMain > textarea {
     margin-bottom: 5px;
 }
 
-.CardFooter {
+.cardFooter {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -73,33 +73,18 @@
     width: 100%;
 }
 
-
-.LikeSection {
+.likeSection {
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: row;
 }
 
-.fa-heart {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 20px;
-    margin: 0px 20px 0px 20px;
-    color: black;
-
-    &--hover {
-        color: $primary;
-    }
-}
-
-
 .dropdown {
     position: relative;
 }
 
-.dropdown-content {
+.dropdownContent {
     display: none;
     justify-content: center;
     align-items: center;
@@ -120,6 +105,19 @@
     }
 }
 
+.fa-heart {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20px;
+    margin: 0px 20px 0px 20px;
+    color: black;
+
+    &--hover {
+        color: $primary;
+    }
+}
+
 .fa-ellipsis-vertical {
     padding: 0px 15px 0px 15px;
 }
@@ -130,21 +128,20 @@
     z-index: 300;
 }
 
-.dropdown-list {
+.dropdownList {
     padding: 5px 20px 5px 20px;
     border-radius: 20px;
 }
 
-.dropdown-list:hover {
+.dropdownList:hover {
     color: white;
     background-color: $primary;
 }
 
 
-
 @media only screen and (max-width: 768px) {
 
-    .CardContainer {
+    .cardContainer {
       margin: 5%;
       padding: 10px;
     }

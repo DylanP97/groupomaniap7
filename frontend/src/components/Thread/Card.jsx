@@ -50,15 +50,15 @@ const updateItem = () => {
             {isLoading ? (
                 <Loader/>
             ) : (
-            <div className="CardContainer" key={post._id}>
-                <div className="CardHeader">
-                    <div className="CardHeader__Left">
-                        <img className="ProfileImg"
+            <div className="cardContainer" key={post._id}>
+                <div className="cardHeader">
+                    <div className="cardHeader__left">
+                        <img className="profileImg"
                             src={
                             !isEmpty(usersData[0]) &&
                             usersData
                                 .map((user) => {
-                                if (user._id === post.posterId) return user.imageUrl;
+                                if (user._id === post.posterId) return process.env.REACT_APP_API_URL + user.imageUrl;
                                 else return null;
                                 })
                                 .join("")
@@ -72,13 +72,13 @@ const updateItem = () => {
                                 })}
                         </p>
                     </div>
-                    <div className="CardHeader__Right">
+                    <div className="cardHeader__right">
                         <span>{dateParser(post.createdAt)}</span>
                         {userData._id === post.posterId || userData.isAdmin === true ? (
                         <div className="dropdown">
                             <i className="fa-solid fa-lg fa-ellipsis-vertical"></i>
-                            <div className="dropdown-content">
-                                <div className="dropdown-list" onClick={() => setIsUpdated(!isUpdated)}>
+                            <div className="dropdownContent">
+                                <div className="dropdownList" onClick={() => setIsUpdated(!isUpdated)}>
                                     <p onClick={updateItem}>Edit post</p>
                                 </div>
                                 <CardDelete id={post._id} />
@@ -87,9 +87,9 @@ const updateItem = () => {
                         ) : null}
                     </div>
                 </div>
-                <div className="CardMain" style={{textAlign: post.message.length > 100 ? 'left' : 'center'}}>
+                <div className="cardMain" style={{textAlign: post.message.length > 100 ? 'left' : 'center'}}>
                     {post.imageUrl && (
-                    <CardImg src={post.imageUrl} alt={post.imageUrl} />
+                    <CardImg src={process.env.REACT_APP_API_URL + post.imageUrl} alt={post.imageUrl} />
                     )}
                     {isUpdated === false && <p>{post.message}</p>}
                     {isUpdated && (
@@ -103,17 +103,17 @@ const updateItem = () => {
                         </>
                     )}
                 </div>
-                <div className="CardFooter">
+                <div className="cardFooter">
                     <LikeButton post={post} />
-                    <div className="CommentSection">
-                        <div className="CommentSection__Trigger">
+                    <div className="commentSection">
+                        <div className="commentSection__trigger">
                             <Icons onClick={() => setShowComments(!showComments)} src={CommentIcon} alt="CommentIcon"/>
                             <span>{post.comments.length}</span>
                         </div>
                     </div>
                     <Icons src={ShareIcon} alt="ShareIcon"/>
                 </div>
-                <div className="CardComments">
+                <div className="cardComments">
                     {showComments && <CardComments post={post} />}
                 </div>
             </div>

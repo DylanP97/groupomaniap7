@@ -7,9 +7,7 @@ const cors = require('cors')
 const {checkUser, requireAuth} = require('./middleware/auth');
 const jwt = require("jsonwebtoken");
 const UserModel = require("./models/user");
-
 const postCtrl = require('./controllers/post')
-
 const auth = require('./middleware/auth');
 const multer = require('./middleware/multer-config');
 
@@ -50,9 +48,8 @@ app.get('/jwtid', checkUser, (req, res, next) => {
   next();
 })
 
-
 app.use('/api/user', userRoutes);
 app.use('/api/post', postRoutes);
-// app.use('./frontend/public/uploads', express.static('uploads'));
+app.use("/uploads", express.static('uploads'))
 
 module.exports = app;

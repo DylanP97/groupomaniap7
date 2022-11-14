@@ -21,7 +21,7 @@ exports.createPost = (req, res, next) => {
     
     const postObject =  req.file ? {
         ...req.body,
-        imageUrl: req.file !== null ? "./uploads/posts/" + `${req.file.filename}` : "",
+        imageUrl: req.file !== null ? "uploads/posts/" + `${req.file.filename}` : "",
     } : { ...req.body };
 
     const post = new PostModel({
