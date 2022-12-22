@@ -22,7 +22,6 @@ const ProfileCard = ({ user }) => {
     const handleImage = (image) => {
         image.preventDefault();
         const file = image.target.files[0]
-        console.log(file)
         setFile(file);
         setPicture(URL.createObjectURL(image.target.files[0]));
         console.log(file)
@@ -57,12 +56,10 @@ const ProfileCard = ({ user }) => {
         const data = new FormData();
         pseudo ? data.append('pseudo', pseudo) : data.append('pseudo', userData.pseudo)
         email ? data.append('email', email) : data.append('email', userData.email)
-        // password ? data.append('password', password) : data.append('password', userData.password)
         data.append('isAdmin', userData.isAdmin);
         if (file) data.append("imageUrl", file);
         job ? data.append('job', job) : (userData.job ? data.append('job', userData.job) : data.delete ('job', userData.job))
         bio ? data.append('bio', bio) : (userData.bio ? data.append('bio', userData.bio) : data.delete ('bio', userData.bio))
-
         await dispatch(updateUser(data, userData._id));
         dispatch(getUsers());
         cancelUser();
@@ -87,7 +84,7 @@ const ProfileCard = ({ user }) => {
         <div className="profileCardContainer" key={user._id}>
             <form action="" className="updateUserForm" >
                 <div className="profileInput">
-                    <p>Profile picture: </p>
+                    <p>Profile picture: Click on the profile image to choose a new picture! </p>
                     <label className="labelProfileForm" htmlFor="file">
                         <img className="profilePageImg" src={process.env.REACT_APP_API_URL + user.imageUrl} alt={user.imageUrl}></img>
                         <input onChange={img => handleImage(img)} className="inputProfileForm inputImgProfile" type="file" id="file" accept=".jpg, .jpeg, .png"/>

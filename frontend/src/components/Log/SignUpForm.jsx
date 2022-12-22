@@ -4,10 +4,13 @@ import SignInForm from "./SignInForm";
 
 import view from '../../assets/styles/Icons/view.png'
 import hidden from '../../assets/styles/Icons/hidden.png'
+import black from '../../assets/styles/Icons/black.png'
 
 const SignUpForm = ( props ) => {
 
     const [formSubmit, setFormSubmit] = useState(false);
+    const [picture, setPicture] = useState(null);
+    const [file, setFile] = useState();
     const [pseudo, setPseudo] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
@@ -67,6 +70,16 @@ const SignUpForm = ( props ) => {
       }
     }
 
+    const handleImage = (image) => {
+      image.preventDefault();
+      const file = image.target.files[0]
+      console.log(file)
+      setFile(file);
+      setPicture(URL.createObjectURL(image.target.files[0]));
+      console.log(file)
+    }
+
+
     return (
       <>
         {formSubmit ? (
@@ -79,6 +92,13 @@ const SignUpForm = ( props ) => {
           <>
             <h1>Welcome! Signup</h1>
             <form action="" className="logSignForm"  id="sign-up-form" onSubmit={handleRegister} >
+
+              {/* <label className="labelSignForm" htmlFor="file">Profile Image
+              <img className="loginPageImg" src={black} alt={black}></img>
+              <input onChange={img => handleImage(img)} autoFocus className="inputProfileForm inputImgProfile" type="file" name="file" id="file" accept=".jpg, .jpeg, .png"/>
+              </label> */}
+
+              <br />
               <label className="labelSignForm" htmlFor="pseudo">Username</label>
               <input autoFocus className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) =>
                 setPseudo(e.target.value)} value={pseudo} placeholder="Username" />

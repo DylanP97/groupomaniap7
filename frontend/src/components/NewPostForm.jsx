@@ -23,6 +23,8 @@ const NewPostForm = () => {
       message ? data.append('message', message) : data.append('message', ' ');
       if (file) data.append("imageUrl", file);
 
+      console.log(message)
+
       await dispatch(addPost(data));
       dispatch(getPosts());
       cancelPost();
@@ -40,7 +42,6 @@ const NewPostForm = () => {
   };
 
   if (postPicture) {
-    const imageIcon = document.getElementById('imageIcon')
     const redCircle = document.getElementById('imageAdded')
     redCircle.style.display = "block";
   }
