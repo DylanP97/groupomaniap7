@@ -27,7 +27,7 @@ const NewPostForm = () => {
       dispatch(getPosts());
       cancelPost();
     } else {
-      alert("Veuillez entrer un message")
+      alert("Add a message or an image!")
     }
   };
 
@@ -35,8 +35,19 @@ const NewPostForm = () => {
     setMessage("");
     setPostPicture("");
     setFile("");
+    const redCircle = document.getElementById('imageAdded')
+    redCircle.style.display = "none";
   };
 
+  if (postPicture) {
+    const imageIcon = document.getElementById('imageIcon')
+    const redCircle = document.getElementById('imageAdded')
+    redCircle.style.display = "block";
+  }
+  else if (postPicture === undefined || null || ''){
+    const redCircle = document.getElementById('imageAdded')
+    redCircle.style.display = "none";
+  }
 
   return (
     <div className="newPostContainer">
@@ -56,7 +67,9 @@ const NewPostForm = () => {
         <textarea aria-label="newpostform" name="message" id="message" placeholder="What's new?"
         onChange={(e) => setMessage(e.target.value)} value={message} />
         <label className="uploadImagePart" htmlFor="file">
-          <i className="fa-sharp fa-solid fa-lg fa-images" aria-label="Icon-UploadImage"></i>
+          <i className="fa-sharp fa-solid fa-lg fa-images" id="imageIcon" aria-label="Icon-UploadImage">
+          <span id="imageAdded" className='imageAdded'/>
+          </i>
           <p className="helpText">Add an image</p>
         </label>
         <input className="imageUpload" type="file" id="file" accept=".jpg, .jpeg, .png" onChange={event => {

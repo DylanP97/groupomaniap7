@@ -146,7 +146,7 @@ textarea {
   padding: 15px;
   margin: 0% 15% 4% 15%;
   background-color: white;
-  box-shadow: 0px 0px 7px $tertiary;
+  box-shadow: 0px 0px 3px $tertiary;
 
   &__main {
     display: flex;
@@ -161,6 +161,17 @@ textarea {
     align-items: center;
     margin-top: 5px;
   }
+}
+
+.imageAdded {
+  display: none;
+  position: absolute;
+  top: -4px;
+  left: 58%;
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+  background-color: $primary;
 }
 
 .sendPost {

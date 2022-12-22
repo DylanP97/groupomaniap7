@@ -134,7 +134,7 @@ textarea {
   padding: 15px;
   margin: 0% 15% 4% 15%;
   background-color: white;
-  box-shadow: 0px 0px 7px #4E5166;
+  box-shadow: 0px 0px 3px #4E5166;
 }
 .newPostContainer__main {
   display: flex;
@@ -147,6 +147,17 @@ textarea {
   padding-right: 20px;
   align-items: center;
   margin-top: 5px;
+}
+
+.imageAdded {
+  display: none;
+  position: absolute;
+  top: -4px;
+  left: 58%;
+  height: 12px;
+  width: 12px;
+  border-radius: 12px;
+  background-color: #FD2D01;
 }
 
 .sendPost {
@@ -255,7 +266,7 @@ p::selection {
   padding: 15px;
   margin: 0% 15% 2% 15%;
   background-color: white;
-  box-shadow: 0px 0px 7px #4E5166;
+  box-shadow: 0px 0px 3px #4E5166;
 }
 
 .cardHeader {
@@ -359,7 +370,7 @@ p::selection {
   padding: 0px 15px 0px 15px;
 }
 
-.fa-ellipsis-vertical:hover + .dropdown-content {
+.fa-ellipsis-vertical:hover + .dropdownContent {
   display: block;
   transform: translateY(0px);
   z-index: 300;
