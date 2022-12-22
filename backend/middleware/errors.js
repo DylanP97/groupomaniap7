@@ -5,10 +5,10 @@ module.exports.signUpErrors = (err) => {
       errors.pseudo = "Username already taken or wrong";
   
     if (err.message.includes("email"))
-      errors.email = "This email is wrong";
+      errors.email = "This email is not correct";
 
     if (err.message.includes("password"))
-      errors.password = "The password must contain 6 to 100 characters have 1 upper case, 1 lower case, 1 number, 1 special character, no spaces";
+      errors.password = "The password must contain 6 to 100 characters have at least 1 upper case, a lower case, a number, a special character and no spaces";
 
     if (err.code === 11000 && Object.keys(err.keyValue)[0].includes("pseudo"))
       errors.pseudo = "This username is already taken";

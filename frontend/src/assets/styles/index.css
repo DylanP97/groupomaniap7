@@ -44,24 +44,6 @@ input {
   border: none;
   outline: none;
 }
-.inputSignForm:not(:focus):not(:-moz-placeholder-shown):valid {
-  outline: 2px solid rgb(0, 232, 0);
-}
-.inputSignForm:not(:focus):not(:-ms-input-placeholder):valid {
-  outline: 2px solid rgb(0, 232, 0);
-}
-.inputSignForm:not(:focus):not(:placeholder-shown):valid {
-  outline: 2px solid rgb(0, 232, 0);
-}
-.inputSignForm:not(:focus):not(:-moz-placeholder-shown):invalid {
-  outline: 2px solid red;
-}
-.inputSignForm:not(:focus):not(:-ms-input-placeholder):invalid {
-  outline: 2px solid red;
-}
-.inputSignForm:not(:focus):not(:placeholder-shown):invalid {
-  outline: 2px solid red;
-}
 
 span {
   font-style: italic;
@@ -406,20 +388,18 @@ p::selection {
   text-align: center;
   flex-direction: column;
   height: 100vh;
-  background: #FFD7D7;
 }
 .logPage h1 {
   margin-top: 20px;
   margin-bottom: 20px;
 }
 .logPage__container {
-  min-height: 70%;
-  width: 70%;
+  height: 100vh;
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-  box-shadow: 0px 0px 7px #4E5166;
 }
 .logPage__leftContainer {
   height: 100%;
@@ -511,6 +491,24 @@ p::selection {
     width: 100%;
   }
 }
+.password-input-div {
+  position: relative;
+  width: 75%;
+}
+.password-input-div .inputSignForm {
+  width: 100%;
+}
+
+.password-eye {
+  position: absolute;
+  top: 50%;
+  right: 10px;
+  transform: translateY(-50%);
+  cursor: pointer;
+  height: 60%;
+  aspect-ratio: 1/1;
+}
+
 .commentSection {
   display: flex;
   justify-content: flex-start;

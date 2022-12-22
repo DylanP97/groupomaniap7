@@ -2,8 +2,9 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const UserModel = require('../models/user');
 const ObjectID = require("mongoose").Types.ObjectId;
-const { signUpErrors, signInErrors } = require('../middleware/errors');
 const fs = require('fs');
+const { signUpErrors, signInErrors } = require('../middleware/errors');
+
 
 const maxAge = 3 * 24 * 60 * 60 * 1000;
 
@@ -26,6 +27,7 @@ exports.signup = async (req, res, next) => {
         res.status(200).json({ errors })
       }
 }
+
 
 exports.login = async (req, res, next) => {
 

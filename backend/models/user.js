@@ -6,21 +6,7 @@ const { isEmail } = require('validator');
 const passwordValidator = require('password-validator');
 
 let emailRegExp = new RegExp('^[a-zA-Z0-9._\-]+[@]{1}(groupomania)+[.]{1}[a-z]{2,10}$');
-
-var schema = new passwordValidator();
-
-  schema
-  .is().min(6)
-  .is().max(100)                                             
-  .has().uppercase()  
-  .has().lowercase()                                          
-  .has().digits(1)                                          
-  .has().symbols(1)                                           
-  .has().not().spaces()                                       
-  .has().not('password')                                      
-  .has().not('123')                                           
-  .has().not('{', '}', '=', "'");
-
+let passwordRegExp = new RegExp('^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$ %^&*-]).{6,100}$');
 
 const userSchema = new mongoose.Schema(
   {    
@@ -42,8 +28,6 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
-      minLength: 6,
-      maxLength: 100,
     },
     imageUrl: {
       type: String,
@@ -70,15 +54,9 @@ const userSchema = new mongoose.Schema(
 );
 
 userSchema.pre("save", async function(next) {
-  if (schema.validate(this.password)){
-    console.log("triggerda")
-    // const salt = await bcrypt.genSalt();
-    // console.log("salt : " + salt)
+  if (passwordRegExp.test(this.password)){
     let hash = await bcrypt.hash(this.password, 10);
-    console.log("hash : " + hash)
     this.password = hash
-    console.log("this.password : " + this.password)
-
   } else {
     throw Error('incorrect password');
   }

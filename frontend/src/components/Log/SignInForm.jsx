@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 
+import view from '../../assets/styles/Icons/view.png'
+import hidden from '../../assets/styles/Icons/hidden.png'
+
 const SignInForm = ( ) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -37,6 +40,22 @@ const SignInForm = ( ) => {
       });
   };
 
+  const ShowPassword = (e) => {
+    var eyeIcon = e.target;
+    var passwordDiv = e.target.parentElement;
+    var passwordInput = passwordDiv.firstChild;
+
+    if(passwordInput.type === 'password') {
+      passwordInput.setAttribute("type", "text")
+      console.log(e.target.src)
+      eyeIcon.src=`${view}`
+    }
+    else {
+      passwordInput.setAttribute("type", "password")
+      eyeIcon.src=`${hidden}`
+    }
+  }
+
   return (
     <>
       <form className="logSignForm" id="sign-in-form" action="" onSubmit={handleLogin} >
@@ -47,10 +66,17 @@ const SignInForm = ( ) => {
         <div className="email error"></div>
         <br />
         <label className="labelSignForm" htmlFor="password">Password</label>
-        <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) =>
-          setPassword(e.target.value)} placeholder="Password" value={password} />
+        
+        <div className="password-input-div">
+          <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) =>
+            setPassword(e.target.value)} placeholder="Password" value={password} />
+          <img onClick={ShowPassword} className="password-eye" src={hidden} alt={hidden} />
+        </div>
+
         <div className="password error"></div>
         <br />
+
+
         <input className="btn btn--logForm" type="submit" value="Sign in"/>
       </form>
     </>

@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import axios from "axios";
 import SignInForm from "./SignInForm";
 
+import view from '../../assets/styles/Icons/view.png'
+import hidden from '../../assets/styles/Icons/hidden.png'
 
 const SignUpForm = ( props ) => {
 
@@ -36,7 +38,6 @@ const SignUpForm = ( props ) => {
             data: { pseudo, email, password },
           })
             .then((res) => {
-              console.log(res);
               if (res.data.errors) {
                 pseudoError.innerHTML = res.data.errors.pseudo;
                 emailError.innerHTML = res.data.errors.email;
@@ -49,6 +50,22 @@ const SignUpForm = ( props ) => {
         }
       }
     };
+
+    const ShowPassword = (e) => {
+      var eyeIcon = e.target;
+      var passwordDiv = e.target.parentElement;
+      var passwordInput = passwordDiv.firstChild;
+
+      if(passwordInput.type === 'password') {
+        passwordInput.setAttribute("type", "text")
+        console.log(e.target.src)
+        eyeIcon.src=`${view}`
+      }
+      else {
+        passwordInput.setAttribute("type", "password")
+        eyeIcon.src=`${hidden}`
+      }
+    }
 
     return (
       <>
@@ -63,23 +80,33 @@ const SignUpForm = ( props ) => {
             <h1>Welcome! Signup</h1>
             <form action="" className="logSignForm"  id="sign-up-form" onSubmit={handleRegister} >
               <label className="labelSignForm" htmlFor="pseudo">Username</label>
-              <input className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) =>
+              <input autoFocus className="inputSignForm" type="text" name="pseudo" id="pseudo" onChange={(e) =>
                 setPseudo(e.target.value)} value={pseudo} placeholder="Username" />
               <span className="pseudo error"></span>
               <br />
               <label className="labelSignForm" htmlFor="email">Email</label>
-              <input setcustomvalidity="Invalid field." className="inputSignForm" type="text" name="email" id="email" pattern="^[a-zA-Z0-9._\-]+[@]{1}(groupomania)+[.]{1}[a-z]{2,10}$" onChange={(e) =>
+              <input setcustomvalidity="Invalid field." className="inputSignForm" type="text" name="email" id="email" onChange={(e) =>
                 setEmail(e.target.value)} value={email} placeholder="Email" />
               <span className="email error"></span>
               <br />
               <label className="labelSignForm" htmlFor="password">Password</label>
-              <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) =>
-                setPassword(e.target.value)} value={password} placeholder="Password" />
+
+              <div className="password-input-div">
+                <input className="inputSignForm" type="password" name="password" id="password" onChange={(e) =>
+                  setPassword(e.target.value)} value={password} placeholder="Password" />
+                <img onClick={ShowPassword} className="password-eye" src={hidden} alt={hidden} />
+              </div>
               <span className="password error"></span>
+
               <br />
               <label className="labelSignForm" htmlFor="password-conf">Confirm password</label>
-              <input className="inputSignForm" type="password" name="password" id="password-conf" onChange={(e) =>
-                setControlPassword(e.target.value)} value={controlPassword} placeholder="Confirm password"/>
+
+              <div className="password-input-div">
+                <input className="inputSignForm" type="password" name="password" id="password-conf" onChange={(e) =>
+                  setControlPassword(e.target.value)} value={controlPassword} placeholder="Confirm password"/>
+                <img onClick={ShowPassword} className="password-eye" src={hidden} alt={hidden} />
+              </div>
+            
               <span className="password-confirm error"></span>
               <br />
               <div className="inputSignForm">
